@@ -1,33 +1,26 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { BrowserRouter, Routes, Route,} from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+     <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Warehouse/>} />
+          <Route path="/warehouse/details" element={<WarehouseDetails/>} />
+          <Route path="/warehouse/edit" element={<WarehouseEdit/>} />
+          <Route path="/warehouse/add" element={<WarehouseAdd/>} />
+          <Route path="/warehouse/delete" element={<WarehouseDelete/>} />
+          <Route path="/inventory" element={<Inventory/>} />
+          <Route path="/inventory/details" element={<ItemDetails/>} />
+          <Route path="/inventory/edit" element={<ItemEdit/>} />
+          <Route path="/inventory/add" element={<ItemAdd/>} />
+          <Route path="/inventory/delete" element={<ItemDelete/>} />
+        </Routes>
+      </BrowserRouter>
+      
     </>
   )
 }
