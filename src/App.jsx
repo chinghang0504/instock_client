@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './App.css'
+import './App.scss'
 import { BrowserRouter, Routes, Route,} from "react-router-dom";
 import Warehouse from './pages/Warehouse/Warehouse';
 import WarehouseDetails from './pages/WarehouseDetails/WarehouseDetails';
