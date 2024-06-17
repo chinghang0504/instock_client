@@ -14,9 +14,9 @@ function App() {
           <Route path="/warehouse/add" element={<WarehouseAdd/>} />
           <Route path="/warehouse/delete" element={<WarehouseDelete/>} />
           <Route path="/inventory" element={<Inventory/>} />
+          <Route path="/inventory/edit" element={<InventoryEdit/>} />
+          <Route path="/inventory/add" element={<InventoryAdd/>} />
           <Route path="/inventory/details" element={<ItemDetails/>} />
-          <Route path="/inventory/edit" element={<ItemEdit/>} />
-          <Route path="/inventory/add" element={<ItemAdd/>} />
           <Route path="/inventory/delete" element={<ItemDelete/>} />
         </Routes>
       </BrowserRouter>
