@@ -1,6 +1,16 @@
 import { useState } from 'react'
 import './App.css'
 import { BrowserRouter, Routes, Route,} from "react-router-dom";
+import Warehouse from './pages/Warehouse/Warehouse';
+import WarehouseDetails from './pages/WarehouseDetails/WarehouseDetails';
+import WarehouseEdit from './pages/WarehouseEdit/WarehouseEdit';
+import WarehouseAdd from './pages/WarehouseAdd/WarehouseAdd';
+import WarehouseDelete from './pages/WarehouseDelete/WarehouseDelete';
+import Inventory from './pages/Inventory/Inventory';
+import InventoryEdit from './pages/InventoryEdit/InventoryEdit';
+import InventoryAdd from './pages/InventoryAdd/InventoryAdd';
+import ItemDetails from './pages/ItemDetails/ItemDetails';
+import ItemDelete from './pages/ItemDelete/ItemDelete';
 
 function App() {
 
