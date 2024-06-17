@@ -1,6 +1,6 @@
 import './Item.scss';
 
-const ItemDelete = () => {
+const Item = () => {
   return (
     <div>
       {/* Your ItemDelete component code */}
