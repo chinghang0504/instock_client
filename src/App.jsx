@@ -9,6 +9,7 @@ import WarehouseDelete from './pages/WarehouseDelete/WarehouseDelete';
 import Inventory from './pages/Inventory/Inventory';
 import InventoryEdit from './pages/InventoryEdit/InventoryEdit';
 import InventoryAdd from './pages/InventoryAdd/InventoryAdd';
+import Item from './pages/Item/Item';
 import ItemDetails from './pages/ItemDetails/ItemDetails';
 import ItemDelete from './pages/ItemDelete/ItemDelete';
 
@@ -16,20 +17,25 @@ function App() {
 
   return (
     <>
-     <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Warehouse/>} />
-          <Route path="/warehouse/details" element={<WarehouseDetails/>} />
-          <Route path="/warehouse/edit" element={<WarehouseEdit/>} />
-          <Route path="/warehouse/add" element={<WarehouseAdd/>} />
-          <Route path="/warehouse/delete" element={<WarehouseDelete/>} />
-          <Route path="/inventory" element={<Inventory/>} />
-          <Route path="/inventory/edit" element={<InventoryEdit/>} />
-          <Route path="/inventory/add" element={<InventoryAdd/>} />
-          <Route path="/item/details" element={<ItemDetails/>} />
-          <Route path="/item/delete" element={<ItemDelete/>} />
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Warehouse />} />
+        <Route path="/warehouse" element={<Warehouse />}>
+          <Route path="details" element={<WarehouseDetails />} />
+          <Route path="edit" element={<WarehouseEdit />} />
+          <Route path="add" element={<WarehouseAdd />} />
+          <Route path="delete" element={<WarehouseDelete />} />
+        </Route>
+        <Route path="/inventory" element={<Inventory />}>
+          <Route path="edit" element={<InventoryEdit />} />
+          <Route path="add" element={<InventoryAdd />} />
+        </Route>
+        <Route path="/item" element={<Item />}>
+          <Route path="details" element={<ItemDetails />} />
+          <Route path="delete" element={<ItemDelete />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
       
     </>
   )
