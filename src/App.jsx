@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './App.scss'
+import './App.css'
 import { BrowserRouter, Routes, Route,} from "react-router-dom";
 import Warehouse from './pages/Warehouse/Warehouse';
 import WarehouseDetails from './pages/WarehouseDetails/WarehouseDetails';
@@ -26,8 +26,8 @@ function App() {
           <Route path="/inventory" element={<Inventory/>} />
           <Route path="/inventory/edit" element={<InventoryEdit/>} />
           <Route path="/inventory/add" element={<InventoryAdd/>} />
-          <Route path="/inventory/details" element={<ItemDetails/>} />
-          <Route path="/inventory/delete" element={<ItemDelete/>} />
+          <Route path="/item/details" element={<ItemDetails/>} />
+          <Route path="/item/delete" element={<ItemDelete/>} />
         </Routes>
       </BrowserRouter>
       
