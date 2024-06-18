@@ -1,12 +1,10 @@
+import WarehouseList from '../../components/WarehouseList/WarehouseList';
 import './Warehouse.scss';
 
 const Warehouse = () => {
-    return (
-      <div>
-        <h1>Test</h1>
-      </div>
-    );
-  };
-  
-  export default Warehouse;
-  
+  return (
+    <WarehouseList />
+  );
+};
+
+export default Warehouse;

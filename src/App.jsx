@@ -1,5 +1,5 @@
 import './App.scss'
-import { BrowserRouter, Routes, Route,} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, } from "react-router-dom";
 import Warehouse from './pages/Warehouse/Warehouse';
 import WarehouseDetails from './pages/WarehouseDetails/WarehouseDetails';
 import WarehouseEdit from './pages/WarehouseEdit/WarehouseEdit';
@@ -18,22 +18,23 @@ function App() {
 
   return (
     <>
-       <BrowserRouter>
-       <Header></Header>
+      <BrowserRouter>
+        <Header />
         <Routes>
-          <Route path="/" element={<Warehouse/>} />
-          <Route path="/warehouse/details" element={<WarehouseDetails/>} />
-          <Route path="/warehouse/edit" element={<WarehouseEdit/>} />
-          <Route path="/warehouse/add" element={<WarehouseAdd/>} />
-          <Route path="/warehouse/delete" element={<WarehouseDelete/>} />
-          <Route path="/inventory" element={<Inventory/>} />
-          <Route path="/inventory/edit" element={<InventoryEdit/>} />
-          <Route path="/inventory/add" element={<InventoryAdd/>} />
-          <Route path="/item" element={<Item/>} />
-          <Route path="/item/details" element={<ItemDetails/>} />
-          <Route path="/item/delete" element={<ItemDelete/>} />
+          <Route path="/" element={<Navigate to="/warehouse" />} />
+          <Route path="/warehouse" element={<Warehouse />} />
+          <Route path="/warehouse/details" element={<WarehouseDetails />} />
+          <Route path="/warehouse/edit" element={<WarehouseEdit />} />
+          <Route path="/warehouse/add" element={<WarehouseAdd />} />
+          <Route path="/warehouse/delete" element={<WarehouseDelete />} />
+          <Route path="/inventory" element={<Inventory />} />
+          <Route path="/inventory/edit" element={<InventoryEdit />} />
+          <Route path="/inventory/add" element={<InventoryAdd />} />
+          <Route path="/item" element={<Item />} />
+          <Route path="/item/details" element={<ItemDetails />} />
+          <Route path="/item/delete" element={<ItemDelete />} />
         </Routes>
-        <Footer></Footer>
+        <Footer />
       </BrowserRouter>
     </>
   )
