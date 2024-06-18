@@ -11,12 +11,15 @@ import InventoryAdd from './pages/InventoryAdd/InventoryAdd';
 import Item from './pages/Item/Item';
 import ItemDetails from './pages/ItemDetails/ItemDetails';
 import ItemDelete from './pages/ItemDelete/ItemDelete';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 function App() {
 
   return (
     <>
        <BrowserRouter>
+       <Header></Header>
         <Routes>
           <Route path="/" element={<Warehouse/>} />
           <Route path="/warehouse/details" element={<WarehouseDetails/>} />
@@ -30,6 +33,7 @@ function App() {
           <Route path="/item/details" element={<ItemDetails/>} />
           <Route path="/item/delete" element={<ItemDelete/>} />
         </Routes>
+        <Footer></Footer>
       </BrowserRouter>
     </>
   )

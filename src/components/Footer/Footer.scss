@@ -1,0 +1,11 @@
+.footer{
+
+    display: flex;
+    background-color: #F7F8F9;
+    padding: 50px 16px 50px 16px;
+    
+    &__heading{
+        width: 100%;
+        text-align: center;
+    }
+}
