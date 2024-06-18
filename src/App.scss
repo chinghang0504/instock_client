@@ -1,4 +1,14 @@
-body{
-    padding: 0;
-    margin: 0;
+@use "./styles/partials/mixins" as *;
+@use "./styles/partials/variables" as *;
+@use "./styles/partials/fonts" as *;
+@use "./styles/partials/typography" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Titillium Web", 'Times New Roman', Times, serif;
 }
