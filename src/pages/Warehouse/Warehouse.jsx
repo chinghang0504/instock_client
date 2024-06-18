@@ -3,7 +3,7 @@ import './Warehouse.scss';
 const Warehouse = () => {
     return (
       <div>
-        {/* Your Warehouse component code */}
+        <h1>Test</h1>
       </div>
     );
   };
