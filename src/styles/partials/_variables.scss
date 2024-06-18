@@ -1,13 +1,21 @@
-$mobile-breakpoint: 767px;
+// Breakpoints
 $tablet-breakpoint: 768px;
 $desktop-breakpoint: 1024px;
 
-$instock-black: #13182c;
-$slate: #5c667e;
-$graphite: #232940;
-$green: #158463;
-$instock-indigo: #2e66e5;
-$cloud: #bdc5d5;
-$light-grey: #f7f8f9;
-$red: #c94515;
-$white: #ffffff;
+// Colors
+// Primary colors
+$primary-color-instock-black: #13182c;
+$primary-color-instock-indigo: #2e66e5;
+$primary-color-white: #ffffff;
+
+// Secondary colors
+$secondary-color-slate: #5c667e;
+$secondary-color-cloud: #bdc5d5;
+
+// Background colors
+$background-color-graphite: #232940;
+$background-color-light-grey: #f7f8f9;
+
+// Supporting colors
+$supporting-color-green: #158463;
+$supporting-color-red: #c94515;
