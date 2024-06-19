@@ -1,44 +1,92 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+
 .header{
-    background-color: #232940;
-    padding: 16px 16px 70px 16px;
+    background-color: $background-color-graphite;
+    padding: 1rem 1rem 4.37rem 1rem;
+    width: 100%;
+    margin: 0 auto;
+
+    @include tablet{
+        padding: 2rem 2rem  8rem 2rem;
+    }
+
+    @include desktop{
+        padding: 2rem 3.9rem 8rem 3.9rem;
+    }
 
     &__nav{
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        @include tablet{
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    &__logo-section{
+        @include tablet{
+            
+        }
     }
 
     &__logo{
-        height: 25px;
-        width: 120px;
-        padding-bottom: 20px;
+        width: 7.5rem;
+        padding-bottom: 1.25rem;
+
+        @include tablet{
+            padding-bottom: 0;
+        }
     }
+
 
 
     &__list{
         width: 100%;
         display: flex;
-        align-items: center;
         justify-content: space-between;
-    }
 
-    &__modifier{
+        @include tablet{
+            width: 45%;
+
+        }
+        @include desktop{
+            width: 35%;
+
+        }
+    }
+    
+    &__inventory-section,
+    &__warehouse-section{
+        width: 50%;
+    }
+    .header__modifier{
+        display: block;
+        text-align: center;
         width: 100%;
-        height: 40px;
-        padding: 10px 35px 10px 35px;
+        height: 2.5rem;
         border: none;
-        border-radius: 20px;
-        color: #F7F8F9;
-        background-color: #232940;
-    }
+        border-radius: 1.25rem;
+        color: $secondary-color-cloud;
+        text-decoration: none;
+        font-size: 0.938rem;
+        line-height: 1.625rem;
+        font-weight: 600;
+        padding-top: 0.37rem;
 
-
-    &__warehouse:hover{
-        background-color: #13182C;
+        @include tablet{
+            font-size: 1rem;
+            line-height: 1.75rem;
+            font-weight: 600;
+        }
     }
-    &__inventory:hover{
-        background-color: #13182C;
+    .header--active{
+        background-color: $primary-color-instock-black;
+        color: $primary-color-white;
     }
  
 }

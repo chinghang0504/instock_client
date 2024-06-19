@@ -1,11 +1,24 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+
+
 .footer{
 
     display: flex;
-    background-color: #F7F8F9;
-    padding: 50px 16px 50px 16px;
+    background-color: $background-color-light-grey;
+    padding: 3rem 1rem 3rem 1rem;
+
+    @include tablet{
+        padding: 4rem 2rem  4rem 2rem;
+    }
+    @include desktop{
+        padding: 2rem 3.9rem 8rem 3.9rem;
+    }
     
     &__heading{
         width: 100%;
         text-align: center;
+        color: $secondary-color-slate;
     }
 }

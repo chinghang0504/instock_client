@@ -5,7 +5,7 @@ function Footer() {
   return (
     <section className="footer">
         <p className="footer__heading">
-            InStock Inc. All Rights Reserved.
+        &copy; InStock Inc. All Rights Reserved.
         </p>
     </section>
   )
