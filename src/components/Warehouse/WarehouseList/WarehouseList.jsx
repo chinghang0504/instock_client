@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import './WarehouseList.scss';
-import { getWarehouseList } from '../../services/api';
-import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
-import editIcon from '../../assets/icons/edit-24px.svg';
+import { getWarehouseList } from '../../../services/api.js';
+import deleteIcon from '../../../assets/icons/delete_outline-24px.svg';
+import editIcon from '../../../assets/icons/edit-24px.svg';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 function WarehouseList() {
   const [warehouseList, setWarehouseList] = useState([]);
