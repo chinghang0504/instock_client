@@ -97,4 +97,12 @@
             margin-left: 32px;
         }
     }
+
+    &__delete-icon {
+        cursor: pointer;
+    }
+
+    &__edit-icon {
+        cursor: pointer;
+    }
 }
