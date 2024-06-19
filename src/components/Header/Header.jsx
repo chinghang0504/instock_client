@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Header.scss'
 import Logo from '../../assets/logo/InStock-Logo_2x.png';
 
 function Header() {
+    const [currentPage, setCurrentPage] = useState("warehouse");
   return (
     <section className="header">
         <section className="header__nav">
@@ -12,10 +13,10 @@ function Header() {
 
             <div className="header__list">
                 <div className="header__warehouse-section">
-                    <button className="header__warehouse header__modifier">Warehouses</button>
+                    <button onClick={() => setCurrentPage("warehouse")} className={`header__warehouse header__modifier ${currentPage === "warehouse" ? 'header--active': ""}`}>Warehouses</button>
                 </div>
                 <div className="header__inventory-section">
-                    <button className="header__inventory header__modifier" >Inventory</button>
+                    <button onClick={() => setCurrentPage("inventory")} className={`header__inventory header__modifier ${currentPage === "inventory" ? 'header--active': ""}`} >Inventory</button>
                 </div>
             </div>
         </section>
