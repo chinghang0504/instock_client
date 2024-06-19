@@ -1,17 +1,8 @@
-import React, { useState } from "react";
 import "./Header.scss";
-import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo/InStock-Logo_2x.png";
 import { NavLink } from "react-router-dom";
 
 function Header() {
-//   const [currentPage, setCurrentPage] = useState("warehouse");
-//   const navigate = useNavigate();
-
-//   const handleNavigation = (page) => {
-//     setCurrentPage(page);
-//     navigate(`/${page}`);
-//   };
 
   return (
     <section className="header">
