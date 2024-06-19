@@ -1,10 +1,9 @@
+import { Outlet } from 'react-router-dom';
 import './Inventory.scss';
 
 const Inventory = () => {
   return (
-    <div>
-      {/* Your Inventory component code */}
-    </div>
+    <Outlet />
   );
 };
 

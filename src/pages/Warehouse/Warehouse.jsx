@@ -1,12 +1,10 @@
+import { Outlet } from 'react-router-dom';
 import './Warehouse.scss';
 
 const Warehouse = () => {
-    return (
-      <div>
-        <h1>Test</h1>
-      </div>
-    );
-  };
-  
-  export default Warehouse;
-  
+  return (
+    <Outlet />
+  );
+};
+
+export default Warehouse;

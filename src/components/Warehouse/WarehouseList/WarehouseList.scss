@@ -1,0 +1,20 @@
+@use "../../../styles/partials/mixins" as *;
+
+.warehouse-list {
+    &__header {
+        display: flex;
+        flex-direction: column;
+
+        @include tablet {
+            flex-direction: row;
+        }
+    }
+
+    &__search-input {
+        
+    }
+
+    &__add-button {
+
+    }
+}
