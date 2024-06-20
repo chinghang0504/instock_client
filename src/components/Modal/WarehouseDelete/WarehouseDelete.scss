@@ -2,32 +2,47 @@
 @use "../../../styles/partials/variables" as *;
 
 .modal {
-    @include modal__position;
-
-    &__overlay{
-        @include modal__overlay;
+  @include modal__position;
+  &__container {
+    @include modal-container
+  }
+  &__overlay {
+    @include modal__overlay;
+  }
+  &__buttons-container {
+    @include modal__button-container;
+  }
+  &__buttons {
+    @include modal__buttons;
+    
+    &--cancel {
+      background-color: $primary-color-white;
     }
-    &__buttons{
-        &--cancel{
-
-        }
-        &--delete{
-
-        }
+    &--delete {
+      background-color: $supporting-color-red;
+      color: $primary-color-white;
     }
   }
+}
 
-  .text{
-    &__icon{
-        
-    }
-    &__header{
-        @include modal__header;
-    }
-    &__para{
-        @include modal__para;
-
-    }
+.text {
+  flex: 1; 
+  padding: 20px;
+  @include tablet{
+    flex: 0;
+    padding: 0;
   }
+
+  &__icon {
+    cursor: pointer;
+    float: right;
+  }
+  &__header {
+    margin-bottom: 1rem
+  }
+  &__para {
+   
+  }
+}
 
 

@@ -1,31 +1,47 @@
 @use "../../../styles/partials/mixins" as *;
 @use "../../../styles/partials/variables" as *;
 
-// .modal {
-//     @include modal__position;
+.modal {
+  @include modal__position;
+  &__container {
+    @include modal-container
+  }
+  &__overlay {
+    @include modal__overlay;
+  }
+  &__buttons-container {
+    @include modal__button-container;
+  }
+  &__buttons {
+    @include modal__buttons;
+    
+    &--cancel {
+      background-color: $primary-color-white;
+    }
+    &--delete {
+      background-color: $supporting-color-red;
+      color: $primary-color-white;
+    }
+  }
+}
 
-//     &__overlay{
-//         @include modal__overlay
-//     }
-//     &__buttons{
-//         &--cancel{
+.text {
+  flex: 1; 
+  padding: 20px;
+  @include tablet{
+    flex: 0;
+    padding: 0;
+  }
 
-//         }
-//         &--delete{
-            
-//         }
-//     }
-//   }
-
-//   .text{
-//     &__icon{
-
-//     }
-//     &__header{
-
-//     }
-//     &__para{
-
-//     }
-//   }
+  &__icon {
+    cursor: pointer;
+    float: right;
+  }
+  &__header {
+    margin-bottom: 1rem
+  }
+  &__para {
+   
+  }
+}
 

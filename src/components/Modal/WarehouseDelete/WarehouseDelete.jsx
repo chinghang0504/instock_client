@@ -14,17 +14,19 @@ function WarehouseDelete({ isOpen, onRequestClose, onConfirm }) {
       className="modal"
       overlayClassName="modal__overlay"
     >
+       <div className='modal__container'>
       <div className='text'>
       <img className='text__icon'src={CloseIcon} alt="Close icon " onClick={onRequestClose}/>
       <h2 className='text__header'>Delete {} warehouse?</h2>
       <p className='text__para'>Please confirm that you'de like to delete {} from the list of warehouses. You won't be able to undo this action.</p>
       </div>
-      <div className="modal__buttons">
-        <button className="modal__buttons--cancel" onClick={onRequestClose}>Cancel</button>
-        <button className="modal__button--delete" onClick={() => {
+      <div className="modal__buttons-container">
+        <button className=" modal__buttons modal__buttons--cancel" onClick={onRequestClose}>Cancel</button>
+        <button className="modal__buttons modal__buttons--delete" onClick={() => {
           onConfirm();
           onRequestClose();
         }}>Confirm</button>
+      </div>
       </div>
     </Modal>
   );
