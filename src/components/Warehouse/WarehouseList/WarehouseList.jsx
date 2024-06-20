@@ -21,7 +21,6 @@ function WarehouseList() {
     setModalIsOpen(!modalIsOpen);
   }
 
-
   // Click the search icon
   // The search input will be on focus
   function clickSearchIcon() {
@@ -35,7 +34,6 @@ function WarehouseList() {
     toggleModal();
   }
  
-
   // Added by Jonatan for Modal API CALL
   const handleConfirmDelete = async () => {
     
@@ -44,7 +42,7 @@ function WarehouseList() {
     setWarehouseList(warehouseList);
 
     toggleModal();
-  };
+  };   
 
   // Click the edit icon
   function clickEditIcon(id) {
