@@ -24,3 +24,15 @@ export async function deleteWarehouse (currentItemId) {
         throw error;
     }
 };
+
+// Delete inventory
+export async function deleteInventory (currentItemId) {
+    try {
+        const response = await axios.delete(`${BASE_URL}/inventory/${currentItemId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting inventory:', error);
+        throw error;
+    }
+};
+

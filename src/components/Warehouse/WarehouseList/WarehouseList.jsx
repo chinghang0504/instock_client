@@ -16,15 +16,16 @@ function WarehouseList() {
   const [currentItemId, setCurrentItemId] = useState(null);
   const navigate = useNavigate();
 
-  // Click the edit icon
-  function clickEditIcon(id) {
-    navigate(`/warehouse/edit/${id}`);
-  }
 
   // Click the search icon
   // The search input will be on focus
   function clickSearchIcon() {
     searchInputRef.current.focus();
+  }
+
+  // Click the edit icon
+  function clickEditIcon(id) {
+    navigate(`/warehouse/edit/${id}`);
   }
 
   // Click the delete icon
@@ -142,13 +143,12 @@ function WarehouseList() {
         </ul>
       </div>
 
-      <WarehouseDelete
-        isOpen={modalIsOpen}
-        onRequestClose={toggleModal}
-        // onConfirm={handleConfirmDelete(currentItemId)}
-        onConfirm={() => handleConfirmDelete(currentItemId)}
-        warehouseName={warehouseList.find(warehouse => warehouse.id === currentItemId)?.warehouse_name}
-      />
+        <WarehouseDelete
+           isOpen={modalIsOpen}
+            onRequestClose={toggleModal}
+            onConfirm={() => handleConfirmDelete(currentItemId)}
+            warehouseName={warehouseList.find(warehouse => warehouse.id === currentItemId)?.warehouse_name}
+        />
     </div>
   );
 }
