@@ -1,30 +1,31 @@
 @use "../../../styles/partials/mixins" as *;
 @use "../../../styles/partials/variables" as *;
 
-.modal {
-    @include modal__position;
+// .modal {
+//     @include modal__position;
 
-    &__overlay{
-        @include modal__overlay
-    }
-    &__buttons{
-        &--cancel{
+//     &__overlay{
+//         @include modal__overlay
+//     }
+//     &__buttons{
+//         &--cancel{
 
-        }
-        &--delete{
+//         }
+//         &--delete{
             
-        }
-    }
-  }
+//         }
+//     }
+//   }
 
-  .text{
-    &__icon{
+//   .text{
+//     &__icon{
 
-    }
-    &__header{
+//     }
+//     &__header{
 
-    }
-    &__para{
+//     }
+//     &__para{
 
-    }
-  }
+//     }
+//   }
+

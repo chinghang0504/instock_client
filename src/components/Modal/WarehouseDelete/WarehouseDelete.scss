@@ -5,35 +5,29 @@
     @include modal__position;
 
     &__overlay{
-        @include modal__overlay
+        @include modal__overlay;
     }
     &__buttons{
         &--cancel{
 
         }
         &--delete{
-            
+
         }
     }
   }
 
   .text{
     &__icon{
-
+        
     }
     &__header{
-
+        @include modal__header;
     }
     &__para{
+        @include modal__para;
 
     }
   }
-//   h2 {
-//     margin-bottom: 10px;
-//     font-size: 1.5rem;
-//   }
 
-//   p {
-//     margin-bottom: 20px;
-//   }
 
