@@ -102,12 +102,6 @@ function clickEditIcon(id) {
           })}
         </div>
       </div>
-      <WarehouseDelete
-           isOpen={modalIsOpen}
-            onRequestClose={toggleModal}
-            onConfirm={() => handleConfirmDelete(currentItemId)}
-            warehouseName={warehouseList.find(warehouse => warehouse.id === currentItemId)?.warehouse_name}
-            />
     </div>
   )
 }
