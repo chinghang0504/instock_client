@@ -8,3 +8,9 @@ export async function getWarehouseList() {
     const res = await axios.get(`${BASE_URL}/warehouse`);
     return res.data;
 }
+
+// Get the warehouse list
+export async function getInventoryList() {
+    const res = await axios.get(`${BASE_URL}/inventory`);
+    return res.data;
+}
