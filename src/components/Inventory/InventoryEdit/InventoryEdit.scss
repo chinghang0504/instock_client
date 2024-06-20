@@ -91,6 +91,7 @@
    &__status{
     display: flex;
     flex-direction: column;
+    margin-bottom: 1rem;
    }
    &__radio-section{
     display: flex;
@@ -103,6 +104,12 @@
    }
    &__radio-item{
     margin-right: 0.5rem;
+   }
+   
+   &__quantity{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
    }
 
    &__warehouse{

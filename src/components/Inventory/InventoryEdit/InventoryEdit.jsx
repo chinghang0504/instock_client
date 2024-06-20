@@ -1,4 +1,5 @@
 import './InventoryEdit.scss';
+import React, { useState, useEffect } from 'react';
 import ArrowBack from '../../../assets/icons/arrow_back-24px.svg';
 
 function InventoryEdit() {
@@ -53,7 +54,7 @@ function InventoryEdit() {
             name="category" 
             id="category"
             >
-              <option value="">Electronic</option>
+              <option value=""></option>
             </select>
             </div>
           </form>
@@ -90,6 +91,18 @@ function InventoryEdit() {
 
           </div>
 
+          <div className="inventory-edit__quantity">
+            <label htmlFor="title" className="inventory-edit__label">
+               Quantity
+            </label>
+            <select className="inventory-edit__text"
+              name="quantity" 
+              id="quantity"
+            >
+               <option value=""></option>
+            </select>
+          </div>
+
           <div className="inventory-edit__warehouse">
             <label htmlFor="title" className="inventory-edit__label">
               Warehouse
@@ -98,7 +111,7 @@ function InventoryEdit() {
             name="warehouse" 
             id="warehouse"
             >
-              <option value="">Manhattan</option>
+              <option value=""></option>
             </select>
           </div>
         </div>
