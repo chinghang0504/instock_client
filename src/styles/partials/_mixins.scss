@@ -1,5 +1,6 @@
 @use "variables" as *;
 
+// Breakpoints
 @mixin tablet {
   @media screen and (min-width: $tablet-breakpoint) {
     @content;
@@ -12,8 +13,73 @@
   }
 }
 
+// General Styling
 @mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+// For Shared Modals
+@mixin modal__position {
+    position: fixed;
+    background-color: $primary-color-white;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    top: 0%; 
+    left: 0%; 
+    @include tablet{
+      top: 22%;
+      left: 5%;
+      width: 85%;
+      height: 30%;
+      border-radius: 5px;
+    }
+    @include desktop{
+      left: 25%;
+      width: 50%;
+    }
+}
+
+@mixin modal__overlay{
+  @include tablet {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+}
+@mixin modal-container{
+  display: flex;
+    flex-direction: column;
+    height: 100%;
+    @include tablet{
+        padding: 0rem 2rem;
+    }
+}
+
+@mixin modal__button-container{
+  display: flex;
+    justify-content: space-evenly;
+    @include tablet{
+      justify-content: flex-end;
+    }
+}
+@mixin modal__buttons{
+  border: none;
+  outline: $secondary-color-cloud 0.1rem solid;
+    border-radius: 25%;
+    padding: 0.5rem 3rem;
+    margin-bottom:1rem;
+    @include tablet{
+      margin:1rem 0rem 1rem 1rem;
+      padding: 0.5rem 0.7rem;
+    }
 }
