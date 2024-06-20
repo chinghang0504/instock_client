@@ -26,14 +26,14 @@ function App() {
             <Route path="" element={<WarehouseList />} />
             <Route path=":id" element={<WarehouseDetails />} />
             <Route path="add" element={<WarehouseAdd />} />
-            <Route path="edit" element={<WarehouseEdit />} />
+            <Route path="edit/:id" element={<WarehouseEdit />} />
           </Route>
 
           <Route path="/inventory" element={<Inventory />}>
             <Route path="" element={<InventoryList />} />
             <Route path=":id" element={<InventoryDetails />} />
             <Route path="add" element={<InventoryAdd />} />
-            <Route path="edit" element={<InventoryEdit />} />
+            <Route path="edit/:id" element={<InventoryEdit />} />
           </Route>
         </Routes>
         <Footer />
