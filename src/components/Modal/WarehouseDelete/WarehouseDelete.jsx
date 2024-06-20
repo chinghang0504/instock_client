@@ -21,7 +21,7 @@ function WarehouseDelete({ isOpen, onRequestClose, onConfirm, warehouseName}) {
       <p className='text__para'>Please confirm that you'de like to delete {warehouseName} from the list of warehouses. You won't be able to undo this action.</p>
       </div>
       <div className="modal__buttons-container">
-        <button className=" modal__buttons modal__buttons--cancel" onClick={onRequestClose}>Cancel</button>
+        <button className="modal__buttons modal__buttons--cancel" onClick={onRequestClose}>Cancel</button>
         <button className="modal__buttons modal__buttons--delete" onClick={() => {
           onConfirm();
           onRequestClose();
