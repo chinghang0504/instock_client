@@ -135,10 +135,13 @@
     padding-left: 24px;
     padding-right: 24px;
 
+    @include tablet {
+        display: flex;
+    }
+
     // Item
     &__item {
         color: $secondary-color-slate;
-        font-weight: 600;
     }
 
     // Sort Icon
@@ -146,21 +149,106 @@
         float: inline-end;
         cursor: pointer;
     }
-
-    @include tablet {
-        display: flex;
-    }
 }
 
-// Warehouse List Item
-.warehouse-list-item {
+// Warehouse List List
+.warehouse-list-list {
 
-    // 
+    // Item
+    &__item {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid $secondary-color-cloud;
+        padding: 16px;
+
+        @include tablet {
+            flex-direction: row;
+            padding: 0;
+        }
+    }
+
+    // Container
+    &__container {
+        display: flex;
+    }
+
+    // Left Container and Right Container
+    &__left-container,
+    &__right-container {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        padding-left: 8px;
+        padding-right: 8px;
+
+        @include tablet {
+            flex-direction: row;
+            width: fit-content;
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    // Content Container
+    &__content-container {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 16px;
+
+        @include tablet {
+            flex-direction: row;
+            padding-bottom: 0;
+        }
+    }
+
+    // Title
+    &__title {
+        color: $secondary-color-slate;
+        font-weight: 600;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    // Warehouse Link
+    &__warehouse-link {
+        text-decoration: none;
+    }
+
+    // Warehouse Link Arrow
+    &__warehouse-link-arrow {
+        vertical-align: bottom;
+    }
+
+    // Warehouse Link Description
+    &__warehouse-link-description {
+        display: inline;
+        color: $primary-color-instock-indigo;
+        font-weight: 600;
+    }
+
+    // Action container
+    &__action-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        padding-left: 16px;
+        padding-right: 16px;
+
+        @include tablet {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    // Delete Icon
     &__delete-icon {
         cursor: pointer;
     }
 
-    // 
+    // Edit Icon
     &__edit-icon {
         cursor: pointer;
     }

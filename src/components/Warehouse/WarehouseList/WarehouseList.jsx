@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import searchIcon from '../../../assets/icons/search-24px.svg';
 import WarehouseDelete from '../../Modal/WarehouseDelete/WarehouseDelete';
 import sortIcon from '../../../assets/icons/sort-24px.svg';
+import chevronRightIcon from '../../../assets/icons/chevron_right-24px.svg';
 
 function WarehouseList() {
   const [warehouseList, setWarehouseList] = useState([]);
@@ -104,27 +105,41 @@ function WarehouseList() {
           <li className='warehouse-list-bar__item'>CONTACT <img className='warehouse-list-bar__sort-icon' src={sortIcon} alt="sorted by contact" onClick={() => clickSortIcon(3)} /></li>
           <li className='warehouse-list-bar__item'>ACTIONS</li>
         </ul>
-        <div className='warehouse-list__list'>
+        <ul className='warehouse-list-list'>
           {warehouseList.map(warehouse => {
             return (
-              <div className='warehouse-list__item' key={warehouse.id}>
-                <p>WAREHOUSE</p>
-                <Link to={`/warehouse/${warehouse.id}`}><p>{warehouse.warehouse_name}</p></Link>
-                <p>ADDRESS</p>
-                <p>{warehouse.address}</p>
-                <p>CONTACT NAME</p>
-                <p>{warehouse.contact_name}</p>
-                <p>contact information</p>
-                <p>{warehouse.contact_phone}</p>
-                <p>{warehouse.contact_email}</p>
-                <div>
-                  <img className='warehouse-list__delete-icon' src={deleteIcon} alt="delete icon" onClick={() => { clickDeleteIcon(warehouse.id) }} />
-                  <img className='warehouse-list__edit-icon' src={editIcon} alt="edit icon" onClick={() => { clickEditIcon(warehouse.id) }} />
+              <li className='warehouse-list-list__item' key={warehouse.id}>
+                <div className='warehouse-list-list__container'>
+                  <div className='warehouse-list-list__left-container'>
+                    <div className='warehouse-list-list__content-container'>
+                      <p className='warehouse-list-list__title'>WAREHOUSE</p>
+                      <Link className='warehouse-list-list__warehouse-link' to={`/warehouse/${warehouse.id}`}><p className='warehouse-list-list__warehouse-link-description'>{warehouse.warehouse_name}</p><img className='warehouse-list-list__warehouse-link-arrow' src={chevronRightIcon} alt="warehouse details link" /></Link>
+                    </div>
+                    <div className='warehouse-list-list__content-container'>
+                      <p className='warehouse-list-list__title'>ADDRESS</p>
+                      <p className='warehouse-list-list__description'>{`${warehouse.address}, ${warehouse.city}, ${warehouse.country}`}</p>
+                    </div>
+                  </div>
+                  <div className='warehouse-list-list__right-container'>
+                    <div className='warehouse-list-list__content-container'>
+                      <p className='warehouse-list-list__title'>CONTACT NAME</p>
+                      <p className='warehouse-list-list__description'>{warehouse.contact_name}</p>
+                    </div>
+                    <div className='warehouse-list-list__content-container'>
+                      <p className='warehouse-list-list__title'>CONTACT INFORMATION</p>
+                      <p className='warehouse-list-list__description'>{warehouse.contact_phone}</p>
+                      <p className='warehouse-list-list__description'>{warehouse.contact_email}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+                <div className='warehouse-list-list__action-container'>
+                  <img className='warehouse-list-list__delete-icon' src={deleteIcon} alt="delete icon" onClick={() => { clickDeleteIcon(warehouse.id) }} />
+                  <img className='warehouse-list-list__edit-icon' src={editIcon} alt="edit icon" onClick={() => { clickEditIcon(warehouse.id) }} />
+                </div>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </div>
 
       <WarehouseDelete
