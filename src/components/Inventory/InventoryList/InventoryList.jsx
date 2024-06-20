@@ -4,7 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import searchIcon from '../../../assets/icons/search-24px.svg';
 import deleteIcon from '../../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../../assets/icons/edit-24px.svg';
-import { getInventoryList} from '../../../services/api.js';
+import { getInventoryList,deleteInventory} from '../../../services/api.js';
+import InventoryDelete from '../../Modal/InventoryDelete/InventoryDelete.jsx';
 
 function InventoryList() {
   const [inventoryList, setInventoryList] = useState([]);
@@ -36,13 +37,13 @@ function clickEditIcon(id) {
   const handleConfirmDelete = async () => {
     try {
       if (currentItemId) {
-        await deleteWarehouse(currentItemId);
+        await deleteInventory(currentItemId);
         await loadData();
         toggleModal();
       } else {
       }
     } catch (error) {
-      console.error('Failed to delete warehouse:', error);
+      console.error('Failed to delete inventory:', error);
     }
   };
 
@@ -102,6 +103,12 @@ function clickEditIcon(id) {
           })}
         </div>
       </div>
+      <InventoryDelete
+           isOpen={modalIsOpen}
+            onRequestClose={toggleModal}
+            onConfirm={() => handleConfirmDelete(currentItemId)}
+            warehouseName={inventoryList.find(inventory => inventory.id === currentItemId)?.item_name}
+        />
     </div>
   )
 }
