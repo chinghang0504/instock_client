@@ -1,5 +1,5 @@
 import './WarehouseList.scss';
-import { getWarehouseList } from '../../../services/api.js';
+import { getWarehouseList, deleteWarehouse} from '../../../services/api.js';
 import deleteIcon from '../../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../../assets/icons/edit-24px.svg';
 import { Link, useNavigate } from 'react-router-dom';
@@ -11,14 +11,14 @@ import WarehouseDelete from '../../Modal/WarehouseDelete/WarehouseDelete';
 function WarehouseList() {
   const [warehouseList, setWarehouseList] = useState([]);
   const searchInputRef = useRef();
-  const navigate = useNavigate();
-
-  // Added by Jonathan For Modal
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [currentItemId, setCurrentItemId] = useState(null);
 
-  function toggleModal() {
-    setModalIsOpen(!modalIsOpen);
+  const navigate = useNavigate();
+
+  // Click the edit icon
+  function clickEditIcon(id) {
+    navigate(`/warehouse/edit/${id}`);
   }
 
   // Click the search icon
@@ -30,32 +30,48 @@ function WarehouseList() {
   // Click the delete icon
   // The delete modal will show on the screen
   function clickDeleteIcon(id) {
+    console.log("Clicked delete icon with id:", id);
     setCurrentItemId(id);
     toggleModal();
   }
+
+  // Modal Toggle
+  function toggleModal() {
+    setModalIsOpen(!modalIsOpen);
+  }
  
-  // Added by Jonatan for Modal API CALL
-  const handleConfirmDelete = async () => {
-    
-    // Refresh the warehouse list
+  // Modal Api for Delete
+const handleConfirmDelete = async () => {
+  try {
+    if (currentItemId) {
+      await deleteWarehouse(currentItemId);
+      await loadData();
+      toggleModal();
+    } else {
+    }
+  } catch (error) {
+    console.error('Failed to delete warehouse:', error);
+  }
+};
+
+  // // Execute once
+  // useEffect(() => {
+  //   // Load the data
+  //   async function loadData() {
+  //     const warehouseList = await getWarehouseList();
+  //     setWarehouseList(warehouseList);
+  //   }
+  //   loadData();
+  // }, []);
+  
+  // Refractered to have acces to this function in  handleconfirmdelete
+  async function loadData() {
     const warehouseList = await getWarehouseList();
     setWarehouseList(warehouseList);
-
-    toggleModal();
-  };   
-
-  // Click the edit icon
-  function clickEditIcon(id) {
-    navigate(`/warehouse/edit/${id}`);
   }
 
-  // Execute once
+  // Use useEffect to load data when the component mounts
   useEffect(() => {
-    // Load the data
-    async function loadData() {
-      const warehouseList = await getWarehouseList();
-      setWarehouseList(warehouseList);
-    }
     loadData();
   }, []);
 
@@ -98,7 +114,8 @@ function WarehouseList() {
         <WarehouseDelete
            isOpen={modalIsOpen}
             onRequestClose={toggleModal}
-            onConfirm={handleConfirmDelete}
+            // onConfirm={handleConfirmDelete(currentItemId)}
+            onConfirm={() => handleConfirmDelete(currentItemId)}
             warehouseName={warehouseList.find(warehouse => warehouse.id === currentItemId)?.warehouse_name}
         />
     </div>

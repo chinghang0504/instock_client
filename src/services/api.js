@@ -8,3 +8,14 @@ export async function getWarehouseList() {
     const res = await axios.get(`${BASE_URL}/warehouse`);
     return res.data;
 }
+
+// Delete warehouse 
+export async function deleteWarehouse (currentItemId) {
+    try {
+        const response = await axios.delete(`${BASE_URL}/warehouse/${currentItemId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting warehouse:', error);
+        throw error;
+    }
+};
