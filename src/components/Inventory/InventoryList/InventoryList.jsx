@@ -4,10 +4,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import searchIcon from '../../../assets/icons/search-24px.svg';
 import deleteIcon from '../../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../../assets/icons/edit-24px.svg';
-import { getWarehouseList, deleteWarehouse} from '../../../services/api.js';
+import { getInventoryList} from '../../../services/api.js';
 
 function InventoryList() {
-  const [warehouseList, setWarehouseList] = useState([]);
   const [inventoryList, setInventoryList] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [currentItemId, setCurrentItemId] = useState(null);
@@ -58,8 +57,8 @@ function clickEditIcon(id) {
   // }, []);
 
   async function loadData() {
-    const warehouseList = await getWarehouseList();
-    setWarehouseList(warehouseList);
+    const inventoryList = await getInventoryList();
+    setInventoryList(inventoryList);
   }
 
   // Use useEffect to load data when the component mounts
