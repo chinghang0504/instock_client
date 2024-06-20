@@ -87,7 +87,7 @@ function WarehouseAdd() {
           </form>
           <div className="button">
             <button className="button__cancel">Cancel</button>
-            <button className="button__save">+ Add Warehouse</button>
+            <button className="button__add">+ Add Warehouse</button>
           </div>
         </div>
       </div>
