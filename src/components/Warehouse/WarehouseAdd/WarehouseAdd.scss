@@ -3,37 +3,44 @@
 @use "../../../styles/partials/typography" as *;
 @use "../../../styles/partials/variables" as *;
 
-.warehouse-edit {
+.warehouse-add {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: $background-color-light-grey;
-}
 
-.city {
-  border-radius: 50px;
-  padding: 0.5rem;
-  width: 88%;
-  margin-left: 5%;
-  border: 1px solid $secondary-color-cloud;
-  padding: 12px 20px;
-  margin-bottom: 3%;
-}
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+    }
+  }
 
-input::placeholder {
-  color: $secondary-color-slate;
-}
+  &__warehouse-details {
+    @include tablet {
+      width: 50%;
+    }
+  }
 
-.button {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 10%;
-  background-color: rgb(247, 248, 249, 0.3);
-  box-shadow: 0.1px 0px 0.1px 0px;
-  height: 100px;
-  border-radius: 0px 0px 10px 10px;
-  white-space: nowrap;
+  &__contact-details {
+    @include tablet {
+      width: 50%;
+      border-left: 1px solid $secondary-color-cloud;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    background-color: rgb(247, 248, 249, 0.3);
+    box-shadow: 0.1px 0px 0.1px 0px;
+    height: 100px;
+    border-radius: 0px 0px 10px 10px;
+    white-space: nowrap;
+  }
 
   &__add {
     background-color: $primary-color-instock-indigo;
@@ -59,6 +66,20 @@ input::placeholder {
   }
 }
 
+.city {
+  border-radius: 50px;
+  padding: 0.5rem;
+  width: 88%;
+  margin-left: 5%;
+  border: 1px solid $secondary-color-cloud;
+  padding: 12px 20px;
+  margin-bottom: 3%;
+}
+
+input::placeholder {
+  color: $secondary-color-slate;
+}
+
 .warehouse__title {
   margin-left: 5%;
 }
@@ -80,7 +101,7 @@ input::placeholder {
     margin-right: 2%;
   }
 }
-.container {
+.warehouse-container {
   position: relative;
   top: -50px;
   margin-bottom: 0;
@@ -93,4 +114,8 @@ input::placeholder {
   margin-left: 1rem;
   margin-right: 1rem;
   border-radius: 0.25rem;
+
+  @include desktop {
+    width: 80%;
+  }
 }
