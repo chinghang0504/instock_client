@@ -24,3 +24,4 @@ export async function deleteWarehouse (currentItemId) {
         throw error;
     }
 };
+
