@@ -21,7 +21,7 @@ function InventoryDelete({ isOpen, onRequestClose, onConfirm, inventoryName }) {
       </div>
       <div className="modal__buttons-container">
         <button className="modal__buttons modal__buttons--cancel" onClick={onRequestClose}>Cancel</button>
-        <button className="modal__buttons modal__button--delete" onClick={() => {
+        <button className="modal__buttons modal__buttons--delete" onClick={() => {
           onConfirm();
           onRequestClose();
         }}>Confirm</button>
