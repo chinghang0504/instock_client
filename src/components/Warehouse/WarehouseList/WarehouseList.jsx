@@ -34,6 +34,7 @@ function WarehouseList() {
     setCurrentItemId(id);
     toggleModal();
   }
+ 
 
   // Added by Jonatan for Modal API CALL
   const handleConfirmDelete = async () => {
@@ -46,7 +47,6 @@ function WarehouseList() {
   };
 
   // Click the edit icon
-  // The 
   function clickEditIcon(id) {
     navigate(`/warehouse/edit/${id}`);
   }
@@ -101,6 +101,7 @@ function WarehouseList() {
            isOpen={modalIsOpen}
             onRequestClose={toggleModal}
             onConfirm={handleConfirmDelete}
+            warehouseName={warehouseList.find(warehouse => warehouse.id === currentItemId)?.warehouse_name}
         />
     </div>
   )
