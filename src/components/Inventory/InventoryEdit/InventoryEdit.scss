@@ -1,0 +1,134 @@
+@use '../../../styles/partials/mixins' as *;
+@use '../../../styles/partials/variables' as *;
+@use '../../../styles/partials/typography' as *;
+
+
+.inventory-edit{
+    background-color: $background-color-light-grey;
+    // display: flex;
+    // flex-direction: column;
+    // height: 100vh;
+    &__container{
+        background-color: $primary-color-white;
+        box-shadow: 3px 3px 3px rgba(212, 203, 203, 0.3), -3px 3px 3px rgba(212, 203, 203, 0.3);
+        margin-left: 1rem;
+        margin-right: 1rem;
+        border-radius: 0.25rem;
+        position: relative;
+        top: -50px;
+    }
+
+    &__heading-section{
+        display: flex;
+        padding: 2rem 1rem 1rem 1rem;
+        border-bottom: 2px solid $secondary-color-cloud;
+        
+    }
+    &__back-arrow{
+        margin-right: 1rem;
+    }
+
+    &__heading{
+        color: $primary-color-instock-black;
+
+    }
+
+    // &__main-container{
+       
+
+    // }
+
+    &__detail-container{
+        border-bottom: 1px solid $secondary-color-cloud;
+        padding: 1rem 0;
+    }
+
+   &__detail-heading{
+    padding: 0 1rem;
+    margin-bottom: 1.5rem;
+    color: $primary-color-instock-black;
+   }
+
+   &__item-name{
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+   }
+   &__text{
+    margin: 0.3rem 1rem 1rem 1rem;
+    padding: 0.8rem;
+    border-radius: 1.5rem;
+    border: 1px solid $secondary-color-cloud;
+   }
+
+
+   &__description{
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+   }
+   &__text-box{
+    margin: 0.3rem 1rem 1rem 1rem;
+    border-radius: 1.5rem;
+    border: 1px solid $secondary-color-cloud;
+    height: 7.5rem;
+   }
+
+   &__category{
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+   }
+
+   &__availability-container{
+    padding: 1rem;
+
+   }
+   &__availability-heading{
+    margin-bottom: 1rem;
+   }
+
+   &__status{
+    display: flex;
+    flex-direction: column;
+   }
+   &__radio-section{
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.3rem;
+   }
+
+   &__radio-list{
+    width: 50%;
+   }
+   &__radio-item{
+    margin-right: 0.5rem;
+   }
+
+   &__warehouse{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+   }
+
+   &__button-section{
+    display: flex;
+    background-color: $background-color-light-grey;
+    padding: 1rem 1rem;
+   }
+   &--button{
+    width: 100%;
+    border: 1px solid $secondary-color-cloud;
+    margin: 0rem 1rem;
+    height: 2.25rem;
+    border-radius: 1.25rem;
+   }
+   &__button-cancel{
+    background-color: $primary-color-white;
+   }
+   &__button-save{
+    background-color: $primary-color-instock-indigo;
+    color: $primary-color-white;
+    border: none;
+   }
+}
