@@ -1,5 +1,5 @@
 import './App.scss'
-import { BrowserRouter, Routes, Route, Navigate, } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useParams, } from "react-router-dom";
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Warehouse from './pages/Warehouse/Warehouse';
@@ -14,7 +14,6 @@ import InventoryAdd from './components/Inventory/InventoryAdd/InventoryAdd';
 import InventoryEdit from './components/Inventory/InventoryEdit/InventoryEdit';
 
 function App() {
-
   return (
     <>
       <BrowserRouter>
