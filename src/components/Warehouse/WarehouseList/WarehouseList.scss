@@ -137,7 +137,6 @@
 
     // Item
     &__item {
-        cursor: pointer;
         color: $secondary-color-slate;
         font-weight: 600;
     }
@@ -145,7 +144,7 @@
     // Sort Icon
     &__sort-icon {
         float: inline-end;
-
+        cursor: pointer;
     }
 
     @include tablet {

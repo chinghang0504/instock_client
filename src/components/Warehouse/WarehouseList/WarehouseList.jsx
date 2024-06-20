@@ -12,14 +12,8 @@ function WarehouseList() {
   const [warehouseList, setWarehouseList] = useState([]);
   const searchInputRef = useRef();
   const navigate = useNavigate();
-
-  // Added by Jonathan For Modal
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [currentItemId, setCurrentItemId] = useState(null);
-
-  function toggleModal() {
-    setModalIsOpen(!modalIsOpen);
-  }
 
   // Click the search icon
   // The search input will be on focus
@@ -34,6 +28,25 @@ function WarehouseList() {
     toggleModal();
   }
 
+  // Click the edit icon
+  function clickEditIcon(id) {
+    navigate(`/warehouse/edit/${id}`);
+  }
+
+  // Click the sort icon
+  // Input value
+  // 0: Warehouse
+  // 1: Address
+  // 2: Contact name
+  // 3: contact
+  function clickSortIcon(val) {
+    console.log(`The sort icon is clicked: ${val}`);
+  }
+
+  function toggleModal() {
+    setModalIsOpen(!modalIsOpen);
+  }
+
   // Added by Jonatan for Modal API CALL
   const handleConfirmDelete = async () => {
 
@@ -43,11 +56,6 @@ function WarehouseList() {
 
     toggleModal();
   };
-
-  // Click the edit icon
-  function clickEditIcon(id) {
-    navigate(`/warehouse/edit/${id}`);
-  }
 
   // Execute once
   useEffect(() => {
@@ -73,10 +81,10 @@ function WarehouseList() {
           </div>
         </div>
         <ul className='warehouse-list-bar'>
-          <li className='warehouse-list-bar__item'>WAREHOUSE <img className='warehouse-list-bar__sort-icon' src={sortIcon} alt="sorted by warehouse" /></li>
-          <li className='warehouse-list-bar__item'>ADDRESS <img className='warehouse-list-bar__sort-icon' src={sortIcon} alt="sorted by address" /></li>
-          <li className='warehouse-list-bar__item'>CONTACT NAME <img className='warehouse-list-bar__sort-icon' src={sortIcon} alt="sorted by contact name" /></li>
-          <li className='warehouse-list-bar__item'>CONTACT <img className='warehouse-list-bar__sort-icon' src={sortIcon} alt="sorted by contact" /></li>
+          <li className='warehouse-list-bar__item'>WAREHOUSE <img className='warehouse-list-bar__sort-icon' src={sortIcon} alt="sorted by warehouse" onClick={() => clickSortIcon(0)}/></li>
+          <li className='warehouse-list-bar__item'>ADDRESS <img className='warehouse-list-bar__sort-icon' src={sortIcon} alt="sorted by address" onClick={() => clickSortIcon(1)}/></li>
+          <li className='warehouse-list-bar__item'>CONTACT NAME <img className='warehouse-list-bar__sort-icon' src={sortIcon} alt="sorted by contact name" onClick={() => clickSortIcon(2)}/></li>
+          <li className='warehouse-list-bar__item'>CONTACT <img className='warehouse-list-bar__sort-icon' src={sortIcon} alt="sorted by contact" onClick={() => clickSortIcon(3)}/></li>
           <li className='warehouse-list-bar__item'>ACTIONS</li>
         </ul>
         <div className='warehouse-list__list'>
@@ -93,8 +101,8 @@ function WarehouseList() {
                 <p>{warehouse.contact_phone}</p>
                 <p>{warehouse.contact_email}</p>
                 <div>
-                  <img className='warehouse-list__delete-icon' src={deleteIcon} alt="delete icon" onClick={() => {clickDeleteIcon(warehouse.id)}}/>
-                  <img className='warehouse-list__edit-icon' src={editIcon} alt="edit icon" onClick={() => {clickEditIcon(warehouse.id)}}/>
+                  <img className='warehouse-list__delete-icon' src={deleteIcon} alt="delete icon" onClick={() => { clickDeleteIcon(warehouse.id) }} />
+                  <img className='warehouse-list__edit-icon' src={editIcon} alt="edit icon" onClick={() => { clickEditIcon(warehouse.id) }} />
                 </div>
               </div>
             );
