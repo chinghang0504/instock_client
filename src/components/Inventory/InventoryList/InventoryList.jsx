@@ -107,7 +107,7 @@ function clickEditIcon(id) {
            isOpen={modalIsOpen}
             onRequestClose={toggleModal}
             onConfirm={() => handleConfirmDelete(currentItemId)}
-            warehouseName={inventoryList.find(inventory => inventory.id === currentItemId)?.item_name}
+            inventoryName={inventoryList.find(inventory => inventory.id === currentItemId)?.item_name}
         />
     </div>
   )
