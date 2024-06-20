@@ -5,11 +5,21 @@ import editIcon from '../../../assets/icons/edit-24px.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import searchIcon from '../../../assets/icons/search-24px.svg';
+import WarehouseDelete from '../../Modal/WarehouseDelete/WarehouseDelete';
+
 
 function WarehouseList() {
   const [warehouseList, setWarehouseList] = useState([]);
   const searchInputRef = useRef();
   const navigate = useNavigate();
+
+  // Added by Jonathan For Modal
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [currentItemId, setCurrentItemId] = useState(null);
+
+  function toggleModal() {
+    setModalIsOpen(!modalIsOpen);
+  }
 
   // Click the search icon
   // The search input will be on focus
@@ -20,11 +30,21 @@ function WarehouseList() {
   // Click the delete icon
   // The delete modal will show on the screen
   function clickDeleteIcon(id) {
-    
+    setCurrentItemId(id);
+    toggleModal();
   }
+ 
+  // Added by Jonatan for Modal API CALL
+  const handleConfirmDelete = async () => {
+    
+    // Refresh the warehouse list
+    const warehouseList = await getWarehouseList();
+    setWarehouseList(warehouseList);
+
+    toggleModal();
+  };   
 
   // Click the edit icon
-  // The 
   function clickEditIcon(id) {
     navigate(`/warehouse/edit/${id}`);
   }
@@ -60,7 +80,7 @@ function WarehouseList() {
                 <Link to={`/warehouse/${warehouse.id}`}><p>{warehouse.warehouse_name}</p></Link>
                 <p>ADDRESS</p>
                 <p>{warehouse.address}</p>
-                <p>CONTACE NAME</p>
+                <p>CONTACT NAME</p>
                 <p>{warehouse.contact_name}</p>
                 <p>contact information</p>
                 <p>{warehouse.contact_phone}</p>
@@ -75,6 +95,12 @@ function WarehouseList() {
         </div>
       </div>
 
+        <WarehouseDelete
+           isOpen={modalIsOpen}
+            onRequestClose={toggleModal}
+            onConfirm={handleConfirmDelete}
+            warehouseName={warehouseList.find(warehouse => warehouse.id === currentItemId)?.warehouse_name}
+        />
     </div>
   )
 }
