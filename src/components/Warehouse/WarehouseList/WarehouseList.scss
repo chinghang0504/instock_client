@@ -1,10 +1,13 @@
 @use "../../../styles/partials/mixins" as *;
 @use "../../../styles/partials/variables" as *;
 
+// Warehouse List
 .warehouse-list {
     background-color: $background-color-light-grey;
 
+    // Container
     &__container {
+        background-color: $primary-color-white;
         padding-top: 24px;
         margin-left: 16px;
         margin-right: 16px;
@@ -12,27 +15,39 @@
         border: 1px solid black;
         position: relative;
         top: -50px;
-        background-color: $primary-color-white;
 
         @include tablet {
             top: -100px;
+            margin-left: 32px;
+            margin-right: 32px;
+        }
+
+        @include desktop {
+            margin-left: 64px;
+            margin-right: 64px;
         }
     }
+}
 
-    &__header {
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 24px;
-        padding-left: 24px;
-        padding-right: 24px;
-        border-bottom: 1px solid $secondary-color-cloud;
-        @include tablet {
-            flex-direction: row;
-            border-bottom: none;
-            justify-content: space-between;
-        }
+// Warehouse List Header
+.warehouse-list-header {
+    display: flex;
+    flex-direction: column;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $secondary-color-cloud;
+
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        border-bottom: none;
     }
 
+    // Title
+    &__title {}
+
+    // Action Container
     &__action-container {
         display: flex;
         flex-direction: column;
@@ -42,10 +57,16 @@
         }
     }
 
+    // Search Container
     &__search-container {
         position: relative;
+
+        @include desktop {
+            width: 300px;
+        }
     }
 
+    // Search Input
     &__search-input {
         margin-top: 16px;
         border-radius: 32px;
@@ -66,6 +87,7 @@
         }
     }
 
+    // Search Icon
     &__search-icon {
         position: absolute;
         right: 10px;
@@ -77,6 +99,10 @@
         }
     }
 
+    // Add Link
+    &__add-link {}
+
+    // Add button
     &__add-button {
         width: 100%;
         background-color: $primary-color-instock-indigo;
@@ -97,11 +123,45 @@
             margin-left: 32px;
         }
     }
+}
 
+// Warehouse List Bar
+.warehouse-list-bar {
+    display: none;
+    justify-content: space-between;
+    background-color: $background-color-light-grey;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    // Item
+    &__item {
+        cursor: pointer;
+        color: $secondary-color-slate;
+        font-weight: 600;
+    }
+
+    // Sort Icon
+    &__sort-icon {
+        float: inline-end;
+
+    }
+
+    @include tablet {
+        display: flex;
+    }
+}
+
+// Warehouse List Item
+.warehouse-list-item {
+
+    // 
     &__delete-icon {
         cursor: pointer;
     }
 
+    // 
     &__edit-icon {
         cursor: pointer;
     }
