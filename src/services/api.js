@@ -14,3 +14,9 @@ export async function getInventoryList() {
     const res = await axios.get(`${BASE_URL}/inventory`);
     return res.data;
 }
+
+// Get the inventory
+export async function getInventoryEdit(id) {
+    const res = await axios.get(`${BASE_URL}/inventory/${id}`);
+    return res.data;
+}
