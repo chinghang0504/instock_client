@@ -1,18 +1,18 @@
 import  { useState, useEffect } from 'react';
 import './InventoryAdd.scss';
-import ArrowBack from "../../../assets/icons/arrow_back-24px.svg";
-import { createInventory,getWarehouseList } from "../../../services/api.js";
-import { useNavigate } from "react-router-dom";
+import ArrowBack from '../../../assets/icons/arrow_back-24px.svg';
+import { createInventory, getWarehouseList } from '../../../services/api.js';
+import { useNavigate } from 'react-router-dom';
 
 function InventoryAdd() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    itemName: "",
-    description: "",
-    category: "",
-    status: "",
-    quantity: "",
-    warehouseId: ""
+    itemName: '',
+    description: '',
+    category: '',
+    status: '',
+    quantity: '',
+    warehouseId: '', 
   });
   const [warehouses, setWarehouses] = useState([]);
 
@@ -42,7 +42,7 @@ function InventoryAdd() {
         description: formData.description,
         category: formData.category,
         status: formData.status,
-        quantity: quantity
+        quantity: quantity,
       });
 
       navigate('/inventory');
@@ -68,7 +68,9 @@ function InventoryAdd() {
             <h2 className="inventory-add__detail-heading">Item Details</h2>
             <form className="inventory-add__form">
               <div className="inventory-add__item-name">
-                <label htmlFor="itemName" className="inventory-add__label">Item Name</label>
+                <label htmlFor="itemName" className="inventory-add__label">
+                  Item Name
+                </label>
                 <input
                   className="inventory-add__text"
                   type="text"
@@ -82,7 +84,9 @@ function InventoryAdd() {
               </div>
 
               <div className="inventory-add__description">
-                <label htmlFor="description" className="inventory-add__label">Description</label>
+                <label htmlFor="description" className="inventory-add__label">
+                  Description
+                </label>
                 <textarea
                   className="inventory-add__text-box"
                   name="description"
@@ -97,7 +101,9 @@ function InventoryAdd() {
               </div>
 
               <div className="inventory-add__category">
-                <label htmlFor="category" className="inventory-add__label">Category</label>
+                <label htmlFor="category" className="inventory-add__label">
+                  Category
+                </label>
                 <input
                   className="inventory-add__text"
                   type="text"
@@ -115,7 +121,9 @@ function InventoryAdd() {
           <section className="inventory-add__availability-container">
             <h2 className="inventory-add__availability-heading">Item Availability</h2>
             <div className="inventory-add__status">
-              <label htmlFor="status" className="inventory-add__label">Status</label>
+              <label htmlFor="status" className="inventory-add__label">
+                Status
+              </label>
               <input
                 className="inventory-add__text"
                 type="text"
@@ -129,7 +137,9 @@ function InventoryAdd() {
             </div>
 
             <div className="inventory-add__quantity">
-              <label htmlFor="quantity" className="inventory-add__label">Quantity</label>
+              <label htmlFor="quantity" className="inventory-add__label">
+                Quantity
+              </label>
               <input
                 type="text"
                 className="inventory-add__text"
@@ -142,30 +152,31 @@ function InventoryAdd() {
               />
             </div>
             <div className="inventory-add__warehouse">
-                <label htmlFor="warehouseId" className="inventory-add__label">Warehouse</label>
-                <select
-                  className="inventory-add__text"
-                  id="warehouseId"
-                  name="warehouseId"
-                  value={formData.warehouseId}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="">Select Warehouse</option>
-                  {warehouses.map(warehouse => (
-                    <option key={warehouse.id} value={warehouse.id}>{warehouse.warehouse_name}</option>
-                  ))}
-                </select>
-              </div>
+              <label htmlFor="warehouseId" className="inventory-add__label">
+                Warehouse
+              </label>
+              <select
+                className="inventory-add__text"
+                id="warehouseId"
+                name="warehouseId"
+                value={formData.warehouseId}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select Warehouse</option>
+                {warehouses.map((warehouse) => (
+                  <option key={warehouse.id} value={warehouse.id}>
+                    {warehouse.warehouse_name}
+                  </option>
+                ))}
+              </select>
+            </div>
           </section>
         </section>
       </section>
 
       <div className="inventory-add__button-section">
-        <button
-          type="submit"
-          className="inventory-add__button-cancel inventory-add--button"
-        >
+        <button type="submit" className="inventory-add__button-cancel inventory-add--button">
           Cancel
         </button>
         <button
@@ -181,3 +192,7 @@ function InventoryAdd() {
 }
 
 export default InventoryAdd;
+
+// Needs drop down for category & status
+// Logic for API needs work
+

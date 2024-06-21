@@ -10,7 +10,7 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 export async function getWarehouseList() {
     const res = await axios.get(`${BASE_URL}/warehouse`);
     return res.data;
-};
+}
 
 // Delete warehouse 
 export async function deleteWarehouse (currentItemId) {
@@ -21,7 +21,7 @@ export async function deleteWarehouse (currentItemId) {
         console.error('Error deleting warehouse:', error);
         throw error;
     }
-};
+}
 
 // Get warehouse search
 export async function getWarehouseSearch(searchTerm = '') {
@@ -29,7 +29,7 @@ export async function getWarehouseSearch(searchTerm = '') {
         params: { s: searchTerm }
     });
     return res.data;
-};
+}
 
 //--------------INVENTORY
 
@@ -37,13 +37,13 @@ export async function getWarehouseSearch(searchTerm = '') {
 export async function getInventoryList() {
     const res = await axios.get(`${BASE_URL}/inventory`);
     return res.data;
-};
+}
 
 // Get the inventory
 export async function getInventoryEdit(id) {
     const res = await axios.get(`${BASE_URL}/inventory/${id}`);
     return res.data;
-};
+}
 
 // Delete inventory
 export async function deleteInventory (currentItemId) {
