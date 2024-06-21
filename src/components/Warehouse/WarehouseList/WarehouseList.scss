@@ -253,3 +253,10 @@
         cursor: pointer;
     }
 }
+// Animation for arrow
+.warehouse-list-list__warehouse-link-arrow {
+    transition: transform 0.3s ease; 
+}
+.warehouse-list-list__warehouse-link:hover .warehouse-list-list__warehouse-link-arrow {
+    transform: translateX(4px); 
+}
