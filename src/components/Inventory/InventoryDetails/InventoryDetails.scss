@@ -94,3 +94,66 @@
     }
   }
 }
+
+// Inventory Details Content
+.inventory-details-content {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+
+  @include tablet {
+    flex-direction: row;
+  }
+
+  // Upper Container
+  &__upper-container {
+
+    @include tablet {
+      width: 50%;
+      padding-right: 32px;
+    }
+  }
+
+  // Lower Container
+  &__lower-container {
+    display: flex;
+
+    @include tablet {
+      width: 50%;
+      border-left: 1px solid $secondary-color-cloud;
+      padding-left: 32px;
+    }
+  }
+
+  // Left Container
+  &__left-container {
+    width: 50%;
+  }
+
+  // Right Container
+  &__right-container {
+    width: 50%;
+  }
+
+  // Content Container
+  &__content-container {
+  }
+  &__content-container + &__content-container {
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    @include tablet {
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+  // Title
+  &__title {
+    color: $secondary-color-slate;
+    font-weight: 600;
+  }
+
+  // Description
+  &__description {}
+}

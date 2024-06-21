@@ -1,0 +1,17 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.out-of-stock-tag {
+    background-color: rgba($supporting-color-red, 0.07);
+    color: $supporting-color-red;
+    border-radius: 24px;
+    height: 24px;
+    width: fit-content;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-weight: 600;
+
+    @include tablet {
+        height: 26px;
+    }
+}
