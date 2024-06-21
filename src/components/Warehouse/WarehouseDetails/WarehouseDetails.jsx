@@ -32,22 +32,19 @@ function WarehouseDetails() {
         </div>
         <div className='warehouse-details-content'>
           <div className='warehouse-details-content__upper-container'>
-            <label>WAREHOUSE ADDRESS:</label>
-            <div>
-              <p>{warehouseData.address},</p>
-              <p>{warehouseData.city}, {warehouseData.country}</p>
-            </div>
+            <label className='warehouse-details-content__title'>WAREHOUSE ADDRESS:</label>
+              <p className='warehouse-details-content__description'>{warehouseData.address}, <br className='warehouse-details-content__address-breaker' />{warehouseData.city}, {warehouseData.country}</p>
           </div>
-          <div className='warehouse-details-content__bottom-container'>
+          <div className='warehouse-details-content__lower-container'>
             <div className='warehouse-details-content__left-container'>
-              <label>CONTACT NAME</label>
-              <p>{warehouseData.contact_name}</p>
-              <p>{warehouseData.contact_position}</p>
+              <label className='warehouse-details-content__title'>CONTACT NAME:</label>
+              <p className='warehouse-details-content__description'>{warehouseData.contact_name}</p>
+              <p className='warehouse-details-content__description'>{warehouseData.contact_position}</p>
             </div>
             <div className='warehouse-details-content__right-container'>
-              <label>CONTACT INFORMATION</label>
-              <p>{warehouseData.contact_phone}</p>
-              <p>{warehouseData.contact_email}</p>
+              <label className='warehouse-details-content__title'>CONTACT INFORMATION:</label>
+              <p className='warehouse-details-content__description'>{warehouseData.contact_phone}</p>
+              <p className='warehouse-details-content__description'>{warehouseData.contact_email}</p>
             </div>
           </div>
         </div>

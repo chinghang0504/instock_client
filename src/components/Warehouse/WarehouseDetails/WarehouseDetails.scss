@@ -77,7 +77,7 @@
       border-radius: 32px;
     }
   }
- 
+
   // Edit Icon
   &__edit-icon {
     filter: brightness(0) invert(1);
@@ -93,4 +93,70 @@
       display: block;
     }
   }
+}
+
+// Warehouse Details Content
+.warehouse-details-content {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid $secondary-color-cloud;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  @include tablet {
+    flex-direction: row;
+  }
+
+  // Uppder Container
+  &__upper-container {
+    padding-bottom: 16px;
+
+    @include tablet {
+      width: 40%;
+      padding-bottom: 0;
+    }
+  }
+
+  // Lower Container
+  &__lower-container {
+    display: flex;
+    padding-top: 16px;
+
+    @include tablet {
+      width: 60%;
+      padding-top: 0;
+      border-left: 1px solid $secondary-color-cloud;
+      padding-left: 32px;
+    }
+  }
+
+  // Left Container
+  &__left-container {
+    width: 50%;
+  }
+
+  // Right Container
+  &__right-container {
+    width: 50%;
+  }
+
+  // Address Breaker
+  &__address-breaker {
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
+  }
+
+  // Title
+  &__title {
+    color: $secondary-color-slate;
+    font-weight: 600;
+  }
+
+  // Description
+  &__description {}
 }
