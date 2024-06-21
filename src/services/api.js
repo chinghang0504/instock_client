@@ -27,7 +27,7 @@ export async function getInventoryEdit(id) {
     return res.data;
 }
 // Delete warehouse 
-export async function deleteWarehouse (currentItemId) {
+export async function deleteWarehouse(currentItemId) {
     try {
         const response = await axios.delete(`${BASE_URL}/warehouse/${currentItemId}`);
         return response.data;
@@ -38,7 +38,7 @@ export async function deleteWarehouse (currentItemId) {
 }
 
 // Delete inventory
-export async function deleteInventory (currentItemId) {
+export async function deleteInventory(currentItemId) {
     try {
         const response = await axios.delete(`${BASE_URL}/inventory/${currentItemId}`);
         return response.data;
@@ -51,6 +51,14 @@ export async function deleteInventory (currentItemId) {
 // Get warehouse search
 export async function getWarehouseSearch(searchTerm = '') {
     const res = await axios.get(`${BASE_URL}/warehouse/search`, {
+        params: { s: searchTerm }
+    });
+    return res.data;
+}
+
+// Get inventory search 
+export async function getInventorySearch(searchTerm = '') {
+    const res = await axios.get(`${BASE_URL}/inventory/search`, {
         params: { s: searchTerm }
     });
     return res.data;

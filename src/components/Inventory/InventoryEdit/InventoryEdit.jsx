@@ -1,7 +1,7 @@
 import "./InventoryEdit.scss";
 import React, { useState, useEffect, useRef } from "react";
 import ArrowBack from "../../../assets/icons/arrow_back-24px.svg";
-import { getInventoryEdit} from "../../../services/api.js";
+import { getInventoryEdit } from "../../../services/api.js";
 import { useParams } from "react-router-dom";
 
 function InventoryEdit() {
@@ -18,11 +18,6 @@ function InventoryEdit() {
     warehouse_id: "",
   });
 
-  // function setItemData(data) {
-  //   console.log(data);
-  //   formRef.current.name.value = data.item_name;
-  // }
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -35,7 +30,7 @@ function InventoryEdit() {
     fetchData();
   }, [id]);
 
-// API OR DATA MANIUPLATION? 
+  // API OR DATA MANIUPLATION?
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -50,8 +45,6 @@ function InventoryEdit() {
   //   fetchData();
   // }, [id]);
 
-
-  
   return (
     <section className="inventory-edit">
       <section className="inventory-edit__container">
@@ -95,16 +88,20 @@ function InventoryEdit() {
                   rows="7"
                   placeholder=""
                   defaultValue={itemData.description}
-                  required>
-                  </textarea>
+                  required
+                ></textarea>
               </div>
 
               <div className="inventory-edit__category">
                 <label htmlFor="title" className="inventory-edit__label">
                   Category
                 </label>
-            
-                <select className="inventory-edit__text" name="category" id="cat">
+
+                <select
+                  className="inventory-edit__text"
+                  name="category"
+                  id="cat"
+                >
                   {/* {categories &&
                     categories.map((category) => {
                       return <option>{category.category}</option>;
@@ -170,11 +167,11 @@ function InventoryEdit() {
               <select
                 className="inventory-edit__text"
                 name="warehouse_name"
-                id="warehouse">
-              </select>
+                id="warehouse"
+              ></select>
             </div>
           </div>
-          <div className="inventory-edit__button-section">
+          {/* <div className="inventory-edit__button-section">
             <button
               type="submit"
               className="inventory-edit__button-cancel inventory-edit--button"
@@ -187,8 +184,22 @@ function InventoryEdit() {
             >
               Save
             </button>
-          </div>
+          </div> */}
         </section>
+        <div className="inventory-edit__button-section">
+          <button
+            type="submit"
+            className="inventory-edit__button-cancel inventory-edit--button"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            className="inventory-edit__button-save inventory-edit--button"
+          >
+            Save
+          </button>
+        </div>
       </section>
     </section>
   );
