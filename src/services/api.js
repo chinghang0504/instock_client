@@ -41,3 +41,10 @@ export async function deleteInventory (currentItemId) {
     }
 };
 
+// Get warehouse search
+export async function getWarehouseSearch(searchTerm = '') {
+    const res = await axios.get(`${BASE_URL}/warehouse/search`, {
+        params: { s: searchTerm }
+    });
+    return res.data;
+};
