@@ -42,17 +42,9 @@ export async function deleteInventory (currentItemId) {
 };
 
 // Get warehouse search
-export async function getWarehouseList(searchTerm = '') {
-    const res = await axios.get(`${BASE_URL}/warehouse`, {
+export async function getWarehouseSearch(searchTerm = '') {
+    const res = await axios.get(`${BASE_URL}/warehouse/search`, {
         params: { s: searchTerm }
     });
     return res.data;
-}
-
-// Get inventory search
-export async function getInventoryList(searchTerm = '') {
-    const res = await axios.get(`${BASE_URL}/inventory`, {
-        params: { s: searchTerm }
-    });
-    return res.data;
-}
+};

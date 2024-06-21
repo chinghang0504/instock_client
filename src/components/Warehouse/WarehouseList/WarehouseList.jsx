@@ -31,7 +31,6 @@ function WarehouseList() {
   // Click the delete icon
   // The delete modal will show on the screen
   function clickDeleteIcon(id) {
-    console.log("Clicked delete icon with id:", id);
     setCurrentItemId(id);
     toggleModal();
   }
