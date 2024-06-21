@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import searchIcon from '../../../assets/icons/search-24px.svg';
 import deleteIcon from '../../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../../assets/icons/edit-24px.svg';
-import { getInventoryList,deleteInventory} from '../../../services/api.js';
+import { getInventoryList,deleteInventory,getInventorySearch} from '../../../services/api.js';
 import InventoryDelete from '../../Modal/InventoryDelete/InventoryDelete.jsx';
 
 function InventoryList() {
@@ -46,26 +46,30 @@ function clickEditIcon(id) {
       console.error('Failed to delete inventory:', error);
     }
   };
-
-  // // Execute once
-  // useEffect(() => {
-  //   // Load the data
-  //   async function loadData() {
-  //     const inventoryList = await getInventoryList();
-  //     setInventoryList(inventoryList);
-  //   }
-  //   loadData();
-  // }, []);
-
-  async function loadData() {
-    const inventoryList = await getInventoryList();
-    setInventoryList(inventoryList);
-  }
-
+  //  Load Inventory List && Load Search Results
+  const loadData = async (searchTerm = '') => {
+    try {
+      if (searchTerm.trim() === '') {
+        const inventoryList = await getInventoryList();
+        setInventoryList(inventoryList);
+      } else {
+        const filteredInventories = await getInventorySearch(searchTerm);
+        setInventoryList(filteredInventories);
+      }
+    } catch (error) {
+      console.error('Error loading data:', error);
+    }
+  };
+  
   // Use useEffect to load data when the component mounts
   useEffect(() => {
     loadData();
   }, []);
+
+  const handleSearchInputChange = (event) => {
+    const searchTerm = event.target.value;
+    loadData(searchTerm);
+  };
 
   return (
     <div className='inventory-list'>
@@ -74,7 +78,7 @@ function clickEditIcon(id) {
           <h1 className='inventory-list__title'>inventory</h1>
           <div className='inventory-list__action-container'>
             <div className='inventory-list__search-container'>
-              <input className='inventory-list__search-input' ref={searchInputRef} type="text" placeholder='Search...' />
+              <input className='inventory-list__search-input' ref={searchInputRef} type="text" placeholder='Search...' onChange={handleSearchInputChange} />
               <img className='inventory-list__search-icon' src={searchIcon} alt="search icon" onClick={clickSearchIcon} />
             </div>
             <Link className='inventory-list__add-link' to='/inventory/add'><button className='inventory-list__add-button'>+ Add New Item</button></Link>

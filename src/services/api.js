@@ -48,3 +48,11 @@ export async function getWarehouseSearch(searchTerm = '') {
     });
     return res.data;
 };
+
+// Get inventory search 
+export async function getInventorySearch(searchTerm = '') {
+    const res = await axios.get(`${BASE_URL}/inventory/search`, {
+         params: { s: searchTerm }
+    });
+    return res.data;
+ };
