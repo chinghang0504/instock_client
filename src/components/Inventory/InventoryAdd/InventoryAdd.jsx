@@ -1,7 +1,7 @@
-import  { useState } from 'react';
+import  { useState, useEffect } from 'react';
 import './InventoryAdd.scss';
 import ArrowBack from "../../../assets/icons/arrow_back-24px.svg";
-import { createInventory } from "../../../services/api.js";
+import { createInventory,getWarehouseList } from "../../../services/api.js";
 import { useNavigate } from "react-router-dom";
 
 function InventoryAdd() {
@@ -11,8 +11,23 @@ function InventoryAdd() {
     description: "",
     category: "",
     status: "",
-    quantity: ""
+    quantity: "",
+    warehouseId: ""
   });
+  const [warehouses, setWarehouses] = useState([]);
+
+  useEffect(() => {
+    const fetchWarehouses = async () => {
+      try {
+        const warehouseList = await getWarehouseList();
+        setWarehouses(warehouseList);
+      } catch (error) {
+        console.error('Failed to fetch warehouses:', error);
+      }
+    };
+
+    fetchWarehouses();
+  }, []);
 
   const handleSubmit = async () => {
     try {
@@ -22,6 +37,7 @@ function InventoryAdd() {
       }
 
       await createInventory({
+        warehouse_id: formData.warehouseId,
         item_name: formData.itemName,
         description: formData.description,
         category: formData.category,
@@ -125,15 +141,22 @@ function InventoryAdd() {
                 required
               />
             </div>
-
-            {/* <div className="inventory-add__warehouse">
-              <label htmlFor="warehouse" className="inventory-add__label">Warehouse</label>
-              <select
-                className="inventory-add__text"
-                name="warehouse_name"
-                id="warehouse"
-              ></select>
-            </div> */}
+            <div className="inventory-add__warehouse">
+                <label htmlFor="warehouseId" className="inventory-add__label">Warehouse</label>
+                <select
+                  className="inventory-add__text"
+                  id="warehouseId"
+                  name="warehouseId"
+                  value={formData.warehouseId}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select Warehouse</option>
+                  {warehouses.map(warehouse => (
+                    <option key={warehouse.id} value={warehouse.id}>{warehouse.warehouse_name}</option>
+                  ))}
+                </select>
+              </div>
           </section>
         </section>
       </section>
