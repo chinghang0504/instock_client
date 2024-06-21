@@ -56,7 +56,7 @@
     z-index: 1000;
   }
 }
-@mixin modal-container{
+@mixin modal__container{
   display: flex;
     flex-direction: column;
     height: 100%;
@@ -75,7 +75,7 @@
 @mixin modal__buttons{
   border: none;
   outline: $secondary-color-cloud 0.1rem solid;
-    border-radius: 25%;
+    border-radius: 50px;
     padding: 0.5rem 3rem;
     margin-bottom:1rem;
     @include tablet{

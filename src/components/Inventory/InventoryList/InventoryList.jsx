@@ -4,10 +4,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import searchIcon from '../../../assets/icons/search-24px.svg';
 import deleteIcon from '../../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../../assets/icons/edit-24px.svg';
-import { getInventoryList } from '../../../services/api.js';
+import { getInventoryList,deleteInventory} from '../../../services/api.js';
+import InventoryDelete from '../../Modal/InventoryDelete/InventoryDelete.jsx';
 
 function InventoryList() {
   const [inventoryList, setInventoryList] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [currentItemId, setCurrentItemId] = useState(null);
   const searchInputRef = useRef();
   const navigate = useNavigate();
 
@@ -16,25 +19,51 @@ function InventoryList() {
   function clickSearchIcon() {
     searchInputRef.current.focus();
   }
-
+// Click the edit icon
+function clickEditIcon(id) {
+  navigate(`/inventory/edit/${id}`);
+}
   // Click the delete icon
   // The delete modal will show on the screen
   function clickDeleteIcon(id) {
-
+    setCurrentItemId(id);
+    toggleModal();
   }
 
-  // Click the edit icon
-  function clickEditIcon(id) {
-    navigate(`/inventory/edit/${id}`);
+  function toggleModal() {
+    setModalIsOpen(!modalIsOpen);
   }
 
-  // Execute once
-  useEffect(() => {
-    // Load the data
-    async function loadData() {
-      const inventoryList = await getInventoryList();
-      setInventoryList(inventoryList);
+  const handleConfirmDelete = async () => {
+    try {
+      if (currentItemId) {
+        await deleteInventory(currentItemId);
+        await loadData();
+        toggleModal();
+      } else {
+      }
+    } catch (error) {
+      console.error('Failed to delete inventory:', error);
     }
+  };
+
+  // // Execute once
+  // useEffect(() => {
+  //   // Load the data
+  //   async function loadData() {
+  //     const inventoryList = await getInventoryList();
+  //     setInventoryList(inventoryList);
+  //   }
+  //   loadData();
+  // }, []);
+
+  async function loadData() {
+    const inventoryList = await getInventoryList();
+    setInventoryList(inventoryList);
+  }
+
+  // Use useEffect to load data when the component mounts
+  useEffect(() => {
     loadData();
   }, []);
 
@@ -74,6 +103,12 @@ function InventoryList() {
           })}
         </div>
       </div>
+      <InventoryDelete
+           isOpen={modalIsOpen}
+            onRequestClose={toggleModal}
+            onConfirm={() => handleConfirmDelete(currentItemId)}
+            inventoryName={inventoryList.find(inventory => inventory.id === currentItemId)?.item_name}
+        />
     </div>
   )
 }
