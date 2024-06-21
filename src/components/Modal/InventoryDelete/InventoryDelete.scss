@@ -4,7 +4,7 @@
 .modal {
   @include modal__position;
   &__container {
-    @include modal-container
+    @include modal__container
   }
   &__overlay {
     @include modal__overlay;

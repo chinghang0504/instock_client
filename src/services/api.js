@@ -14,6 +14,11 @@ export async function getInventoryList() {
     return res.data;
 }
 
+// Get the inventory
+export async function getInventoryEdit(id) {
+    const res = await axios.get(`${BASE_URL}/inventory/${id}`);
+    return res.data;
+}
 // Delete warehouse 
 export async function deleteWarehouse (currentItemId) {
     try {
@@ -36,3 +41,10 @@ export async function deleteInventory (currentItemId) {
     }
 };
 
+// Get warehouse search
+export async function getWarehouseSearch(searchTerm = '') {
+    const res = await axios.get(`${BASE_URL}/warehouse/search`, {
+        params: { s: searchTerm }
+    });
+    return res.data;
+};
