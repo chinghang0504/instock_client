@@ -67,6 +67,9 @@
     padding: 0 1rem;
     margin-bottom: 1.5rem;
     color: $primary-color-instock-black;
+    @include tablet{
+        padding: 0;
+    }
    }
 
    &__label{
@@ -84,6 +87,12 @@
     padding: 0 1rem;
     display: flex;
     flex-direction: column;
+
+    @include tablet{
+        padding: 0;
+    }
+
+ 
    }
    &__text{
     margin: 0.3rem 1rem 1rem 1rem;
@@ -97,6 +106,10 @@
     padding: 0 1rem;
     display: flex;
     flex-direction: column;
+
+    @include tablet{
+        padding: 0;
+    }
    }
    &__text-box{
     margin: 0.3rem 1rem 1rem 1rem;
@@ -110,6 +123,10 @@
     padding: 0 1rem;
     display: flex;
     flex-direction: column;
+
+    @include tablet{
+        padding: 0;
+    }
    }
 
    &__availability-container{
