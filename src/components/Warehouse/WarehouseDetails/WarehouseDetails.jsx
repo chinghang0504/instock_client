@@ -31,14 +31,25 @@ function WarehouseDetails() {
           <Link className='warehouse-details-header__edit-link' to={`/warehouse/edit/${warehouseData.id}`}><img className='warehouse-details-header__edit-icon' src={editIcon} alt="Edit warehouse details" /><span className='warehouse-details-header__edit-text'>Edit</span></Link>
         </div>
         <div className='warehouse-details-content'>
-          <label>WAREHOUSE ADDRESS:</label>
-          <p>{`${warehouseData.address}, ${warehouseData.city}, ${warehouseData.country}`}</p>
-          <label>CONTACT NAME</label>
-          <p>{warehouseData.contact_name}</p>
-          <p>{warehouseData.contact_position}</p>
-          <label>CONTACT INFORMATION</label>
-          <p>{warehouseData.contact_phone}</p>
-          <p>{warehouseData.contact_email}</p>
+          <div className='warehouse-details-content__upper-container'>
+            <label>WAREHOUSE ADDRESS:</label>
+            <div>
+              <p>{warehouseData.address},</p>
+              <p>{warehouseData.city}, {warehouseData.country}</p>
+            </div>
+          </div>
+          <div className='warehouse-details-content__bottom-container'>
+            <div className='warehouse-details-content__left-container'>
+              <label>CONTACT NAME</label>
+              <p>{warehouseData.contact_name}</p>
+              <p>{warehouseData.contact_position}</p>
+            </div>
+            <div className='warehouse-details-content__right-container'>
+              <label>CONTACT INFORMATION</label>
+              <p>{warehouseData.contact_phone}</p>
+              <p>{warehouseData.contact_email}</p>
+            </div>
+          </div>
         </div>
         <WarehouseInventoryList />
       </div>
