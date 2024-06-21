@@ -46,34 +46,21 @@ function clickEditIcon(id) {
       console.error('Failed to delete inventory:', error);
     }
   };
-
-  // // Execute once
-  // useEffect(() => {
-  //   // Load the data
-  //   async function loadData() {
-  //     const inventoryList = await getInventoryList();
-  //     setInventoryList(inventoryList);
-  //   }
-  //   loadData();
-  // }, []);
-
-  // async function loadData() {
-  //   const inventoryList = await getInventoryList();
-  //   setInventoryList(inventoryList);
-  // }
-
   //  Load Inventory List && Load Search Results
-  async function loadData(searchTerm = '') {
-    // Check if searchTerm is provided
-    if (searchTerm.trim() === '') {
-      const inventoryList = await getInventoryList();
-      setInventoryList(inventoryList);
-    } else {
-      const filteredInventories = await getInventorySearch(searchTerm);
-      setInventoryList(filteredInventories);
+  const loadData = async (searchTerm = '') => {
+    try {
+      if (searchTerm.trim() === '') {
+        const inventoryList = await getInventoryList();
+        setInventoryList(inventoryList);
+      } else {
+        const filteredInventories = await getInventorySearch(searchTerm);
+        setInventoryList(filteredInventories);
+      }
+    } catch (error) {
+      console.error('Error loading data:', error);
     }
   };
-
+  
   // Use useEffect to load data when the component mounts
   useEffect(() => {
     loadData();
