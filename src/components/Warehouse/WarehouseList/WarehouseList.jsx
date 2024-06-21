@@ -73,7 +73,7 @@ function WarehouseList() {
       const filteredWarehouses = await getWarehouseSearch(searchTerm);
       setWarehouseList(filteredWarehouses);
     }
-  }
+  };
   
   // Use useEffect to load data when the component mounts
   useEffect(() => {
