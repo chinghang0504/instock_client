@@ -18,11 +18,6 @@ function InventoryEdit() {
     warehouse_id: "",
   });
 
-  // function setItemData(data) {
-  //   console.log(data);
-  //   formRef.current.name.value = data.item_name;
-  // }
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -174,7 +169,22 @@ function InventoryEdit() {
               </select>
             </div>
           </div>
-          <div className="inventory-edit__button-section">
+          {/* <div className="inventory-edit__button-section">
+            <button
+              type="submit"
+              className="inventory-edit__button-cancel inventory-edit--button"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="inventory-edit__button-save inventory-edit--button"
+            >
+              Save
+            </button>
+          </div> */}
+        </section>
+        <div className="inventory-edit__button-section">
             <button
               type="submit"
               className="inventory-edit__button-cancel inventory-edit--button"
@@ -188,7 +198,6 @@ function InventoryEdit() {
               Save
             </button>
           </div>
-        </section>
       </section>
     </section>
   );
