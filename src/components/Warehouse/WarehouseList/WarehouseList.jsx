@@ -58,22 +58,11 @@ function WarehouseList() {
         await deleteWarehouse(currentItemId);
         await loadData();
         toggleModal();
-      } else {
       }
     } catch (error) {
       console.error('Failed to delete warehouse:', error);
     }
   };
-
-  // // Execute once
-  // useEffect(() => {
-  //   // Load the data
-  //   async function loadData() {
-  //     const warehouseList = await getWarehouseList();
-  //     setWarehouseList(warehouseList);
-  //   }
-  //   loadData();
-  // }, []);
 
   // Refractered to have acces to this function in  handleconfirmdelete
   async function loadData() {
@@ -100,11 +89,11 @@ function WarehouseList() {
           </div>
         </div>
         <ul className='warehouse-list-bar'>
-          <li className='warehouse-list-bar__item'>WAREHOUSE <img className='warehouse-list-bar__sort-icon' src={sortIcon} alt="sorted by warehouse" onClick={() => clickSortIcon(0)} /></li>
-          <li className='warehouse-list-bar__item'>ADDRESS <img className='warehouse-list-bar__sort-icon' src={sortIcon} alt="sorted by address" onClick={() => clickSortIcon(1)} /></li>
-          <li className='warehouse-list-bar__item'>CONTACT NAME <img className='warehouse-list-bar__sort-icon' src={sortIcon} alt="sorted by contact name" onClick={() => clickSortIcon(2)} /></li>
-          <li className='warehouse-list-bar__item'>CONTACT <img className='warehouse-list-bar__sort-icon' src={sortIcon} alt="sorted by contact" onClick={() => clickSortIcon(3)} /></li>
-          <li className='warehouse-list-bar__item'>ACTIONS</li>
+          <li className='warehouse-list-bar__item warehouse-list-bar__item--warehouse'>WAREHOUSE <img className='warehouse-list-bar__sort-icon' src={sortIcon} alt="sorted by warehouse" onClick={() => clickSortIcon(0)} /></li>
+          <li className='warehouse-list-bar__item warehouse-list-bar__item--address'>ADDRESS <img className='warehouse-list-bar__sort-icon' src={sortIcon} alt="sorted by address" onClick={() => clickSortIcon(1)} /></li>
+          <li className='warehouse-list-bar__item warehouse-list-bar__item--contact-name'>CONTACT NAME <img className='warehouse-list-bar__sort-icon' src={sortIcon} alt="sorted by contact name" onClick={() => clickSortIcon(2)} /></li>
+          <li className='warehouse-list-bar__item warehouse-list-bar__item--contact-information'>CONTACT INFORMATION <img className='warehouse-list-bar__sort-icon' src={sortIcon} alt="sorted by contact" onClick={() => clickSortIcon(3)} /></li>
+          <li className='warehouse-list-bar__item warehouse-list-bar__item--actions'>ACTIONS</li>
         </ul>
         <ul className='warehouse-list-list'>
           {warehouseList.map(warehouse => {
@@ -112,43 +101,41 @@ function WarehouseList() {
               <li className='warehouse-list-list__item' key={warehouse.id}>
                 <div className='warehouse-list-list__container'>
                   <div className='warehouse-list-list__left-container'>
-                    <div className='warehouse-list-list__content-container'>
+                    <div className='warehouse-list-list__content-container warehouse-list-list__content-container--warehouse'>
                       <p className='warehouse-list-list__title'>WAREHOUSE</p>
                       <Link className='warehouse-list-list__warehouse-link' to={`/warehouse/${warehouse.id}`}><p className='warehouse-list-list__warehouse-link-description'>{warehouse.warehouse_name}</p><img className='warehouse-list-list__warehouse-link-arrow' src={chevronRightIcon} alt="warehouse details link" /></Link>
                     </div>
-                    <div className='warehouse-list-list__content-container'>
+                    <div className='warehouse-list-list__content-container warehouse-list-list__content-container--address'>
                       <p className='warehouse-list-list__title'>ADDRESS</p>
                       <p className='warehouse-list-list__description'>{`${warehouse.address}, ${warehouse.city}, ${warehouse.country}`}</p>
                     </div>
                   </div>
                   <div className='warehouse-list-list__right-container'>
-                    <div className='warehouse-list-list__content-container'>
+                    <div className='warehouse-list-list__content-container warehouse-list-list__content-container--contact-name'>
                       <p className='warehouse-list-list__title'>CONTACT NAME</p>
                       <p className='warehouse-list-list__description'>{warehouse.contact_name}</p>
                     </div>
-                    <div className='warehouse-list-list__content-container'>
+                    <div className='warehouse-list-list__content-container warehouse-list-list__content-container--contact-information'>
                       <p className='warehouse-list-list__title'>CONTACT INFORMATION</p>
-                      <p className='warehouse-list-list__description'>{warehouse.contact_phone}</p>
-                      <p className='warehouse-list-list__description'>{warehouse.contact_email}</p>
+                      <p className='warehouse-list-list__description'>{warehouse.contact_phone}<br />{warehouse.contact_email}</p>
                     </div>
                   </div>
                 </div>
                 <div className='warehouse-list-list__action-container'>
-                  <img className='warehouse-list-list__delete-icon' src={deleteIcon} alt="delete icon" onClick={() => { clickDeleteIcon(warehouse.id) }} />
-                  <img className='warehouse-list-list__edit-icon' src={editIcon} alt="edit icon" onClick={() => { clickEditIcon(warehouse.id) }} />
+                  <img className='warehouse-list-list__action-icon' src={deleteIcon} alt="delete icon" onClick={() => { clickDeleteIcon(warehouse.id) }} />
+                  <img className='warehouse-list-list__action-icon' src={editIcon} alt="edit icon" onClick={() => { clickEditIcon(warehouse.id) }} />
                 </div>
               </li>
             );
           })}
         </ul>
       </div>
-
-        <WarehouseDelete
-           isOpen={modalIsOpen}
-            onRequestClose={toggleModal}
-            onConfirm={() => handleConfirmDelete(currentItemId)}
-            warehouseName={warehouseList.find(warehouse => warehouse.id === currentItemId)?.warehouse_name}
-        />
+      <WarehouseDelete
+        isOpen={modalIsOpen}
+        onRequestClose={toggleModal}
+        onConfirm={() => handleConfirmDelete(currentItemId)}
+        warehouseName={warehouseList.find(warehouse => warehouse.id === currentItemId)?.warehouse_name}
+      />
     </div>
   );
 }

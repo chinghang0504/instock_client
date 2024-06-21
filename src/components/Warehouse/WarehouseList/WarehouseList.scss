@@ -3,253 +3,367 @@
 
 // Warehouse List
 .warehouse-list {
-    background-color: $background-color-light-grey;
+  background-color: $background-color-light-grey;
 
-    // Container
-    &__container {
-        background-color: $primary-color-white;
-        padding-top: 24px;
-        margin-left: 16px;
-        margin-right: 16px;
-        border-radius: 4px;
-        border: 1px solid black;
-        position: relative;
-        top: -50px;
+  // Container
+  &__container {
+    background-color: $primary-color-white;
+    padding-top: 24px;
+    margin-left: 16px;
+    margin-right: 16px;
+    border-radius: 4px;
+    border: 1px solid black;
+    position: relative;
+    top: -50px;
 
-        @include tablet {
-            top: -100px;
-            margin-left: 32px;
-            margin-right: 32px;
-        }
-
-        @include desktop {
-            margin-left: 64px;
-            margin-right: 64px;
-        }
+    @include tablet {
+      top: -100px;
+      margin-left: 32px;
+      margin-right: 32px;
     }
+
+    @include desktop {
+      margin-left: 64px;
+      margin-right: 64px;
+    }
+  }
 }
 
 // Warehouse List Header
 .warehouse-list-header {
+  display: flex;
+  flex-direction: column;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid $secondary-color-cloud;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: none;
+  }
+
+  // Title
+  &__title {
+  }
+
+  // Action Container
+  &__action-container {
     display: flex;
     flex-direction: column;
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid $secondary-color-cloud;
 
     @include tablet {
-        flex-direction: row;
-        justify-content: space-between;
-        border-bottom: none;
+      flex-direction: row;
+    }
+  }
+
+  // Search Container
+  &__search-container {
+    position: relative;
+
+    @include desktop {
+      width: 450px;
+    }
+  }
+
+  // Search Input
+  &__search-input {
+    margin-top: 16px;
+    border-radius: 32px;
+    border: 1px solid $secondary-color-cloud;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 16px;
+    padding-right: 36px;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+      border: 1px solid $primary-color-instock-indigo;
     }
 
-    // Title
-    &__title {}
-
-    // Action Container
-    &__action-container {
-        display: flex;
-        flex-direction: column;
-
-        @include tablet {
-            flex-direction: row;
-        }
+    @include tablet {
+      margin-top: 0px;
     }
+  }
 
-    // Search Container
-    &__search-container {
-        position: relative;
+  // Search Icon
+  &__search-icon {
+    position: absolute;
+    right: 10px;
+    top: 22px;
+    cursor: pointer;
 
-        @include desktop {
-            width: 300px;
-        }
+    @include tablet {
+      top: 6px;
     }
+  }
 
-    // Search Input
-    &__search-input {
-        margin-top: 16px;
-        border-radius: 32px;
-        border: 1px solid $secondary-color-cloud;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 16px;
-        padding-right: 36px;
-        width: 100%;
+  // Add Link
+  &__add-link {
+  }
 
-        &:focus {
-            outline: none;
-            border: 1px solid $primary-color-instock-indigo;
-        }
+  // Add button
+  &__add-button {
+    width: 100%;
+    background-color: $primary-color-instock-indigo;
+    color: $primary-color-white;
+    border-radius: 32px;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 16px;
+    cursor: pointer;
+    font-weight: 600;
 
-        @include tablet {
-            margin-top: 0px;
-        }
+    @include tablet {
+      margin-top: 0px;
+      width: fit-content;
+      padding-left: 16px;
+      padding-right: 16px;
+      margin-left: 32px;
     }
-
-    // Search Icon
-    &__search-icon {
-        position: absolute;
-        right: 10px;
-        top: 22px;
-        cursor: pointer;
-
-        @include tablet {
-            top: 6px;
-        }
-    }
-
-    // Add Link
-    &__add-link {}
-
-    // Add button
-    &__add-button {
-        width: 100%;
-        background-color: $primary-color-instock-indigo;
-        color: $primary-color-white;
-        border-radius: 32px;
-        border: none;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        margin-top: 16px;
-        cursor: pointer;
-        font-weight: 600;
-
-        @include tablet {
-            margin-top: 0px;
-            width: fit-content;
-            padding-left: 16px;
-            padding-right: 16px;
-            margin-left: 32px;
-        }
-    }
+  }
 }
 
 // Warehouse List Bar
 .warehouse-list-bar {
-    display: none;
-    justify-content: space-between;
-    background-color: $background-color-light-grey;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 24px;
-    padding-right: 24px;
+  display: none;
+  justify-content: space-between;
+  background-color: $background-color-light-grey;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 24px;
+  padding-right: 24px;
 
-    @include tablet {
-        display: flex;
+  @include tablet {
+    display: flex;
+  }
+
+  // Item
+  &__item {
+    color: $secondary-color-slate;
+
+    &--warehouse {
+      @include tablet {
+        width: 20%;
+      }
+      @include desktop {
+        width: 22.45%;
+      }
     }
 
-    // Item
-    &__item {
-        color: $secondary-color-slate;
+    &--address {
+      @include tablet {
+        width: 15%;
+      }
+      @include desktop {
+        width: 26.53%;
+      }
     }
 
-    // Sort Icon
-    &__sort-icon {
-        float: inline-end;
-        cursor: pointer;
+    &--contact-name {
+      @include tablet {
+        width: 22%;
+      }
+      @include desktop {
+        width: 18.37%;
+      }
     }
+
+    &--contact-information {
+      @include tablet {
+        width: 32%;
+      }
+      @include desktop {
+        width: 24.49%;
+      }
+    }
+
+    &--actions {
+      text-align: right;
+      @include tablet {
+        width: 11%;
+      }
+      @include desktop {
+        width: 8.16%;
+      }
+    }
+  }
+
+  // Sort Icon
+  &__sort-icon {
+    vertical-align: bottom;
+    cursor: pointer;
+  }
 }
 
 // Warehouse List List
 .warehouse-list-list {
+  // Item
+  &__item {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid $secondary-color-cloud;
+    padding: 16px;
 
-    // Item
-    &__item {
-        display: flex;
-        flex-direction: column;
-        border-bottom: 1px solid $secondary-color-cloud;
-        padding: 16px;
+    @include tablet {
+      flex-direction: row;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
 
-        @include tablet {
-            flex-direction: row;
-            padding: 0;
-        }
+  // Container
+  &__container {
+    display: flex;
+
+    @include tablet {
+      width: 89%;
+    }
+    @include desktop {
+      width: 91.84%;
+    }
+  }
+
+  // Left Container and Right Container
+  &__left-container,
+  &__right-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-left: 8px;
+    padding-right: 8px;
+
+    @include tablet {
+      flex-direction: row;
+      width: fit-content;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  // Left Container
+  &__left-container {
+    @include tablet {
+      width: 39.33%;
+    }
+    @include desktop {
+      width: 53.33%;
+    }
+  }
+  // Right Container
+  &__right-container {
+    @include tablet {
+      width: 60.67%;
+    }
+    @include desktop {
+      width: 46.67%;
+    }
+  }
+
+  // Content Container
+  &__content-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+
+    @include tablet {
+      flex-direction: row;
+      padding-bottom: 0;
     }
 
-    // Container
-    &__container {
-        display: flex;
+    &--warehouse {
+      @include tablet {
+        width: 57.14%;
+      }
+      @include desktop {
+        width: 45.84%;
+      }
     }
 
-    // Left Container and Right Container
-    &__left-container,
-    &__right-container {
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-        padding-left: 8px;
-        padding-right: 8px;
-
-        @include tablet {
-            flex-direction: row;
-            width: fit-content;
-            padding-left: 0;
-            padding-right: 0;
-        }
+    &--address {
+      @include tablet {
+        width: 42.86%;
+      }
+      @include desktop {
+        width: 54.16%;
+      }
     }
 
-    // Content Container
-    &__content-container {
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 16px;
-
-        @include tablet {
-            flex-direction: row;
-            padding-bottom: 0;
-        }
+    &--contact-name {
+      @include tablet {
+        width: 40.74%;
+      }
+      @include desktop {
+        width: 42.86%;
+      }
     }
 
-    // Title
-    &__title {
-        color: $secondary-color-slate;
-        font-weight: 600;
-
-        @include tablet {
-            display: none;
-        }
+    &--contact-information {
+      @include tablet {
+        width: 59.26%;
+      }
+      @include desktop {
+        width: 57.14%;
+      }
     }
+  }
 
-    // Warehouse Link
-    &__warehouse-link {
-        text-decoration: none;
+  // Title
+  &__title {
+    color: $secondary-color-slate;
+    font-weight: 600;
+
+    @include tablet {
+      display: none;
     }
+  }
 
-    // Warehouse Link Arrow
-    &__warehouse-link-arrow {
-        vertical-align: bottom;
+  // Warehouse Link
+  &__warehouse-link {
+    text-decoration: none;
+  }
+
+  // Warehouse Link Arrow
+  &__warehouse-link-arrow {
+    vertical-align: bottom;
+  }
+
+  // Warehouse Link Description
+  &__warehouse-link-description {
+    display: inline;
+    color: $primary-color-instock-indigo;
+    font-weight: 600;
+  }
+
+  // Action container
+  &__action-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding-left: 16px;
+    padding-right: 16px;
+
+    @include tablet {
+      padding-left: 0;
+      padding-right: 0;
+      width: 11%;
+      justify-content: flex-end;
     }
-
-    // Warehouse Link Description
-    &__warehouse-link-description {
-        display: inline;
-        color: $primary-color-instock-indigo;
-        font-weight: 600;
+    @include desktop {
+      width: 8.16%;
     }
+  }
 
-    // Action container
-    &__action-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+  // Action Icon
+  &__action-icon {
+    cursor: pointer;
+    width: 25px;
 
-        padding-left: 16px;
-        padding-right: 16px;
-
-        @include tablet {
-            padding-left: 0;
-            padding-right: 0;
-        }
+    @include tablet {
+      margin-left: 16px;
     }
-
-    // Delete Icon
-    &__delete-icon {
-        cursor: pointer;
-    }
-
-    // Edit Icon
-    &__edit-icon {
-        cursor: pointer;
-    }
+  }
 }
