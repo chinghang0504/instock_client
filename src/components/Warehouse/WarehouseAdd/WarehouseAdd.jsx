@@ -1,10 +1,51 @@
 import "./WarehouseAdd.scss";
 import icon from "../../../assets/icons/arrow_back-24px.svg";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 function WarehouseAdd() {
+  const navigate = useNavigate();
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    console.log("form: ", event.target.warehouse_name.value);
+    // 1. finish createing newWarehouse object with form input data ---- DONE
+    const newWarehouse = {
+      warehouse_name: event.target.warehouse_name.value,
+      address: event.target.address.value,
+      city: event.target.city.value,
+      country: event.target.country.value,
+      contact_name: event.target.contact_name.value,
+      contact_position: event.target.contact_position.value,
+      contact_phone: event.target.contact_phone.value,
+      contact_email: event.target.contact_email.value,
+    };
+
+    // 2. console.log(newWarehouse) to make sure it is working -- DONE
+
+    async function addWarehouse() {
+      try {
+        const response = await axios.post(
+          "http://localhost:8080/warehouse/",
+          newWarehouse
+        );
+        navigate("/warehouse");
+      } catch (error) {
+        console.log("add warehouse error: ", error.message);
+      }
+    }
+    addWarehouse();
+
+    // 3. Send a axios.post(url, ) request to the backend -- DONE
+
+    // 4. navigate to the warehouses list -- DONE
+  }
+
   return (
     <div>
       <div className="warehouse-add">
-        <form className="warehouse-container">
+        <form onSubmit={handleSubmit} className="warehouse-container">
           <h1 className="heading">
             <img className="heading__image" src={icon} alt="" />
             Add New Warehouse
@@ -42,7 +83,7 @@ function WarehouseAdd() {
               <div className="warehousename">
                 <p className="warehouse__title">Country</p>
                 <input
-                  name="Washington"
+                  name="country"
                   className="city"
                   type="text"
                   placeholder="Country"
@@ -55,7 +96,7 @@ function WarehouseAdd() {
               <div className="warehousename">
                 <p className="warehouse__title">Contact Name</p>
                 <input
-                  name="Washington"
+                  name="contact_name"
                   className="city"
                   type="text"
                   placeholder="Contact Name"
@@ -64,7 +105,7 @@ function WarehouseAdd() {
               <div className="warehousename">
                 <p className="warehouse__title">Position</p>
                 <input
-                  name="Washington"
+                  name="contact_position"
                   className="city"
                   type="text"
                   placeholder="Position"
@@ -73,7 +114,7 @@ function WarehouseAdd() {
               <div className="warehousename">
                 <p className="warehouse__title">Phone Number</p>
                 <input
-                  name="Washington"
+                  name="contact_phone"
                   className="city"
                   type="text"
                   placeholder="Phone Number"
@@ -82,7 +123,7 @@ function WarehouseAdd() {
               <div className="warehousename">
                 <p className="warehouse__title">Email</p>
                 <input
-                  name="Washington"
+                  name="contact_email"
                   className="city"
                   type="text"
                   placeholder="Email"
