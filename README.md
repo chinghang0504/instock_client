@@ -130,6 +130,14 @@ RESPONSE SAMPLE:
 FRONT END REQUIREMENTS:
 	**Must include id in URL
 
+  ____Search in Warehouse
+GET
+/warehouse/search
+
+RESPONSE 
+  Returns words with letters in search bar
+
+
 
 ------------------------------------------------FOR INVENTORY:
  --All ids refer to the inventory id--
@@ -222,3 +230,10 @@ RESPONSE SAMPLE:
 	
 FRONT-END REQUIREMENTS:
 **Must include ID 
+
+____Search in Inventory 
+GET
+/inventory/search
+
+RESPONSE 
+  Returns words with letters in search bar
