@@ -64,17 +64,6 @@ function WarehouseList() {
   };
 
 //  Load Warehouse List && Load Search Results
-  // async function loadData(searchTerm = '') {
-  //   // Check if searchTerm is provided
-  //   if (searchTerm.trim() === '') {
-  //     const warehouseList = await getWarehouseList();
-  //     setWarehouseList(warehouseList);
-  //   } else {
-  //     const filteredWarehouses = await getWarehouseSearch(searchTerm);
-  //     setWarehouseList(filteredWarehouses);
-  //   }
-  // };
-
   const loadData = async (searchTerm = '') => {
     try {
       if (searchTerm.trim() === '') {
