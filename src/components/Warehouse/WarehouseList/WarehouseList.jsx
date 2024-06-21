@@ -1,5 +1,5 @@
 import './WarehouseList.scss';
-import { getWarehouseList, deleteWarehouse } from '../../../services/api.js';
+import { getWarehouseList, deleteWarehouse,getWarehouseSearch } from '../../../services/api.js';
 import deleteIcon from '../../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../../assets/icons/edit-24px.svg';
 import { Link, useNavigate } from 'react-router-dom';
@@ -64,26 +64,27 @@ function WarehouseList() {
     }
   };
 
-  // // Execute once
-  // useEffect(() => {
-  //   // Load the data
-  //   async function loadData() {
-  //     const warehouseList = await getWarehouseList();
-  //     setWarehouseList(warehouseList);
-  //   }
-  //   loadData();
-  // }, []);
-
-  // Refractered to have acces to this function in  handleconfirmdelete
-  async function loadData() {
-    const warehouseList = await getWarehouseList();
-    setWarehouseList(warehouseList);
+//  Load Warehouse List && Load Search Results
+  async function loadData(searchTerm = '') {
+    // Check if searchTerm is provided
+    if (searchTerm.trim() === '') {
+      const warehouseList = await getWarehouseList();
+      setWarehouseList(warehouseList);
+    } else {
+      const filteredWarehouses = await getWarehouseSearch(searchTerm);
+      setWarehouseList(filteredWarehouses);
+    }
   }
-
+  
   // Use useEffect to load data when the component mounts
   useEffect(() => {
     loadData();
   }, []);
+
+  const handleSearchInputChange = (event) => {
+    const searchTerm = event.target.value;
+    loadData(searchTerm);
+  };
 
   return (
     <div className='warehouse-list'>
@@ -92,7 +93,7 @@ function WarehouseList() {
           <h1 className='warehouse-list-header__title'>Warehouses</h1>
           <div className='warehouse-list-header__action-container'>
             <div className='warehouse-list-header__search-container'>
-              <input className='warehouse-list-header__search-input' ref={searchInputRef} type="text" placeholder='Search...' />
+              <input className='warehouse-list-header__search-input' ref={searchInputRef} type="text" placeholder='Search...'  onChange={handleSearchInputChange} />
               <img className='warehouse-list-header__search-icon' src={searchIcon} alt="search icon" onClick={clickSearchIcon} />
             </div>
             <Link className='warehouse-list-header__add-link' to='/warehouse/add'><button className='warehouse-list-header__add-button'>+ Add New Warehouse</button></Link>
