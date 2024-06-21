@@ -54,7 +54,7 @@ export async function deleteInventory (currentItemId) {
         console.error('Error deleting inventory:', error);
         throw error;
     }
-};
+}
 
 //Create inventory 
 export async function createInventory () {
@@ -64,7 +64,7 @@ export async function createInventory () {
         console.error('Error creating inventory:', error);
         throw error;
     }
-};
+}
 
 // Get inventory search 
 export async function getInventorySearch(searchTerm = '') {
@@ -72,4 +72,4 @@ export async function getInventorySearch(searchTerm = '') {
          params: { s: searchTerm }
     });
     return res.data;
- };
+ }

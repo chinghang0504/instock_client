@@ -1,5 +1,22 @@
 import './InventoryAdd.scss';
 import ArrowBack from "../../../assets/icons/arrow_back-24px.svg";
+import {createInventory} from "../../../services/api.js";
+import { useNavigate } from "react-router-dom";
+
+// function postNewInventory() {
+//   const navigate = useNavigate();
+
+//   const handleSubmit = async (event) => {
+//     event.preventDefault(); 
+
+//     try {
+//       await createInventory();
+//       navigate('/inventory');
+//     } catch (error) {
+//       console.error('Failed to create inventory item:', error);
+//     }
+//   }
+// };
 
 function InventoryAdd() {
   return (
@@ -16,7 +33,7 @@ function InventoryAdd() {
         <section className="inventory-add__main-container">
         <div className="inventory-add__detail-container">
             <h2 className="inventory-add__detail-heading">Item Details</h2>
-            <form action="" className="inventory-add__form">
+            <form className="inventory-add__form">
               <div className="inventory-add__item-name">
                 <label htmlFor="title" className="inventory-add__label">
                   Item Name
