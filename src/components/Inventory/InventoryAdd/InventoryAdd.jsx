@@ -1,57 +1,72 @@
+import  { useState } from 'react';
 import './InventoryAdd.scss';
 import ArrowBack from "../../../assets/icons/arrow_back-24px.svg";
-import {createInventory} from "../../../services/api.js";
+import { createInventory } from "../../../services/api.js";
 import { useNavigate } from "react-router-dom";
 
-// function postNewInventory() {
-//   const navigate = useNavigate();
-
-//   const handleSubmit = async (event) => {
-//     event.preventDefault(); 
-
-//     try {
-//       await createInventory();
-//       navigate('/inventory');
-//     } catch (error) {
-//       console.error('Failed to create inventory item:', error);
-//     }
-//   }
-// };
-
 function InventoryAdd() {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    itemName: "",
+    description: "",
+    category: "",
+    status: "",
+    quantity: ""
+  });
+
+  const handleSubmit = async () => {
+    try {
+      const quantity = parseInt(formData.quantity);
+      if (isNaN(quantity)) {
+        throw new Error('Quantity must be a number');
+      }
+
+      await createInventory({
+        item_name: formData.itemName,
+        description: formData.description,
+        category: formData.category,
+        status: formData.status,
+        quantity: quantity
+      });
+
+      navigate('/inventory');
+    } catch (error) {
+      console.error('Failed to create inventory item:', error);
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   return (
     <section className="inventory-add">
       <section className="inventory-add__container">
-      <section className="inventory-add__heading-section">
-          <img
-            src={ArrowBack}
-            alt="back Arrow sign"
-            className="inventory-add__back-arrow"
-          />
+        <section className="inventory-add__heading-section">
+          <img src={ArrowBack} alt="back Arrow sign" className="inventory-add__back-arrow" />
           <h1 className="inventory-add__heading">Add New Inventory Item</h1>
         </section>
         <section className="inventory-add__main-container">
-        <div className="inventory-add__detail-container">
+          <div className="inventory-add__detail-container">
             <h2 className="inventory-add__detail-heading">Item Details</h2>
             <form className="inventory-add__form">
               <div className="inventory-add__item-name">
-                <label htmlFor="title" className="inventory-add__label">
-                  Item Name
-                </label>
+                <label htmlFor="itemName" className="inventory-add__label">Item Name</label>
                 <input
                   className="inventory-add__text"
                   type="text"
-                  id="TV"
-                  name="name"
+                  id="itemName"
+                  name="itemName"
                   placeholder=""
+                  value={formData.itemName}
+                  onChange={handleChange}
                   required
                 />
               </div>
 
               <div className="inventory-add__description">
-                <label htmlFor="title" className="inventory-add__label">
-                  Description
-                </label>
+                <label htmlFor="description" className="inventory-add__label">Description</label>
                 <textarea
                   className="inventory-add__text-box"
                   name="description"
@@ -59,102 +74,87 @@ function InventoryAdd() {
                   cols="30"
                   rows="7"
                   placeholder=""
-                  required>
-                  </textarea>
+                  value={formData.description}
+                  onChange={handleChange}
+                  required
+                ></textarea>
               </div>
 
               <div className="inventory-add__category">
-                <label htmlFor="title" className="inventory-add__label">
-                  Category
-                </label>
-            
-                <select className="inventory-add__text" name="category" id="cat">
-                  {/* {categories &&
-                    categories.map((category) => {
-                      return <option>{category.category}</option>;
-                    })} */}
-                </select>
+                <label htmlFor="category" className="inventory-add__label">Category</label>
+                <input
+                  className="inventory-add__text"
+                  type="text"
+                  id="category"
+                  name="category"
+                  placeholder=""
+                  value={formData.category}
+                  onChange={handleChange}
+                  required
+                />
               </div>
             </form>
           </div>
 
-          <div className="inventory-add__availability-container">
-            <h2 className="inventory-add__availability-heading">
-              Item Availability
-            </h2>
-
+          <section className="inventory-add__availability-container">
+            <h2 className="inventory-add__availability-heading">Item Availability</h2>
             <div className="inventory-add__status">
-              <label htmlFor="title" className="inventory-add__label">
-                Status
-              </label>
-
-              <div className="inventory-add__radio-section">
-                <div className="inventory-add__radio-list">
-                  <input
-                    className="inventory-add__radio-item"
-                    type="radio"
-                    name="options"
-                  />
-                  In Stock
-                </div>
-
-                <div className="inventory-add__radio-list">
-                  <input
-                    className="inventory-add__radio-item"
-                    type="radio"
-                    name="options"
-                  />
-                  Out of Stock
-                </div>
-              </div>
+              <label htmlFor="status" className="inventory-add__label">Status</label>
+              <input
+                className="inventory-add__text"
+                type="text"
+                id="status"
+                name="status"
+                placeholder=""
+                value={formData.status}
+                onChange={handleChange}
+                required
+              />
             </div>
 
             <div className="inventory-add__quantity">
-              <label htmlFor="title" className="inventory-add__label">
-                Quantity
-              </label>
+              <label htmlFor="quantity" className="inventory-add__label">Quantity</label>
               <input
-                type="number"
+                type="text"
                 className="inventory-add__text"
+                id="quantity"
+                name="quantity"
+                placeholder=""
+                value={formData.quantity}
+                onChange={handleChange}
+                required
               />
-
-              {/* <select className="inventory-add__text"
-              name="quantity" 
-              id="quantity"
-            >
-               <option value=""></option>
-            </select> */}
             </div>
 
-            <div className="inventory-add__warehouse">
-              <label htmlFor="title" className="inventory-add__label">
-                Warehouse
-              </label>
+            {/* <div className="inventory-add__warehouse">
+              <label htmlFor="warehouse" className="inventory-add__label">Warehouse</label>
               <select
                 className="inventory-add__text"
                 name="warehouse_name"
-                id="warehouse">
-              </select>
-            </div>
-          </div>
+                id="warehouse"
+              ></select>
+            </div> */}
+          </section>
         </section>
-        <div className="inventory-add__button-section">
-            <button
-              type="submit"
-              className="inventory-add__button-cancel inventory-add--button"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="inventory-add__button-add-item inventory-add--button"
-            >
-              + Add Item
-            </button>
-          </div>
       </section>
+
+      <div className="inventory-add__button-section">
+        <button
+          type="submit"
+          className="inventory-add__button-cancel inventory-add--button"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          className="inventory-add__button-add-item inventory-add--button"
+          onClick={handleSubmit}
+        >
+          + Add Item
+        </button>
+      </div>
     </section>
-  )
+  );
 }
 
-export default InventoryAdd
+export default InventoryAdd;
