@@ -1,94 +1,158 @@
 import "./WarehouseEdit.scss";
 import icon from "../../../assets/icons/arrow_back-24px.svg";
-function WarehouseEdit() {
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+function WarehouseEdit(props) {
+  const [warehouse, setWarehouse] = useState({});
+  const [updatedWarehouse, setUpdatedWarehouse] = useState({});
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  async function editWarehouse() {
+    const response = await axios.put(`http://localhost:8080/warehouse/${id}`);
+  }
+  // navigate();
+
+  useEffect(() => {
+    async function getWarehouse() {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/warehouse/${id}`
+        );
+        setWarehouse(response.data);
+      } catch (error) {
+        console.log("add warehouse error: ", error.message);
+      }
+    }
+    getWarehouse();
+  }, []);
+
+  async function handleEditWarehouse(event) {
+    try {
+      event.preventDefault();
+      console.log("submitted form");
+
+      const editWarehouse = {
+        warehouse_name: event.target.warehouse_name.value,
+        address: event.target.address.value,
+        city: event.target.city.value,
+        country: event.target.country.value,
+        contact_name: event.target.contact_name.value,
+        contact_position: event.target.contact_position.value,
+        contact_phone: event.target.contact_phone.value,
+        contact_email: event.target.contact_email.value,
+      };
+
+      console.log(editWarehouse);
+
+      const response = await axios.put(
+        `http://localhost:8080/warehouse/${id}`,
+        editWarehouse
+      );
+      navigate("/warehouse");
+    } catch (error) {
+      console.log("add warehouse error: ", error.message);
+    }
+  }
+
   return (
     <div className="warehouse-edit">
-      <div className="container">
+      <form onSubmit={handleEditWarehouse} className="container">
         <h1 className="heading">
           <img className="heading__image" src={icon} alt="" />
           Edit Warehouse
         </h1>
 
         <h2 className="warehouse-header">Warehouse Details</h2>
-        <form className="warehousename">
+        <div className="warehousename">
           <p className="warehouse__title">Warehouse Name</p>
           <input
-            name="Washington"
+            defaultValue={warehouse.warehouse_name}
+            name="warehouse_name"
             className="city"
             type="text"
             placeholder="Washington"
           />
-        </form>
-        <form className="warehousename">
+        </div>
+        <div className="warehousename">
           <p className="warehouse__title">Street Address</p>
           <input
-            name="Washington"
+            defaultValue={warehouse.address}
+            name="address"
             className="city"
             type="text"
             placeholder="33 Pearl Street SW"
           />
-        </form>
-        <form className="warehousename">
+        </div>
+        <div className="warehousename">
           <p className="warehouse__title">City</p>
           <input
-            name="Washington"
+            defaultValue={warehouse.city}
+            name="city"
             className="city"
             type="text"
             placeholder="Washington"
           />
-        </form>
-        <form className="warehousename">
+        </div>
+        <div className="warehousename">
           <p className="warehouse__title">Country</p>
           <input
-            name="Washington"
+            defaultValue={warehouse.country}
+            name="country"
             className="city"
             type="text"
             placeholder="USA"
           />
-        </form>
+        </div>
         <h2 className="warehouse-header">Contact Details</h2>
 
-        <form className="warehousename">
+        <div className="warehousename">
           <p className="warehouse__title">Contact Name</p>
           <input
-            name="Washington"
+            defaultValue={warehouse.contact_name}
+            name="contact_name"
             className="city"
             type="text"
             placeholder="Graeme Lyon"
           />
-        </form>
-        <form className="warehousename">
+        </div>
+        <div className="warehousename">
           <p className="warehouse__title">Position</p>
           <input
-            name="Washington"
+            defaultValue={warehouse.contact_position}
+            name="contact_position"
             className="city"
             type="text"
             placeholder="Warehouse Manager"
           />
-        </form>
-        <form className="warehousename">
+        </div>
+        <div className="warehousename">
           <p className="warehouse__title">Phone Number</p>
           <input
-            name="Washington"
+            defaultValue={warehouse.contact_phone}
+            name="contact_phone"
             className="city"
             type="text"
             placeholder="+1 (647) 504-0911"
           />
-        </form>
-        <form className="warehousename">
+        </div>
+        <div className="warehousename">
           <p className="warehouse__title">Email</p>
           <input
-            name="Washington"
+            defaultValue={warehouse.contact_email}
+            name="contact_email"
             className="city"
             type="text"
             placeholder="glyon@instock.com"
           />
-        </form>
+        </div>
         <div className="button">
           <button className="button__cancel">Cancel</button>
           <button className="button__save">Save</button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
