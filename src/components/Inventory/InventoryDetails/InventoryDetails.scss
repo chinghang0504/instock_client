@@ -1,0 +1,159 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+// Inventory Details
+.inventory-details {
+  background-color: $background-color-light-grey;
+
+  // Container
+  &__container {
+    background-color: $primary-color-white;
+    padding-top: 24px;
+    margin-left: 16px;
+    margin-right: 16px;
+    border-radius: 4px;
+    box-shadow: 0 5px 16px $secondary-color-cloud;
+    position: relative;
+    top: -50px;
+
+    @include tablet {
+      top: -100px;
+      margin-left: 32px;
+      margin-right: 32px;
+    }
+
+    @include desktop {
+      margin-left: 64px;
+      margin-right: 64px;
+    }
+  }
+}
+
+// Inventory Details Header
+.inventory-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $secondary-color-cloud;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 24px;
+
+  // Container
+  &__container {
+    display: flex;
+  }
+
+  // Arrow Back Link
+  &__arrow-back-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // Arrow Back Icon
+  &__arrow-back-icon {
+    vertical-align: middle;
+  }
+
+  // Title
+  &__title {
+    padding-left: 16px;
+  }
+
+  // Edit Link
+  &__edit-link {
+    background-color: $primary-color-instock-indigo;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+    @include tablet {
+      width: 80px;
+      border-radius: 32px;
+    }
+  }
+
+  // Edit Icon
+  &__edit-icon {
+    filter: brightness(0) invert(1);
+    width: 18px;
+  }
+
+  // Edit Text
+  &__edit-text {
+    display: none;
+    color: $primary-color-white;
+
+    @include tablet {
+      display: block;
+    }
+  }
+}
+
+// Inventory Details Content
+.inventory-details-content {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+
+  @include tablet {
+    flex-direction: row;
+  }
+
+  // Upper Container
+  &__upper-container {
+
+    @include tablet {
+      width: 50%;
+      padding-right: 32px;
+    }
+  }
+
+  // Lower Container
+  &__lower-container {
+    display: flex;
+
+    @include tablet {
+      width: 50%;
+      border-left: 1px solid $secondary-color-cloud;
+      padding-left: 32px;
+    }
+  }
+
+  // Left Container
+  &__left-container {
+    width: 50%;
+  }
+
+  // Right Container
+  &__right-container {
+    width: 50%;
+  }
+
+  // Content Container
+  &__content-container {
+  }
+  &__content-container + &__content-container {
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    @include tablet {
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+  // Title
+  &__title {
+    color: $secondary-color-slate;
+    font-weight: 600;
+  }
+
+  // Description
+  &__description {}
+}
