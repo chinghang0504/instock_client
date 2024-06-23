@@ -57,11 +57,15 @@ function WarehouseEdit(props) {
     }
   }
 
+  function backToWarehouse() {
+    navigate('/warehouse');
+  }
+
   return (
     <div className="warehouse-edit">
       <form onSubmit={handleEditWarehouse} className="container">
         <h1 className="heading">
-          <img className="heading__image" src={icon} alt="" />
+          <img className="heading__image" src={icon} alt="" onClick={backToWarehouse} />
           Edit Warehouse
         </h1>
 
@@ -149,7 +153,7 @@ function WarehouseEdit(props) {
           />
         </div>
         <div className="button">
-          <button className="button__cancel">Cancel</button>
+          <button className="button__cancel" onClick={backToWarehouse}>Cancel</button>
           <button className="button__save">Save</button>
         </div>
       </form>

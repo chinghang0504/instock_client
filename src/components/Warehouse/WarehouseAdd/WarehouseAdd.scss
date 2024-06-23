@@ -52,6 +52,7 @@
     padding-right: 3rem;
     align-items: center;
     width: 42%;
+    cursor: pointer;
   }
   &__cancel {
     background-color: $primary-color-white;
@@ -63,6 +64,7 @@
     padding-right: 3rem;
     align-items: center;
     width: 42%;
+    cursor: pointer;
   }
 }
 
@@ -99,6 +101,7 @@ input::placeholder {
 
   &__image {
     margin-right: 2%;
+    cursor: pointer;
   }
 }
 .warehouse-container {
