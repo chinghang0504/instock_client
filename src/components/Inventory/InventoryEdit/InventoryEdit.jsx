@@ -19,15 +19,15 @@ function InventoryEdit() {
   });
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchInventoryData = async () => {
       try {
-        const data = await getInventoryEdit(id);
-        setItemData(data);
+        const inventoryList = await getInventoryEdit(id);
+        setItemData(inventoryList);
       } catch (error) {
         console.log("Error fetching inventory item data:", error);
       }
     };
-    fetchData();
+    fetchInventoryData();
   }, [id]);
 
   // API OR DATA MANIUPLATION?

@@ -6,6 +6,10 @@ import deleteIcon from '../../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../../assets/icons/edit-24px.svg';
 import { getInventoryList,deleteInventory,getInventorySearch} from '../../../services/api.js';
 import InventoryDelete from '../../Modal/InventoryDelete/InventoryDelete.jsx';
+import sortIcon from '../../../assets/icons/sort-24px.svg';
+import chevronRightIcon from '../../../assets/icons/chevron_right-24px.svg';
+import InStockTag from '../../Tag/InStockTag/InStockTag.jsx';
+import OutOfStockTag from '../../Tag/OutOfStockTag/OutOfStockTag.jsx';
 
 function InventoryList() {
   const [inventoryList, setInventoryList] = useState([]);
@@ -30,6 +34,17 @@ function clickEditIcon(id) {
     toggleModal();
   }
 
+  // Click the sort icon
+  // Input value
+  // 0: Inventory Item
+  // 1: Category
+  // 2: Status
+  // 3: Qty
+  // 4: Warehouse
+  function clickSortIcon(val) {
+    console.log(`The sort icon is clicked: ${val}`);
+  }
+
   function toggleModal() {
     setModalIsOpen(!modalIsOpen);
   }
@@ -40,7 +55,6 @@ function clickEditIcon(id) {
         await deleteInventory(currentItemId);
         await loadData();
         toggleModal();
-      } else {
       }
     } catch (error) {
       console.error('Failed to delete inventory:', error);
@@ -74,38 +88,62 @@ function clickEditIcon(id) {
   return (
     <div className='inventory-list'>
       <div className='inventory-list__container'>
-        <div className='inventory-list__header'>
-          <h1 className='inventory-list__title'>inventory</h1>
-          <div className='inventory-list__action-container'>
-            <div className='inventory-list__search-container'>
-              <input className='inventory-list__search-input' ref={searchInputRef} type="text" placeholder='Search...' onChange={handleSearchInputChange} />
-              <img className='inventory-list__search-icon' src={searchIcon} alt="search icon" onClick={clickSearchIcon} />
+        <div className='inventory-list-header'>
+          <h1 className='inventory-list-header__title'>Inventory</h1>
+          <div className='inventory-list-header__action-container'>
+            <div className='inventory-list-header__search-container'>
+              <input className='inventory-list-header__search-input' ref={searchInputRef} type="text" placeholder='Search...' onChange={handleSearchInputChange} />
+              <img className='inventory-list-header__search-icon' src={searchIcon} alt="search icon" onClick={clickSearchIcon} />
             </div>
-            <Link className='inventory-list__add-link' to='/inventory/add'><button className='inventory-list__add-button'>+ Add New Item</button></Link>
+            <Link className='inventory-list-header__add-link' to='/inventory/add'><button className='inventory-list-header__add-button'>+ Add New Item</button></Link>
           </div>
         </div>
-        <div className='inventory-list__list'>
+        <ul className='inventory-list-bar'>
+          <li className='inventory-list-bar__item inventory-list-bar__item--inventory-item'>INVENTORY ITEM <img className='inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by inventory item" onClick={() => clickSortIcon(0)} /></li>
+          <li className='inventory-list-bar__item inventory-list-bar__item--category'>CATEGORY <img className='inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by category" onClick={() => clickSortIcon(1)} /></li>
+          <li className='inventory-list-bar__item inventory-list-bar__item--status'>STATUS <img className='inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by status" onClick={() => clickSortIcon(2)} /></li>
+          <li className='inventory-list-bar__item inventory-list-bar__item--qty'>QTY <img className='inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by qty" onClick={() => clickSortIcon(3)} /></li>
+          <li className='inventory-list-bar__item inventory-list-bar__item--warehouse'>WAREHOUSE <img className='inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by warehouse" onClick={() => clickSortIcon(4)} /></li>
+          <li className='inventory-list-bar__item inventory-list-bar__item--actions'>ACTIONS</li>
+        </ul>
+        <ul className='inventory-list-list'>
           {inventoryList.map(inventory => {
             return (
-              <div className='inventory-list__item' key={inventory.id}>
-                <p>INVENTORY ITEM</p>
-                <Link to={`/inventory/${inventory.id}`}><p>{inventory.item_name}</p></Link>
-                <p>CATEGORY</p>
-                <p>{inventory.category}</p>
-                <p>STATUS</p>
-                <p>{inventory.status}</p>
-                <p>QTY</p>
-                <p>{inventory.quantity}</p>
-                <p>WAREHOUSE</p>
-                <Link to={`/warehouse/${inventory.warehouse_id}`}><p>{inventory.warehouse_name}</p></Link>
-                <div>
-                  <img className='inventory-list__delete-icon' src={deleteIcon} alt="delete icon" onClick={() => { clickDeleteIcon(inventory.id) }} />
-                  <img className='inventory-list__edit-icon' src={editIcon} alt="edit icon" onClick={() => { clickEditIcon(inventory.id) }} />
+              <li className='inventory-list-list__item' key={inventory.id}>
+                <div className='inventory-list-list__container'>
+                  <div className='inventory-list-list__left-container'>
+                    <div className='inventory-list-list__content-container inventory-list-list__content-container--inventory-item'>
+                      <p className='inventory-list-list__title'>INVENTORY ITEM</p>
+                      <Link className='inventory-list-list__inventory-link' to={`/inventory/${inventory.id}`}><p className='inventory-list-list__inventory-link-description'>{inventory.item_name}</p><img className='inventory-list-list__inventory-link-arrow' src={chevronRightIcon} alt="inventory details link" /></Link>
+                    </div>
+                    <div className='inventory-list-list__content-container inventory-list-list__content-container--category'>
+                      <p className='inventory-list-list__title'>CATEGORY</p>
+                      <p className='inventory-list-list__description'>{inventory.category}</p>
+                    </div>
+                  </div>
+                  <div className='inventory-list-list__right-container'>
+                    <div className='inventory-list-list__content-container inventory-list-list__content-container--status'>
+                      <p className='inventory-list-list__title'>STATUS</p>
+                      <div className='inventory-list-list__status'>{inventory.status === 'In Stock' ? <InStockTag /> : <OutOfStockTag />}</div>
+                    </div>
+                    <div className='inventory-list-list__content-container inventory-list-list__content-container--qty'>
+                      <p className='inventory-list-list__title'>QTY</p>
+                      <p className='inventory-list-list__description'>{inventory.quantity}</p>
+                    </div>
+                    <div className='inventory-list-list__content-container inventory-list-list__content-container--warehouse'>
+                      <p className='inventory-list-list__title'>WAREHOUSE</p>
+                      <p className='inventory-list-list__description'>{inventory.warehouse_name}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+                <div className='inventory-list-list__action-container'>
+                  <img className='inventory-list-list__action-icon' src={deleteIcon} alt="delete icon" onClick={() => { clickDeleteIcon(inventory.id) }} />
+                  <img className='inventory-list-list__action-icon' src={editIcon} alt="edit icon" onClick={() => { clickEditIcon(inventory.id) }} />
+                </div>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </div>
       <InventoryDelete
            isOpen={modalIsOpen}

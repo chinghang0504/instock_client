@@ -1,42 +1,76 @@
-import  { useState, useEffect } from 'react';
-import './InventoryAdd.scss';
-import ArrowBack from '../../../assets/icons/arrow_back-24px.svg';
-import { createInventory, getWarehouseList } from '../../../services/api.js';
-import { useNavigate } from 'react-router-dom';
+// // Needs drop down for category & status
+// // Logic for API needs work
+
+import { useState, useEffect } from "react";
+import "./InventoryAdd.scss";
+import ArrowBack from "../../../assets/icons/arrow_back-24px.svg";
+import { createInventory, getWarehouseList, getInventoryList } from "../../../services/api.js";
+import { useNavigate } from "react-router-dom";
 
 function InventoryAdd() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    itemName: '',
-    description: '',
-    category: '',
-    status: '',
-    quantity: '',
-    warehouseId: '', 
+    itemName: "",
+    description: "",
+    category: "",
+    status: "In Stock",
+    quantity: 0,
+    warehouseId: "",
   });
   const [warehouses, setWarehouses] = useState([]);
+  const [errors, setErrors] = useState({});
+  const [categories, setCategories] = useState([]);
+  const [submitError, setSubmitError] = useState("");
+
 
   useEffect(() => {
     const fetchWarehouses = async () => {
       try {
         const warehouseList = await getWarehouseList();
         setWarehouses(warehouseList);
+
+        const categoryList = await getInventoryList();
+        const uniqueCategories = Array.from(
+          new Set(categoryList.map((category) => category.category))
+        ).map((category) => {
+          return categoryList.find((c) => c.category === category);
+        });
+        setCategories(uniqueCategories);
+
       } catch (error) {
-        console.error('Failed to fetch warehouses:', error);
+        console.error("Failed to fetch warehouses:", error);
       }
     };
 
     fetchWarehouses();
   }, []);
 
-  const handleSubmit = async () => {
-    try {
-      const quantity = parseInt(formData.quantity);
-      if (isNaN(quantity)) {
-        throw new Error('Quantity must be a number');
-      }
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.itemName) newErrors.itemName = "Item Name is required";
+    if (!formData.description)
+      newErrors.description = "Description is required";
+    if (!formData.category) newErrors.category = "Category is required";
+    if (!formData.warehouseId) newErrors.warehouseId = "Warehouse is required";
+    if (
+      formData.status === "In Stock" &&
+      (!formData.quantity || isNaN(parseInt(formData.quantity)))
+    ) {
+      newErrors.quantity = "Quantity must be a valid number";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
-      await createInventory({
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!validateForm()) return;
+
+    try {
+      const quantity =
+        formData.status === "In Stock" ? parseInt(formData.quantity) : 0;
+
+    const response =  await createInventory({
         warehouse_id: formData.warehouseId,
         item_name: formData.itemName,
         description: formData.description,
@@ -45,9 +79,10 @@ function InventoryAdd() {
         quantity: quantity,
       });
 
-      navigate('/inventory');
+      navigate("/inventory");
     } catch (error) {
-      console.error('Failed to create inventory item:', error);
+      console.error("Failed to create inventory item:", error);
+      setSubmitError("Failed to create inventory item. Please try again.");
     }
   };
 
@@ -60,13 +95,19 @@ function InventoryAdd() {
     <section className="inventory-add">
       <section className="inventory-add__container">
         <section className="inventory-add__heading-section">
-          <img src={ArrowBack} alt="back Arrow sign" className="inventory-add__back-arrow" />
+          <img
+            src={ArrowBack}
+            alt="back Arrow sign"
+            className="inventory-add__back-arrow"
+            onClick={() => navigate("/inventory")}
+          />
           <h1 className="inventory-add__heading">Add New Inventory Item</h1>
         </section>
-        <section className="inventory-add__main-container">
-          <div className="inventory-add__detail-container">
-            <h2 className="inventory-add__detail-heading">Item Details</h2>
-            <form className="inventory-add__form">
+        <form className="inventory-add__form" onSubmit={handleSubmit}>
+          <section className="inventory-add__main-container">
+            <div className="inventory-add__detail-container">
+              <h2 className="inventory-add__detail-heading">Item Details</h2>
+
               <div className="inventory-add__item-name">
                 <label htmlFor="itemName" className="inventory-add__label">
                   Item Name
@@ -76,11 +117,12 @@ function InventoryAdd() {
                   type="text"
                   id="itemName"
                   name="itemName"
-                  placeholder=""
+                  placeholder="Item Name"
                   value={formData.itemName}
                   onChange={handleChange}
                   required
                 />
+                {errors.itemName && <p className="error">{errors.itemName}</p>}
               </div>
 
               <div className="inventory-add__description">
@@ -93,106 +135,140 @@ function InventoryAdd() {
                   id="description"
                   cols="30"
                   rows="7"
-                  placeholder=""
+                  placeholder="Please enter a brief item description"
                   value={formData.description}
                   onChange={handleChange}
                   required
                 ></textarea>
+                {errors.description && (
+                  <p className="error">{errors.description}</p>
+                )}
               </div>
 
               <div className="inventory-add__category">
                 <label htmlFor="category" className="inventory-add__label">
                   Category
                 </label>
-                <input
+                <select
                   className="inventory-add__text"
-                  type="text"
                   id="category"
                   name="category"
-                  placeholder=""
                   value={formData.category}
                   onChange={handleChange}
                   required
-                />
+                >
+                  <option value="">Please select </option>
+                  {categories.map((category) => (
+                    <option key={category.id} value={category.category}>
+                      {category.category}
+                    </option>
+                  ))}
+                </select>
+
+                {errors.category && <p className="error">{errors.category}</p>}
               </div>
-            </form>
-          </div>
-
-          <section className="inventory-add__availability-container">
-            <h2 className="inventory-add__availability-heading">Item Availability</h2>
-            <div className="inventory-add__status">
-              <label htmlFor="status" className="inventory-add__label">
-                Status
-              </label>
-              <input
-                className="inventory-add__text"
-                type="text"
-                id="status"
-                name="status"
-                placeholder=""
-                value={formData.status}
-                onChange={handleChange}
-                required
-              />
             </div>
 
-            <div className="inventory-add__quantity">
-              <label htmlFor="quantity" className="inventory-add__label">
-                Quantity
-              </label>
-              <input
-                type="text"
-                className="inventory-add__text"
-                id="quantity"
-                name="quantity"
-                placeholder=""
-                value={formData.quantity}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="inventory-add__warehouse">
-              <label htmlFor="warehouseId" className="inventory-add__label">
-                Warehouse
-              </label>
-              <select
-                className="inventory-add__text"
-                id="warehouseId"
-                name="warehouseId"
-                value={formData.warehouseId}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select Warehouse</option>
-                {warehouses.map((warehouse) => (
-                  <option key={warehouse.id} value={warehouse.id}>
-                    {warehouse.warehouse_name}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <section className="inventory-add__availability-container">
+              <h2 className="inventory-add__availability-heading">
+                Item Availability
+              </h2>
+
+              <div className="inventory-add__status">
+                <label htmlFor="status" className="inventory-add__label">
+                  Status
+                </label>
+                <div className="inventory-add__radio-section">
+                  <label className="inventory-add__radio-list">
+                    <input
+                      className="inventory-add__radio-item"
+                      type="radio"
+                      name="status"
+                      value="In Stock"
+                      checked={formData.status === "In Stock"}
+                      onChange={handleChange}
+                    />
+                    In Stock
+                  </label>
+                  <label className="inventory-add__radio-list">
+                    <input
+                      className="inventory-add__radio-item"
+                      type="radio"
+                      name="status"
+                      value="Out of Stock"
+                      checked={formData.status === "Out of Stock"}
+                      onChange={handleChange}
+                    />
+                    Out of Stock
+                  </label>
+                </div>
+              </div>
+
+              {formData.status === "In Stock" && (
+                <div className="inventory-add__quantity">
+                  <label htmlFor="quantity" className="inventory-add__label">
+                    Quantity
+                  </label>
+                  <input
+                    type="text"
+                    className="inventory-add__text"
+                    id="quantity"
+                    name="quantity"
+                    placeholder=""
+                    defaultValue={formData.quantity}
+                    onChange={handleChange}
+                    required={formData.status === "In Stock"}
+                  />
+                  {errors.quantity && (
+                    <p className="error">{errors.quantity}</p>
+                  )}
+                </div>
+              )}
+
+              <div className="inventory-add__warehouse">
+                <label htmlFor="warehouseId" className="inventory-add__label">
+                  Warehouse
+                </label>
+                <select
+                  className="inventory-add__text"
+                  id="warehouseId"
+                  name="warehouseId"
+                  value={formData.warehouseId}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Please select</option>
+                  {warehouses.map((warehouse) => (
+                    <option key={warehouse.id} value={warehouse.id}>
+                      {warehouse.warehouse_name}
+                    </option>
+                  ))}
+                </select>
+                {errors.warehouseId && (
+                  <p className="error">{errors.warehouseId}</p>
+                )}
+              </div>
+            </section>
           </section>
-        </section>
+          <div className="inventory-add__button-section">
+            <button
+              type="button"
+              className="inventory-add__button-cancel inventory-add--button"
+              onClick={() => navigate("/inventory")}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="inventory-add__button-add-item inventory-add--button"
+            >
+              + Add Item
+            </button>
+          </div>
+        </form>
       </section>
-
-      <div className="inventory-add__button-section">
-        <button type="submit" className="inventory-add__button-cancel inventory-add--button">
-          Cancel
-        </button>
-        <button
-          type="submit"
-          className="inventory-add__button-add-item inventory-add--button"
-          onClick={handleSubmit}
-        >
-          + Add Item
-        </button>
-      </div>
     </section>
   );
 }
 
 export default InventoryAdd;
-
-// Needs drop down for category & status
-// Logic for API needs work
-
