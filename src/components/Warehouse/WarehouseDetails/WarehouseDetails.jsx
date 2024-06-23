@@ -48,7 +48,7 @@ function WarehouseDetails() {
             </div>
           </div>
         </div>
-        <WarehouseInventoryList />
+        <WarehouseInventoryList id={params.id} />
       </div>
     </div>
   )
