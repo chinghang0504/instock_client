@@ -61,10 +61,15 @@ function InventoryEdit() {
   const validateForm = () => {
     const newErrors = {};
     if (!itemData.item_name) newErrors.item_name = "Item Name is required";
-    if (!itemData.description) newErrors.description = "Description is required";
+    if (!itemData.description)
+      newErrors.description = "Description is required";
     if (!itemData.category) newErrors.category = "Category is required";
-    if (!itemData.warehouse_id) newErrors.warehouse_id = "Warehouse is required";
-    if (itemData.status === "In Stock" && (!itemData.quantity || isNaN(parseInt(itemData.quantity)))) {
+    if (!itemData.warehouse_id)
+      newErrors.warehouse_id = "Warehouse is required";
+    if (
+      itemData.status === "In Stock" &&
+      (!itemData.quantity || isNaN(parseInt(itemData.quantity)))
+    ) {
       newErrors.quantity = "Quantity must be a valid number";
     }
     setErrors(newErrors);
@@ -76,14 +81,14 @@ function InventoryEdit() {
     if (!validateForm()) return;
 
     try {
-      const quantity = itemData.status === "In Stock" ? parseInt(itemData.quantity) : 0;
+      const quantity =
+        itemData.status === "In Stock" ? parseInt(itemData.quantity) : 0;
 
       const updatedItemData = {
         ...itemData,
-        id: id,  
+        id: id,
         quantity: quantity,
       };
-
 
       const response = await createInventory(updatedItemData);
 
@@ -173,7 +178,9 @@ function InventoryEdit() {
                     </option>
                   ))}
                 </select>
-                {errors.category && <p className="inventory-edit__error">{errors.category}</p>}
+                {errors.category && (
+                  <p className="inventory-edit__error">{errors.category}</p>
+                )}
               </div>
             </div>
 
@@ -187,7 +194,11 @@ function InventoryEdit() {
                   Status
                 </label>
                 <div className="inventory-edit__radio-section">
-                  <label className="inventory-edit__radio-list">
+                  <div
+                    className={`inventory-edit__radio-list ${
+                      itemData.status === "In Stock" ? "checked" : ""
+                    }`}
+                  >
                     <input
                       className="inventory-edit__radio-item"
                       type="radio"
@@ -197,8 +208,12 @@ function InventoryEdit() {
                       onChange={handleChange}
                     />
                     In Stock
-                  </label>
-                  <label className="inventory-edit__radio-list">
+                  </div>
+                  <div
+                    className={`inventory-edit__radio-list ${
+                      itemData.status === "Out of Stock" ? "checked" : ""
+                    }`}
+                  >
                     <input
                       className="inventory-edit__radio-item"
                       type="radio"
@@ -208,7 +223,7 @@ function InventoryEdit() {
                       onChange={handleChange}
                     />
                     Out of Stock
-                  </label>
+                  </div>
                 </div>
               </div>
 
@@ -272,7 +287,9 @@ function InventoryEdit() {
               Save
             </button>
           </div>
-          {submitError && <p className="inventory-edit__error">{submitError}</p>}
+          {submitError && (
+            <p className="inventory-edit__error">{submitError}</p>
+          )}
         </form>
       </section>
     </section>
