@@ -30,10 +30,8 @@ export async function getWarehouseInventoryList(id, sort_by, order_by) {
         return res.data;
     }
     
-    // const res = await axios.get(`${BASE_URL}/warehouse/${id}/inventories?sort_by=${sort_by}&order_by=${order_by}`);
-    // return res.data;
-    const res = await axios.get(`${BASE_URL}/warehouse/${id}/inventories`);
-        return res.data;
+    const res = await axios.get(`${BASE_URL}/warehouse/${id}/inventories?sort_by=${sort_by}&order_by=${order_by}`);
+    return res.data;
 }
 
 // Delete warehouse 

@@ -32,7 +32,7 @@ function WarehouseInventoryList(props) {
       setWarehouseInventoryList(data);
     }
     loadData();
-  })
+  }, []);
 
   // Click the sort icon
   async function clickSortIcon(val) {
