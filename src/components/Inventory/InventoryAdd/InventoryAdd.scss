@@ -169,6 +169,14 @@
 
    &__radio-list{
     width: 50%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: $secondary-color-slate;
+
+    &.checked {
+      color: $primary-color-instock-black;
+    }
    }
    &__radio-item{
     margin-right: 0.5rem;
@@ -227,5 +235,9 @@
     @include tablet{
         width: 6.12rem;
     }
+   }
+
+   &__error{
+    color: $secondary-color-slate;
    }
 }
