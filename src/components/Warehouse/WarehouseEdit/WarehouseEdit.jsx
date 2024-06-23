@@ -63,94 +63,100 @@ function WarehouseEdit(props) {
 
   return (
     <div className="warehouse-edit">
+
       <form onSubmit={handleEditWarehouse} className="container">
         <h1 className="heading">
           <img className="heading__image" src={icon} alt="" onClick={backToWarehouse} />
           Edit Warehouse
         </h1>
+        <div className="big-container">
+          <div className="left-container">
+            <h2 className="warehouse-header">Warehouse Details</h2>
+            <div className="warehousename">
+              <p className="warehouse__title">Warehouse Name</p>
+              <input
+                defaultValue={warehouse.warehouse_name}
+                name="warehouse_name"
+                className="city"
+                type="text"
+                placeholder="Washington"
+              />
+            </div>
+            <div className="warehousename">
+              <p className="warehouse__title">Street Address</p>
+              <input
+                defaultValue={warehouse.address}
+                name="address"
+                className="city"
+                type="text"
+                placeholder="33 Pearl Street SW"
+              />
+            </div>
+            <div className="warehousename">
+              <p className="warehouse__title">City</p>
+              <input
+                defaultValue={warehouse.city}
+                name="city"
+                className="city"
+                type="text"
+                placeholder="Washington"
+              />
+            </div>
+            <div className="warehousename">
+              <p className="warehouse__title">Country</p>
+              <input
+                defaultValue={warehouse.country}
+                name="country"
+                className="city"
+                type="text"
+                placeholder="USA"
+              />
+            </div>
+          </div>
+          <div className="right-container">
+            <h2 className="warehouse-header">Contact Details</h2>
 
-        <h2 className="warehouse-header">Warehouse Details</h2>
-        <div className="warehousename">
-          <p className="warehouse__title">Warehouse Name</p>
-          <input
-            defaultValue={warehouse.warehouse_name}
-            name="warehouse_name"
-            className="city"
-            type="text"
-            placeholder="Washington"
-          />
-        </div>
-        <div className="warehousename">
-          <p className="warehouse__title">Street Address</p>
-          <input
-            defaultValue={warehouse.address}
-            name="address"
-            className="city"
-            type="text"
-            placeholder="33 Pearl Street SW"
-          />
-        </div>
-        <div className="warehousename">
-          <p className="warehouse__title">City</p>
-          <input
-            defaultValue={warehouse.city}
-            name="city"
-            className="city"
-            type="text"
-            placeholder="Washington"
-          />
-        </div>
-        <div className="warehousename">
-          <p className="warehouse__title">Country</p>
-          <input
-            defaultValue={warehouse.country}
-            name="country"
-            className="city"
-            type="text"
-            placeholder="USA"
-          />
-        </div>
-        <h2 className="warehouse-header">Contact Details</h2>
-
-        <div className="warehousename">
-          <p className="warehouse__title">Contact Name</p>
-          <input
-            defaultValue={warehouse.contact_name}
-            name="contact_name"
-            className="city"
-            type="text"
-            placeholder="Graeme Lyon"
-          />
-        </div>
-        <div className="warehousename">
-          <p className="warehouse__title">Position</p>
-          <input
-            defaultValue={warehouse.contact_position}
-            name="contact_position"
-            className="city"
-            type="text"
-            placeholder="Warehouse Manager"
-          />
-        </div>
-        <div className="warehousename">
-          <p className="warehouse__title">Phone Number</p>
-          <input
-            defaultValue={warehouse.contact_phone}
-            name="contact_phone"
-            className="city"
-            type="text"
-            placeholder="+1 (647) 504-0911"
-          />
-        </div>
-        <div className="warehousename">
-          <p className="warehouse__title">Email</p>
-          <input
-            defaultValue={warehouse.contact_email}
-            name="contact_email"
-            className="city"
-            type="text"
-            placeholder="glyon@instock.com"
-          />
+            <div className="warehousename">
+              <p className="warehouse__title">Contact Name</p>
+              <input
+                defaultValue={warehouse.contact_name}
+                name="contact_name"
+                className="city"
+                type="text"
+                placeholder="Graeme Lyon"
+              />
+            </div>
+            <div className="warehousename">
+              <p className="warehouse__title">Position</p>
+              <input
+                defaultValue={warehouse.contact_position}
+                name="contact_position"
+                className="city"
+                type="text"
+                placeholder="Warehouse Manager"
+              />
+            </div>
+            <div className="warehousename">
+              <p className="warehouse__title">Phone Number</p>
+              <input
+                defaultValue={warehouse.contact_phone}
+                name="contact_phone"
+                className="city"
+                type="text"
+                placeholder="+1 (647) 504-0911"
+              />
+            </div>
+            <div className="warehousename">
+              <p className="warehouse__title">Email</p>
+              <input
+                defaultValue={warehouse.contact_email}
+                name="contact_email"
+                className="city"
+                type="text"
+                placeholder="glyon@instock.com"
+              />
+            </div>
+          </div>
         </div>
         <div className="button">
           <button className="button__cancel" onClick={backToWarehouse}>Cancel</button>

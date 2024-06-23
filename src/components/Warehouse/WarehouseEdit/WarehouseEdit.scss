@@ -34,27 +34,48 @@
   height: 100px;
   border-radius: 0px 0px 10px 10px;
 
+  @include tablet {
+    justify-content: flex-end;
+  }
+
   &__save {
     background-color: $primary-color-instock-indigo;
     color: $primary-color-white;
     border-radius: 50px;
     border: none;
-    padding: 0.7rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
     padding-left: 3rem;
     padding-right: 3rem;
     align-items: center;
     width: 42%;
+
+    @include tablet {
+      width: fit-content;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      margin-left: 32px;
+      margin-right: 32px;
+    }
   }
+  
   &__cancel {
     background-color: $primary-color-white;
     color: $secondary-color-slate;
     border-radius: 50px;
     border: 1px solid $secondary-color-cloud;
-    padding: 0.7rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
     padding-left: 3rem;
     padding-right: 3rem;
     align-items: center;
     width: 42%;
+
+    @include tablet {
+      width: fit-content;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
   }
 }
 
@@ -66,17 +87,14 @@
   border-top: 1px solid $secondary-color-cloud;
   padding: 10px;
 }
+
 .heading {
   display: flex;
+  justify-content: start;
   align-items: center;
-  justify-content: center;
-  background-color: $primary-color-white;
-  padding-top: 32px;
-  border-radius: 20px;
-  &__image {
-    margin-right: 2%;
-  }
+  padding-left: 32px;
 }
+
 .container {
   position: relative;
   top: -50px;
@@ -85,4 +103,29 @@
   background-color: $primary-color-white;
   width: 90%;
   border-radius: 20px;
+}
+
+.big-container {
+  display: flex;
+  flex-direction: column;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.left-container {
+  width: 100%;
+
+  @include tablet {
+    width: 50%;
+  }
+}
+.right-container {
+  width: 100%;
+
+  @include tablet {
+    width: 50%;
+    border-left: 1px solid $secondary-color-cloud;
+  }
 }
