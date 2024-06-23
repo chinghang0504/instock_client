@@ -147,46 +147,46 @@
 
     &--inventory-item {
       @include tablet {
-        width: 15%;
+        width: 23%;
       }
       @include desktop {
-        width: 15%;
+        width: 23%;
       }
     }
 
     &--category {
       @include tablet {
-        width: 15%;
+        width: 19%;
       }
       @include desktop {
-        width: 15%;
+        width: 19%;
       }
     }
 
     &--status {
       @include tablet {
-        width: 15%;
+        width: 19%;
       }
       @include desktop {
-        width: 15%;
+        width: 19%;
       }
     }
 
     &--qty {
       @include tablet {
-        width: 15%;
+        width: 10%;
       }
       @include desktop {
-        width: 15%;
+        width: 10%;
       }
     }
 
     &--warehouse {
       @include tablet {
-        width: 15%;
+        width: 19%;
       }
       @include desktop {
-        width: 15%;
+        width: 19%;
       }
     }
 
@@ -208,22 +208,183 @@
   }
 }
 
+// Inventory List List
+.inventory-list-list {
+  // Item
+  &__item {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid $secondary-color-cloud;
+    padding: 16px;
 
+    @include tablet {
+      flex-direction: row;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
 
+  // Container
+  &__container {
+    display: flex;
 
+    @include tablet {
+      width: 90%;
+    }
+    @include desktop {
+      width: 90%;
+    }
+  }
 
+  // Left Container and Right Container
+  &__left-container,
+  &__right-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-left: 8px;
+    padding-right: 8px;
 
+    @include tablet {
+      flex-direction: row;
+      width: fit-content;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  // Left Container
+  &__left-container {
+    @include tablet {
+      width: 46.67%;
+    }
+    @include desktop {
+      width: 46.67%;
+    }
+  }
+  // Right Container
+  &__right-container {
+    @include tablet {
+      width: 53.33%;
+    }
+    @include desktop {
+      width: 53.33%;
+    }
+  }
 
+  // Content Container
+  &__content-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
 
+    @include tablet {
+      flex-direction: row;
+      padding-bottom: 0;
+    }
 
+    &--inventory-item {
+      @include tablet {
+        width: 54.76%;
+      }
+      @include desktop {
+        width: 54.76%;
+      }
+    }
 
+    &--category {
+      @include tablet {
+        width: 45.24%;
+      }
+      @include desktop {
+        width: 45.24%;
+      }
+    }
 
+    &--status {
+      @include tablet {
+        width: 39.58%;
+      }
+      @include desktop {
+        width: 39.58%;
+      }
+    }
 
+    &--qty {
+      @include tablet {
+        width: 20.84%;
+      }
+      @include desktop {
+        width: 20.84%;
+      }
+    }
 
+    &--warehouse {
+      @include tablet {
+        width: 39.58%;
+      }
+      @include desktop {
+        width: 39.58%;
+      }
+    }
+  }
 
+  // Title
+  &__title {
+    color: $secondary-color-slate;
+    font-weight: 600;
 
+    @include tablet {
+      display: none;
+    }
+  }
 
+  // Inventory Link
+  &__inventory-link {
+    text-decoration: none;
+  }
 
+  // Inventory Link Arrow
+  &__inventory-link-arrow {
+    vertical-align: bottom;
+  }
+
+  // Inventory Link Description
+  &__inventory-link-description {
+    display: inline;
+    color: $primary-color-instock-indigo;
+    font-weight: 600;
+  }
+
+  // Action container
+  &__action-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding-left: 16px;
+    padding-right: 16px;
+
+    @include tablet {
+      padding-left: 0;
+      padding-right: 0;
+      width: 10%;
+      justify-content: flex-end;
+    }
+    @include desktop {
+      width: 10%;
+    }
+  }
+
+  // Action Icon
+  &__action-icon {
+    cursor: pointer;
+    width: 25px;
+
+    @include tablet {
+      margin-left: 16px;
+    }
+  }
+}
 
 // Animation for arrow
 .inventory-list-list__inventory-link-arrow {
