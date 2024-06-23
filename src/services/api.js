@@ -94,6 +94,17 @@ export async function createInventory (requestData) {
     }
 }
 
+// Edit inventory 
+export async function editInventory(id, requestData) {
+    try{
+        const response = await axios.put (`${BASE_URL}/inventory/${id}`, requestData)
+        return response.data;
+    } catch (error){
+        console.error('Error edit inventory:', error);
+        throw error;
+    }
+}
+
 // Get inventory search 
 export async function getInventorySearch(searchTerm = '') {
     const res = await axios.get(`${BASE_URL}/inventory/search`, {
@@ -101,9 +112,3 @@ export async function getInventorySearch(searchTerm = '') {
     });
     return res.data;
  }
-
- 
- export async function inventoryEdit(id, data) {
-    const res = await axios.put(`${BASE_URL}/inventory/${id}`, data);
-    return res.data;
-}
