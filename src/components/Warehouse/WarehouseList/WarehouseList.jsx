@@ -16,7 +16,6 @@ function WarehouseList() {
   const [currentItemId, setCurrentItemId] = useState(null);
   const navigate = useNavigate();
 
-
   // Click the search icon
   // The search input will be on focus
   function clickSearchIcon() {
@@ -77,7 +76,6 @@ function WarehouseList() {
       console.error('Error loading data:', error);
     }
   };
-  
   
   // Use useEffect to load data when the component mounts
   useEffect(() => {
