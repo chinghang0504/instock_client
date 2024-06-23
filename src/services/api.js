@@ -24,9 +24,16 @@ export async function getWarehouseData(id) {
 }
 
 // Get the warehouse inventory list
-export async function getWarehouseInventoryList(id) {
+export async function getWarehouseInventoryList(id, sort_by, order_by) {
+    if (!sort_by) {
+        const res = await axios.get(`${BASE_URL}/warehouse/${id}/inventories`);
+        return res.data;
+    }
+    
+    // const res = await axios.get(`${BASE_URL}/warehouse/${id}/inventories?sort_by=${sort_by}&order_by=${order_by}`);
+    // return res.data;
     const res = await axios.get(`${BASE_URL}/warehouse/${id}/inventories`);
-    return res.data;
+        return res.data;
 }
 
 // Delete warehouse 

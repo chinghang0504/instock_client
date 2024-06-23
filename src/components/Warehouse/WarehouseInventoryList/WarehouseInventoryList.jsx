@@ -13,6 +13,7 @@ function WarehouseInventoryList(props) {
   const id = props.id;
   const [warehouseInventoryList, setWarehouseInventoryList] = useState([]);
   const navigate = useNavigate();
+  const [sortBy, setSortBy] = useState("");
 
   // Click the edit icon
   function clickEditIcon(id) {
@@ -34,22 +35,25 @@ function WarehouseInventoryList(props) {
   })
 
   // Click the sort icon
-  // Input value
-  // 0: Inventory Item
-  // 1: Category
-  // 2: Status
-  // 3: Qty
-  function clickSortIcon(val) {
-    console.log(`The sort icon is clicked: ${val}`);
+  async function clickSortIcon(val) {
+    if (sortBy === val) {
+      setSortBy("");
+      const warehouseInventoryList = await getWarehouseInventoryList(id, val, 'desc');
+      setWarehouseInventoryList(warehouseInventoryList);
+    } else {
+      setSortBy(val);
+      const warehouseInventoryList = await getWarehouseInventoryList(id, val, 'asc');
+      setWarehouseInventoryList(warehouseInventoryList);
+    }
   }
 
   return (
     <div className='warehouse-inventory-list'>
       <ul className='warehouse-inventory-list-bar'>
-        <li className='warehouse-inventory-list-bar__item warehouse-inventory-list-bar__item--inventory-item'>INVENTORY ITEM <img className='warehouse-inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by inventory item" onClick={() => clickSortIcon(0)} /></li>
-        <li className='warehouse-inventory-list-bar__item warehouse-inventory-list-bar__item--category'>CATEGORY <img className='warehouse-inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by category" onClick={() => clickSortIcon(1)} /></li>
-        <li className='warehouse-inventory-list-bar__item warehouse-inventory-list-bar__item--status'>STATUS <img className='warehouse-inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by status" onClick={() => clickSortIcon(2)} /></li>
-        <li className='warehouse-inventory-list-bar__item warehouse-inventory-list-bar__item--qty'>QUANTITY <img className='warehouse-inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by qty" onClick={() => clickSortIcon(3)} /></li>
+        <li className='warehouse-inventory-list-bar__item warehouse-inventory-list-bar__item--inventory-item'>INVENTORY ITEM <img className='warehouse-inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by inventory item" onClick={() => clickSortIcon("item_name")} /></li>
+        <li className='warehouse-inventory-list-bar__item warehouse-inventory-list-bar__item--category'>CATEGORY <img className='warehouse-inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by category" onClick={() => clickSortIcon("category")} /></li>
+        <li className='warehouse-inventory-list-bar__item warehouse-inventory-list-bar__item--status'>STATUS <img className='warehouse-inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by status" onClick={() => clickSortIcon("status")} /></li>
+        <li className='warehouse-inventory-list-bar__item warehouse-inventory-list-bar__item--qty'>QUANTITY <img className='warehouse-inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by qty" onClick={() => clickSortIcon("quantity")} /></li>
         <li className='warehouse-inventory-list-bar__item warehouse-inventory-list-bar__item--actions'>ACTIONS</li>
       </ul>
       <ul className='warehouse-inventory-list-list'>
