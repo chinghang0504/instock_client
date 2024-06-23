@@ -45,7 +45,7 @@ function InventoryDetails() {
             <div className='inventory-details-content__left-container'>
               <div className='inventory-details-content__content-container'>
                 <label className='inventory-details-content__title'>STATUS:</label>
-                <p className='inventory-details-content__description'>{inventoryData.status === 'In Stock' ? <InStockTag /> : <OutOfStockTag />}</p>
+                <div className='inventory-details-content__description'>{inventoryData.status === 'In Stock' ? <InStockTag /> : <OutOfStockTag />}</div>
               </div>
               <div className='inventory-details-content__content-container'>
                 <label className='inventory-details-content__title'>WAREHOUSE:</label>
