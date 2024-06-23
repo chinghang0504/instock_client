@@ -67,6 +67,10 @@
     padding: 0 1rem;
     margin-bottom: 1.5rem;
     color: $primary-color-instock-black;
+
+    @include tablet{
+        padding: 0;
+    }
    }
 
    &__label{
@@ -84,19 +88,34 @@
     padding: 0 1rem;
     display: flex;
     flex-direction: column;
+    @include tablet{
+        padding: 0;
+    }
    }
    &__text{
     margin: 0.3rem 1rem 1rem 1rem;
     padding: 0.8rem;
     border-radius: 1.5rem;
     border: 1px solid $secondary-color-cloud;
+    font-size: 0.938rem;
+    line-height: 1.625rem;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    resize: none;
+    color: $secondary-color-slate;
+     &::placeholder{
+        color: $secondary-color-slate;
+     }  
+    
    }
-
 
    &__description{
     padding: 0 1rem;
     display: flex;
     flex-direction: column;
+    @include tablet{
+        padding: 0;
+    }
    }
    &__text-box{
     margin: 0.3rem 1rem 1rem 1rem;
@@ -104,12 +123,21 @@
     border-radius: 1.5rem;
     border: 1px solid $secondary-color-cloud;
     height: 7.5rem;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    resize: none;
+    &::placeholder{
+        color: $secondary-color-slate;
+    }   
    }
 
    &__category{
     padding: 0 1rem;
     display: flex;
     flex-direction: column;
+    @include tablet{
+        padding: 0;
+    }
    }
 
    &__availability-container{
