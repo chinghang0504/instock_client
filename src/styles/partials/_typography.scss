@@ -60,7 +60,7 @@ ul {
   list-style: none;
 }
 
-input {
+input, textarea, select {
   &:focus {
     outline: none;
     border: 1px solid $primary-color-instock-indigo;
