@@ -87,7 +87,6 @@
     padding: 0 1rem;
     display: flex;
     flex-direction: column;
-
     @include tablet{
         padding: 0;
     }
@@ -97,14 +96,22 @@
     padding: 0.8rem;
     border-radius: 1.5rem;
     border: 1px solid $secondary-color-cloud;
+    font-size: 0.938rem;
+    line-height: 1.625rem;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    resize: none;
+    color: $secondary-color-slate;
+     &::placeholder{
+        color: $secondary-color-slate;
+     }  
+    
    }
-
 
    &__description{
     padding: 0 1rem;
     display: flex;
     flex-direction: column;
-
     @include tablet{
         padding: 0;
     }
@@ -115,6 +122,13 @@
     border-radius: 1.5rem;
     border: 1px solid $secondary-color-cloud;
     height: 7.5rem;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    resize: none;
+    color: $secondary-color-slate;
+    &::placeholder{
+        color: $secondary-color-slate;
+    }   
    }
 
    &__category{
@@ -211,5 +225,13 @@
     background-color: $primary-color-instock-indigo;
     color: $primary-color-white;
     border: none;
+    @include tablet{
+        width: 6.12rem;
+    }
+   }
+
+   &__error{
+    color: $secondary-color-slate;
+    
    }
 }
