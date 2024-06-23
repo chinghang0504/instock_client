@@ -1,4 +1,5 @@
 @use "../partials/mixins" as *;
+@use "../partials/variables" as *;
 
 h1 {
   font-size: 1.75rem;
@@ -57,4 +58,11 @@ p {
 
 ul {
   list-style: none;
+}
+
+input {
+  &:focus {
+    outline: none;
+    border: 1px solid $primary-color-instock-indigo;
+  }
 }

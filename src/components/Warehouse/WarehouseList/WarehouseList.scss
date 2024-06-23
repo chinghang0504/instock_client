@@ -78,11 +78,6 @@
     padding-right: 36px;
     width: 100%;
 
-    &:focus {
-      outline: none;
-      border: 1px solid $primary-color-instock-indigo;
-    }
-
     @include tablet {
       margin-top: 0px;
     }
