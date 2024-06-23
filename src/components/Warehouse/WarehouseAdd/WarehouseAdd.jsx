@@ -23,7 +23,6 @@ function WarehouseAdd() {
     };
 
     // 2. console.log(newWarehouse) to make sure it is working -- DONE
-
     async function addWarehouse() {
       try {
         const response = await axios.post(
@@ -42,12 +41,16 @@ function WarehouseAdd() {
     // 4. navigate to the warehouses list -- DONE
   }
 
+  function backToWarehouse() {
+    navigate('/warehouse');
+  }
+
   return (
     <div>
       <div className="warehouse-add">
         <form onSubmit={handleSubmit} className="warehouse-container">
           <h1 className="heading">
-            <img className="heading__image" src={icon} alt="" />
+            <img className="heading__image" src={icon} alt="Back to warehouse list" onClick={backToWarehouse} />
             Add New Warehouse
           </h1>
           <div className="warehouse-add__inputs">
@@ -132,7 +135,7 @@ function WarehouseAdd() {
             </div>
           </div>
           <div className="warehouse-add__button">
-            <button className="warehouse-add__cancel">Cancel</button>
+            <button className="warehouse-add__cancel" onClick={backToWarehouse}>Cancel</button>
             <button className="warehouse-add__add">+ Add Warehouse</button>
           </div>
         </form>
