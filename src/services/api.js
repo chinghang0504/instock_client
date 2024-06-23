@@ -18,6 +18,11 @@ export async function getWarehouseData(id) {
     return res.data;
 }
 
+// Get the warehouse inventory list
+export async function getWarehouseInventoryList(id) {
+    const res = await axios.get(`${BASE_URL}/warehouse/${id}/inventories`);
+    return res.data;
+}
 
 // Delete warehouse 
 export async function deleteWarehouse (currentItemId) {
