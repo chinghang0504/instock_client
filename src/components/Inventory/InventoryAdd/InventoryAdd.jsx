@@ -35,7 +35,6 @@ function InventoryAdd() {
         ).map((category) => {
           return categoryList.find((c) => c.category === category);
         });
-        console.log(uniqueCategories);
         setCategories(uniqueCategories);
 
       } catch (error) {
@@ -71,15 +70,6 @@ function InventoryAdd() {
       const quantity =
         formData.status === "In Stock" ? parseInt(formData.quantity) : 0;
 
-        console.log("Submitting form data:", {
-          warehouse_id: formData.warehouseId,
-          item_name: formData.itemName,
-          description: formData.description,
-          category: formData.category,
-          status: formData.status,
-          quantity: quantity,
-        });
-
     const response =  await createInventory({
         warehouse_id: formData.warehouseId,
         item_name: formData.itemName,
@@ -89,7 +79,6 @@ function InventoryAdd() {
         quantity: quantity,
       });
 
-      console.log("Response from server:", response);
       navigate("/inventory");
     } catch (error) {
       console.error("Failed to create inventory item:", error);
