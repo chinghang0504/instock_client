@@ -1,14 +1,156 @@
-.inventory-list__item {
-    padding-bottom: 16px;
-    border: 1px solid black;
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+// Inventory List
+.inventory-list {
+  background-color: $background-color-light-grey;
+
+  // Container
+  &__container {
+    background-color: $primary-color-white;
+    padding-top: 24px;
+    margin-left: 16px;
+    margin-right: 16px;
+    border-radius: 4px;
+    box-shadow: 0 5px 16px $secondary-color-cloud;
+    position: relative;
+    top: -50px;
+
+    @include tablet {
+      top: -100px;
+      margin-left: 32px;
+      margin-right: 32px;
+    }
+
+    @include desktop {
+      margin-left: 64px;
+      margin-right: 64px;
+    }
+  }
 }
+
+// Inventory List Header
+.inventory-list-header {
+  display: flex;
+  flex-direction: column;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid $secondary-color-cloud;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: none;
+  }
+
+  // Title
+  &__title {
+  }
+
+  // Action Container
+  &__action-container {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+
+  // Search Container
+  &__search-container {
+    position: relative;
+
+    @include desktop {
+      width: 450px;
+    }
+  }
+
+  // Search Input
+  &__search-input {
+    margin-top: 16px;
+    border-radius: 32px;
+    border: 1px solid $secondary-color-cloud;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 16px;
+    padding-right: 36px;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+      border: 1px solid $primary-color-instock-indigo;
+    }
+
+    @include tablet {
+      margin-top: 0px;
+    }
+  }
+
+  // Search Icon
+  &__search-icon {
+    position: absolute;
+    right: 10px;
+    top: 22px;
+    cursor: pointer;
+
+    @include tablet {
+      top: 6px;
+    }
+  }
+
+  // Add Link
+  &__add-link {
+  }
+
+  // Add button
+  &__add-button {
+    width: 100%;
+    background-color: $primary-color-instock-indigo;
+    color: $primary-color-white;
+    border-radius: 32px;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 16px;
+    cursor: pointer;
+    font-weight: 600;
+
+    @include tablet {
+      margin-top: 0px;
+      width: fit-content;
+      padding-left: 16px;
+      padding-right: 16px;
+      margin-left: 32px;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Animation for arrow
 .inventory-list-list__inventory-link-arrow {
-    transition: transform 0.3s ease;
-  }
-  .inventory-list-list__inventory-link:hover
-    .inventory-list-list__inventory-link-arrow {
-    transform: translateX(4px);
-  }
+  transition: transform 0.3s ease;
+}
+
+.inventory-list-list__inventory-link:hover .inventory-list-list__inventory-link-arrow {
+  transform: translateX(4px);
+}

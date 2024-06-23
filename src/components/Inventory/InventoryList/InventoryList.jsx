@@ -40,7 +40,6 @@ function clickEditIcon(id) {
         await deleteInventory(currentItemId);
         await loadData();
         toggleModal();
-      } else {
       }
     } catch (error) {
       console.error('Failed to delete inventory:', error);
@@ -74,14 +73,14 @@ function clickEditIcon(id) {
   return (
     <div className='inventory-list'>
       <div className='inventory-list__container'>
-        <div className='inventory-list__header'>
-          <h1 className='inventory-list__title'>inventory</h1>
-          <div className='inventory-list__action-container'>
-            <div className='inventory-list__search-container'>
-              <input className='inventory-list__search-input' ref={searchInputRef} type="text" placeholder='Search...' onChange={handleSearchInputChange} />
-              <img className='inventory-list__search-icon' src={searchIcon} alt="search icon" onClick={clickSearchIcon} />
+        <div className='inventory-list-header'>
+          <h1 className='inventory-list-header__title'>inventory</h1>
+          <div className='inventory-list-header__action-container'>
+            <div className='inventory-list-header__search-container'>
+              <input className='inventory-list-header__search-input' ref={searchInputRef} type="text" placeholder='Search...' onChange={handleSearchInputChange} />
+              <img className='inventory-list-header__search-icon' src={searchIcon} alt="search icon" onClick={clickSearchIcon} />
             </div>
-            <Link className='inventory-list__add-link' to='/inventory/add'><button className='inventory-list__add-button'>+ Add New Item</button></Link>
+            <Link className='inventory-list-header__add-link' to='/inventory/add'><button className='inventory-list-header__add-button'>+ Add New Item</button></Link>
           </div>
         </div>
         <div className='inventory-list__list'>
