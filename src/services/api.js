@@ -51,8 +51,13 @@ export async function getWarehouseSearch(searchTerm = '') {
 //--------------INVENTORY
 
  // Get the inventory list
-export async function getInventoryList() {
-    const res = await axios.get(`${BASE_URL}/inventory`);
+export async function getInventoryList(sort_by, order_by) {
+    if (!sort_by) {
+        const res = await axios.get(`${BASE_URL}/inventory`);
+        return res.data;
+    }
+    
+    const res = await axios.get(`${BASE_URL}/inventory?sort_by=${sort_by}&order_by=${order_by}`);
     return res.data;
 }
 
