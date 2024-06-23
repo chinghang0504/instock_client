@@ -1,9 +1,9 @@
 import "./InventoryEdit.scss";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import ArrowBack from "../../../assets/icons/arrow_back-24px.svg";
 import {
   getInventoryEdit,
-  createInventory,
+  editInventory,
   getWarehouseList,
   getInventoryList,
 } from "../../../services/api.js";
@@ -85,8 +85,7 @@ function InventoryEdit() {
       };
 
 
-      const response = await createInventory(updatedItemData);
-
+      await editInventory(id, updatedItemData);
       navigate("/inventory");
     } catch (error) {
       console.error("Failed to update inventory item:", error);
