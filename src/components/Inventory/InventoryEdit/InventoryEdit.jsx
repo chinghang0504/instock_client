@@ -1,12 +1,7 @@
 import "./InventoryEdit.scss";
 import React, { useState, useEffect } from "react";
 import ArrowBack from "../../../assets/icons/arrow_back-24px.svg";
-import {
-  getInventoryEdit,
-  createInventory,
-  getWarehouseList,
-  getInventoryList,
-} from "../../../services/api.js";
+import {getInventoryEdit, inventoryEdit, getWarehouseList, getInventoryList} from "../../../services/api.js";
 import { useNavigate, useParams } from "react-router-dom";
 
 function InventoryEdit() {
@@ -90,7 +85,12 @@ function InventoryEdit() {
         quantity: quantity,
       };
 
-      const response = await createInventory(updatedItemData);
+
+      console.log("Submitting form data:", updatedItemData);
+
+      const response = await inventoryEdit(id, updatedItemData);
+      console.log("Response from server:", response);
+
 
       navigate("/inventory");
     } catch (error) {

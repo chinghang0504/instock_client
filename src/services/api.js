@@ -101,3 +101,9 @@ export async function getInventorySearch(searchTerm = '') {
     });
     return res.data;
  }
+
+ 
+ export async function inventoryEdit(id, data) {
+    const res = await axios.put(`${BASE_URL}/inventory/${id}`, data);
+    return res.data;
+}
