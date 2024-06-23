@@ -17,6 +17,7 @@ function InventoryList() {
   const [currentItemId, setCurrentItemId] = useState(null);
   const searchInputRef = useRef();
   const navigate = useNavigate();
+  const [sortBy, setSortBy] = useState("");
 
   // Click the search icon
   // The search input will be on focus
@@ -35,14 +36,16 @@ function clickEditIcon(id) {
   }
 
   // Click the sort icon
-  // Input value
-  // 0: Inventory Item
-  // 1: Category
-  // 2: Status
-  // 3: Qty
-  // 4: Warehouse
-  function clickSortIcon(val) {
-    console.log(`The sort icon is clicked: ${val}`);
+  async function clickSortIcon(val) {
+    if (sortBy === val) {
+      setSortBy("");
+      const inventoryList = await getInventoryList(val, 'desc');
+      setInventoryList(inventoryList);
+    } else {
+      setSortBy(val);
+      const inventoryList = await getInventoryList(val, 'asc');
+      setInventoryList(inventoryList);
+    }
   }
 
   function toggleModal() {
@@ -99,11 +102,11 @@ function clickEditIcon(id) {
           </div>
         </div>
         <ul className='inventory-list-bar'>
-          <li className='inventory-list-bar__item inventory-list-bar__item--inventory-item'>INVENTORY ITEM <img className='inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by inventory item" onClick={() => clickSortIcon(0)} /></li>
-          <li className='inventory-list-bar__item inventory-list-bar__item--category'>CATEGORY <img className='inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by category" onClick={() => clickSortIcon(1)} /></li>
-          <li className='inventory-list-bar__item inventory-list-bar__item--status'>STATUS <img className='inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by status" onClick={() => clickSortIcon(2)} /></li>
-          <li className='inventory-list-bar__item inventory-list-bar__item--qty'>QTY <img className='inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by qty" onClick={() => clickSortIcon(3)} /></li>
-          <li className='inventory-list-bar__item inventory-list-bar__item--warehouse'>WAREHOUSE <img className='inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by warehouse" onClick={() => clickSortIcon(4)} /></li>
+          <li className='inventory-list-bar__item inventory-list-bar__item--inventory-item'>INVENTORY ITEM <img className='inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by inventory item" onClick={() => clickSortIcon("item_name")} /></li>
+          <li className='inventory-list-bar__item inventory-list-bar__item--category'>CATEGORY <img className='inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by category" onClick={() => clickSortIcon("category")} /></li>
+          <li className='inventory-list-bar__item inventory-list-bar__item--status'>STATUS <img className='inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by status" onClick={() => clickSortIcon("status")} /></li>
+          <li className='inventory-list-bar__item inventory-list-bar__item--qty'>QTY <img className='inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by qty" onClick={() => clickSortIcon("quantity")} /></li>
+          <li className='inventory-list-bar__item inventory-list-bar__item--warehouse'>WAREHOUSE <img className='inventory-list-bar__sort-icon' src={sortIcon} alt="sorted by warehouse" onClick={() => clickSortIcon("warehouse_name")} /></li>
           <li className='inventory-list-bar__item inventory-list-bar__item--actions'>ACTIONS</li>
         </ul>
         <ul className='inventory-list-list'>
