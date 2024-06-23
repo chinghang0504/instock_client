@@ -64,9 +64,10 @@ export async function deleteInventory(currentItemId) {
 }
 
 //Create inventory 
-export async function createInventory () {
+export async function createInventory (requestData) {
     try{
-        const response = await axios.post (`${BASE_URL}/inventory`)
+        const response = await axios.post (`${BASE_URL}/inventory`, requestData)
+        return response.data;
     } catch (error){
         console.error('Error creating inventory:', error);
         throw error;
