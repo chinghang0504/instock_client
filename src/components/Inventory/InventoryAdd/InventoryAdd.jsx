@@ -4,7 +4,11 @@
 import { useState, useEffect } from "react";
 import "./InventoryAdd.scss";
 import ArrowBack from "../../../assets/icons/arrow_back-24px.svg";
-import { createInventory, getWarehouseList, getInventoryList } from "../../../services/api.js";
+import {
+  createInventory,
+  getWarehouseList,
+  getInventoryList,
+} from "../../../services/api.js";
 import { useNavigate } from "react-router-dom";
 
 function InventoryAdd() {
@@ -22,7 +26,6 @@ function InventoryAdd() {
   const [categories, setCategories] = useState([]);
   const [submitError, setSubmitError] = useState("");
 
-
   useEffect(() => {
     const fetchWarehouses = async () => {
       try {
@@ -36,7 +39,6 @@ function InventoryAdd() {
           return categoryList.find((c) => c.category === category);
         });
         setCategories(uniqueCategories);
-
       } catch (error) {
         console.error("Failed to fetch warehouses:", error);
       }
@@ -70,7 +72,7 @@ function InventoryAdd() {
       const quantity =
         formData.status === "In Stock" ? parseInt(formData.quantity) : 0;
 
-    const response =  await createInventory({
+      const response = await createInventory({
         warehouse_id: formData.warehouseId,
         item_name: formData.itemName,
         description: formData.description,
@@ -122,7 +124,7 @@ function InventoryAdd() {
                   onChange={handleChange}
                   required
                 />
-                {errors.itemName && <p className="error">{errors.itemName}</p>}
+                {errors.itemName && <p className="inventory-add__error">{errors.itemName}</p>}
               </div>
 
               <div className="inventory-add__description">
@@ -141,7 +143,7 @@ function InventoryAdd() {
                   required
                 ></textarea>
                 {errors.description && (
-                  <p className="error">{errors.description}</p>
+                  <p className="inventory-add__error">{errors.description}</p>
                 )}
               </div>
 
@@ -165,7 +167,7 @@ function InventoryAdd() {
                   ))}
                 </select>
 
-                {errors.category && <p className="error">{errors.category}</p>}
+                {errors.category && <p className="inventory-add__error">{errors.category}</p>}
               </div>
             </div>
 
@@ -179,20 +181,30 @@ function InventoryAdd() {
                   Status
                 </label>
                 <div className="inventory-add__radio-section">
-                  <label className="inventory-add__radio-list">
+                  <div
+                    className={`inventory-add__radio-list ${
+                      formData.status === "In Stock" ? "checked" : ""
+                    }`}
+                  >
                     <input
                       className="inventory-add__radio-item"
                       type="radio"
                       name="status"
+                      id="status-in-stock"
                       value="In Stock"
                       checked={formData.status === "In Stock"}
                       onChange={handleChange}
                     />
                     In Stock
-                  </label>
-                  <label className="inventory-add__radio-list">
+                  </div>
+                  <div
+                    className={`inventory-add__radio-list ${
+                      formData.status === "Out of Stock" ? "checked" : ""
+                    }`}
+                  >
                     <input
                       className="inventory-add__radio-item"
+                      id="status-out-of-stock"
                       type="radio"
                       name="status"
                       value="Out of Stock"
@@ -200,7 +212,7 @@ function InventoryAdd() {
                       onChange={handleChange}
                     />
                     Out of Stock
-                  </label>
+                  </div>
                 </div>
               </div>
 
@@ -220,7 +232,7 @@ function InventoryAdd() {
                     required={formData.status === "In Stock"}
                   />
                   {errors.quantity && (
-                    <p className="error">{errors.quantity}</p>
+                    <p className="inventory-add__error">{errors.quantity}</p>
                   )}
                 </div>
               )}
@@ -245,7 +257,7 @@ function InventoryAdd() {
                   ))}
                 </select>
                 {errors.warehouseId && (
-                  <p className="error">{errors.warehouseId}</p>
+                  <p className="inventory-add__error">{errors.warehouseId}</p>
                 )}
               </div>
             </section>
