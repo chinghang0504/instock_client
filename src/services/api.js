@@ -7,8 +7,13 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 // ------------WAREHOUSE
 
 // Get the warehouse list
-export async function getWarehouseList() {
-    const res = await axios.get(`${BASE_URL}/warehouse`);
+export async function getWarehouseList(sort_by, order_by) {
+    if (!sort_by) {
+        const res = await axios.get(`${BASE_URL}/warehouse`);
+        return res.data;
+    }
+    
+    const res = await axios.get(`${BASE_URL}/warehouse?sort_by=${sort_by}&order_by=${order_by}`);
     return res.data;
 }
 
