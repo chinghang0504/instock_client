@@ -347,6 +347,13 @@
   // Inventory Link
   &__inventory-link {
     text-decoration: none;
+
+    @include tablet {
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: $primary-color-instock-indigo;
+      }
+    }
   }
 
   // Inventory Link Arrow
