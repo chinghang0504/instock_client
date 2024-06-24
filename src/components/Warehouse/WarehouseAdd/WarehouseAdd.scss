@@ -40,6 +40,7 @@
   }
   &__heading-image{
     margin-right: 1rem;
+    cursor: pointer;
   }
 
   &__inputs {
@@ -52,6 +53,8 @@
   }
 
   &__warehouse-details {
+    padding-bottom: 1rem;
+
     @include tablet {
       width: 50%;
       padding: 0 2rem;
@@ -60,9 +63,13 @@
   }
 
   &__contact-details {
+    border-top: 0.0625rem solid $secondary-color-cloud;
+    padding-top: 1rem;
+
     @include tablet {
       width: 50%;
       padding: 0 2rem;
+      border-top: none;
     }
   }
 
