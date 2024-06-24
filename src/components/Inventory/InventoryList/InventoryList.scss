@@ -8,23 +8,23 @@
   // Container
   &__container {
     background-color: $primary-color-white;
-    padding-top: 24px;
-    margin-left: 16px;
-    margin-right: 16px;
-    border-radius: 4px;
-    box-shadow: 0 5px 16px $secondary-color-cloud;
+    padding-top: 1.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.3125rem 1rem $secondary-color-cloud;
     position: relative;
-    top: -50px;
+    top: -3.125rem;
 
     @include tablet {
-      top: -100px;
-      margin-left: 32px;
-      margin-right: 32px;
+      top: -6.25rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
     }
 
     @include desktop {
-      margin-left: 64px;
-      margin-right: 64px;
+      margin-left: 4rem;
+      margin-right: 4rem;
     }
   }
 }
@@ -33,10 +33,10 @@
 .inventory-list-header {
   display: flex;
   flex-direction: column;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid $secondary-color-cloud;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 0.0625rem solid $secondary-color-cloud;
 
   @include tablet {
     flex-direction: row;
@@ -63,40 +63,40 @@
     position: relative;
 
     @include desktop {
-      width: 450px;
+      width: 28.125rem;
     }
   }
 
   // Search Input
   &__search-input {
-    margin-top: 16px;
-    border-radius: 32px;
-    border: 1px solid $secondary-color-cloud;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 16px;
-    padding-right: 36px;
+    margin-top: 1rem;
+    border-radius: 2rem;
+    border: 0.0625rem solid $secondary-color-cloud;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    padding-left: 1rem;
+    padding-right: 2.25rem;
     width: 100%;
 
     &:focus {
       outline: none;
-      border: 1px solid $primary-color-instock-indigo;
+      border: 0.0625rem solid $primary-color-instock-indigo;
     }
 
     @include tablet {
-      margin-top: 0px;
+      margin-top: 0;
     }
   }
 
   // Search Icon
   &__search-icon {
     position: absolute;
-    right: 10px;
-    top: 22px;
+    right: 0.625rem;
+    top: 1.375rem;
     cursor: pointer;
 
     @include tablet {
-      top: 6px;
+      top: 0.375rem;
     }
   }
 
@@ -109,20 +109,20 @@
     width: 100%;
     background-color: $primary-color-instock-indigo;
     color: $primary-color-white;
-    border-radius: 32px;
+    border-radius: 2rem;
     border: none;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 16px;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    margin-top: 1rem;
     cursor: pointer;
     font-weight: 600;
 
     @include tablet {
-      margin-top: 0px;
+      margin-top: 0;
       width: fit-content;
-      padding-left: 16px;
-      padding-right: 16px;
-      margin-left: 32px;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      margin-left: 2rem;
     }
   }
 }
@@ -132,10 +132,10 @@
   display: none;
   justify-content: space-between;
   background-color: $background-color-light-grey;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 
   @include tablet {
     display: flex;
@@ -214,13 +214,13 @@
   &__item {
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid $secondary-color-cloud;
-    padding: 16px;
+    border-bottom: 0.0625rem solid $secondary-color-cloud;
+    padding: 1rem;
 
     @include tablet {
       flex-direction: row;
-      padding-left: 24px;
-      padding-right: 24px;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
     }
   }
 
@@ -242,8 +242,8 @@
     display: flex;
     flex-direction: column;
     width: 50%;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 
     @include tablet {
       flex-direction: row;
@@ -275,7 +275,7 @@
   &__content-container {
     display: flex;
     flex-direction: column;
-    padding-bottom: 16px;
+    padding-bottom: 1rem;
 
     @include tablet {
       flex-direction: row;
@@ -361,8 +361,8 @@
     flex-direction: row;
     justify-content: space-between;
 
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 1rem;
+    padding-right: 1rem;
 
     @include tablet {
       padding-left: 0;
@@ -378,10 +378,10 @@
   // Action Icon
   &__action-icon {
     cursor: pointer;
-    width: 25px;
+    width: 1.5625rem;
 
     @include tablet {
-      margin-left: 16px;
+      margin-left: 1rem;
     }
   }
 }
@@ -392,5 +392,5 @@
 }
 
 .inventory-list-list__inventory-link:hover .inventory-list-list__inventory-link-arrow {
-  transform: translateX(4px);
+  transform: translateX(0.25rem);
 }
