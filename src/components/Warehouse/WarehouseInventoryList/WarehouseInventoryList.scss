@@ -1,0 +1,266 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+// Warehouse Inventory List Bar
+.warehouse-inventory-list-bar {
+  display: none;
+  justify-content: space-between;
+  background-color: $background-color-light-grey;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  @include tablet {
+    display: flex;
+  }
+
+  // Item
+  &__item {
+    color: $secondary-color-slate;
+
+    &--inventory-item {
+      @include tablet {
+        width: 23.25%;
+      }
+      @include desktop {
+        width: 23.25%;
+      }
+    }
+
+    &--category {
+      @include tablet {
+        width: 19%;
+      }
+      @include desktop {
+        width: 19%;
+      }
+    }
+
+    &--status {
+      @include tablet {
+        width: 28%;
+      }
+      @include desktop {
+        width: 28%;
+      }
+    }
+
+    &--qty {
+      @include tablet {
+        width: 23.25%;
+      }
+      @include desktop {
+        width: 23.25%;
+      }
+    }
+
+    &--actions {
+      text-align: right;
+      @include tablet {
+        width: 6.5%;
+      }
+      @include desktop {
+        width: 6.5%;
+      }
+    }
+  }
+
+  // Sort Icon
+  &__sort-icon {
+    vertical-align: bottom;
+    cursor: pointer;
+  }
+}
+
+// Warehouse Inventory List List
+.warehouse-inventory-list-list {
+  // Item
+  &__item {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 0.0625rem solid $secondary-color-cloud;
+    padding: 1rem;
+
+    @include tablet {
+      flex-direction: row;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    @include desktop {
+      &:hover {
+        background-color: rgba($color: $primary-color-instock-indigo, $alpha: 0.2);
+      }
+    }
+  }
+
+  // Container
+  &__container {
+    display: flex;
+
+    @include tablet {
+      width: 93.5%;
+    }
+    @include desktop {
+      width: 93.5%;
+    }
+  }
+
+  // Left Container and Right Container
+  &__left-container,
+  &__right-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    @include tablet {
+      flex-direction: row;
+      width: fit-content;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  // Left Container
+  &__left-container {
+    @include tablet {
+      width: 45%;
+    }
+    @include desktop {
+      width: 45%;
+    }
+  }
+  // Right Container
+  &__right-container {
+    @include tablet {
+      width: 55%;
+    }
+    @include desktop {
+      width: 55%;
+    }
+  }
+
+  // Content Container
+  &__content-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+
+    @include tablet {
+      flex-direction: row;
+      padding-bottom: 0;
+    }
+
+    &--inventory-item {
+      @include tablet {
+        width: 55.03%;
+      }
+      @include desktop {
+        width: 55.03%;
+      }
+    }
+
+    &--category {
+      @include tablet {
+        width: 44.97%;
+      }
+      @include desktop {
+        width: 44.97%;
+      }
+    }
+
+    &--status {
+      @include tablet {
+        width: 54.63%;
+      }
+      @include desktop {
+        width: 54.63%;
+      }
+    }
+
+    &--qty {
+      @include tablet {
+        width: 45.37%;
+      }
+      @include desktop {
+        width: 45.37%;
+      }
+    }
+  }
+
+  // Title
+  &__title {
+    color: $secondary-color-slate;
+    font-weight: 600;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  // Inventory Link
+  &__inventory-link {
+    text-decoration: none;
+
+    @include tablet {
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: $primary-color-instock-indigo;
+      }
+    }
+  }
+
+  // Inventory Link Arrow
+  &__inventory-link-arrow {
+    vertical-align: bottom;
+  }
+
+  // Inventory Link Description
+  &__inventory-link-description {
+    display: inline;
+    color: $primary-color-instock-indigo;
+    font-weight: 600;
+  }
+
+  // Action container
+  &__action-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    @include tablet {
+      padding-left: 0;
+      padding-right: 0;
+      width: 6.5%;
+      justify-content: flex-end;
+    }
+    @include desktop {
+      width: 6.5%;
+    }
+  }
+
+  // Action Icon
+  &__action-icon {
+    cursor: pointer;
+    width: 1.5625rem;
+
+    @include tablet {
+      margin-left: 1rem;
+    }
+  }
+}
+
+// Animation for arrow
+.warehouse-inventory-list-list__inventory-link-arrow {
+  transition: transform 0.3s ease;
+}
+
+.warehouse-inventory-list-list__inventory-link:hover
+  .warehouse-inventory-list-list__inventory-link-arrow {
+  transform: translateX(0.25rem);
+}

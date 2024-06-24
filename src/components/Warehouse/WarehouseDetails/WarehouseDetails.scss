@@ -1,0 +1,162 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+// Warehouse Details
+.warehouse-details {
+  background-color: $background-color-light-grey;
+
+  // Container
+  &__container {
+    background-color: $primary-color-white;
+    padding-top: 1.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.3125rem 1rem $secondary-color-cloud;
+    position: relative;
+    top: -3.125rem;
+
+    @include tablet {
+      top: -6.25rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+
+    @include desktop {
+      margin-left: 4rem;
+      margin-right: 4rem;
+    }
+  }
+}
+
+// Warehouse Details Header
+.warehouse-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.0625rem solid $secondary-color-cloud;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1.5rem;
+
+  // Container
+  &__container {
+    display: flex;
+  }
+
+  // Arrow Back Link
+  &__arrow-back-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // Arrow Back Icon
+  &__arrow-back-icon {
+    vertical-align: middle;
+  }
+
+  // Title
+  &__title {
+    padding-left: 1rem;
+  }
+
+  // Edit Link
+  &__edit-link {
+    background-color: $primary-color-instock-indigo;
+    border-radius: 50%;
+    width: 2.1875rem;
+    height: 2.1875rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+    @include tablet {
+      width: 5rem;
+      border-radius: 2rem;
+    }
+  }
+
+  // Edit Icon
+  &__edit-icon {
+    filter: brightness(0) invert(1);
+    width: 1.125rem;
+  }
+
+  // Edit Text
+  &__edit-text {
+    display: none;
+    color: $primary-color-white;
+
+    @include tablet {
+      display: block;
+    }
+  }
+}
+
+// Warehouse Details Content
+.warehouse-details-content {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 0.0625rem solid $secondary-color-cloud;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+
+  @include tablet {
+    flex-direction: row;
+  }
+
+  // Uppder Container
+  &__upper-container {
+    padding-bottom: 1rem;
+
+    @include tablet {
+      width: 40%;
+      padding-bottom: 0;
+    }
+  }
+
+  // Lower Container
+  &__lower-container {
+    display: flex;
+    padding-top: 1rem;
+
+    @include tablet {
+      width: 60%;
+      padding-top: 0;
+      border-left: 0.0625rem solid $secondary-color-cloud;
+      padding-left: 2rem;
+    }
+  }
+
+  // Left Container
+  &__left-container {
+    width: 50%;
+  }
+
+  // Right Container
+  &__right-container {
+    width: 50%;
+  }
+
+  // Address Breaker
+  &__address-breaker {
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
+  }
+
+  // Title
+  &__title {
+    color: $secondary-color-slate;
+    font-weight: 600;
+  }
+
+  // Description
+  &__description {}
+}
