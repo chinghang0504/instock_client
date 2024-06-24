@@ -30,12 +30,13 @@
     border-bottom: 2px solid $secondary-color-cloud;
   
     @include tablet{
-      padding: 2rem 1rem;
+      padding: 2rem 2rem;
     }
   }
 
   &__heading{
     margin-right: 1rem;
+
   }
   &__heading-image{
     margin-right: 1rem;
@@ -53,6 +54,7 @@
   &__warehouse-details {
     @include tablet {
       width: 50%;
+      padding: 0 2rem;
       border-right: 1px solid $secondary-color-cloud;
     }
   }
@@ -60,7 +62,7 @@
   &__contact-details {
     @include tablet {
       width: 50%;
-      // border-left: 1px solid $secondary-color-cloud;
+      padding: 0 2rem;
     }
   }
 
