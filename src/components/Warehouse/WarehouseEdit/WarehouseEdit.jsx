@@ -75,6 +75,7 @@ function WarehouseEdit() {
                   className="city"
                   type="text"
                   placeholder="Washington"
+                  required
                 />
               </div>
               <div className="warehousename">
@@ -85,6 +86,7 @@ function WarehouseEdit() {
                   className="city"
                   type="text"
                   placeholder="33 Pearl Street SW"
+                  required
                 />
               </div>
               <div className="warehousename">
@@ -95,6 +97,7 @@ function WarehouseEdit() {
                   className="city"
                   type="text"
                   placeholder="Washington"
+                  required
                 />
               </div>
               <div className="warehousename">
@@ -105,6 +108,7 @@ function WarehouseEdit() {
                   className="city"
                   type="text"
                   placeholder="USA"
+                  required
                 />
               </div>
             </div>
@@ -120,6 +124,7 @@ function WarehouseEdit() {
                   className="city"
                   type="text"
                   placeholder="Graeme Lyon"
+                  required
                 />
               </div>
               <div className="warehousename">
@@ -130,6 +135,7 @@ function WarehouseEdit() {
                   className="city"
                   type="text"
                   placeholder="Warehouse Manager"
+                  required
                 />
               </div>
               <div className="warehousename">
@@ -138,8 +144,9 @@ function WarehouseEdit() {
                   defaultValue={warehouse.contact_phone}
                   name="contact_phone"
                   className="city"
-                  type="text"
+                  type="tel"
                   placeholder="+1 (647) 504-0911"
+                  required
                 />
               </div>
               <div className="warehousename">
@@ -148,8 +155,9 @@ function WarehouseEdit() {
                   defaultValue={warehouse.contact_email}
                   name="contact_email"
                   className="city"
-                  type="text"
+                  type="email"
                   placeholder="glyon@instock.com"
+                  required
                 />
               </div>
             </div>
