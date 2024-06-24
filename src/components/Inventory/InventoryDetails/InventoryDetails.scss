@@ -8,23 +8,23 @@
   // Container
   &__container {
     background-color: $primary-color-white;
-    padding-top: 24px;
-    margin-left: 16px;
-    margin-right: 16px;
-    border-radius: 4px;
-    box-shadow: 0 5px 16px $secondary-color-cloud;
+    padding-top: 1.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.3125rem 1rem $secondary-color-cloud;
     position: relative;
-    top: -50px;
+    top: -3.125rem;
 
     @include tablet {
-      top: -100px;
-      margin-left: 32px;
-      margin-right: 32px;
+      top: -6.25rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
     }
 
     @include desktop {
-      margin-left: 64px;
-      margin-right: 64px;
+      margin-left: 4rem;
+      margin-right: 4rem;
     }
   }
 }
@@ -34,10 +34,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid $secondary-color-cloud;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-bottom: 24px;
+  border-bottom: 0.0625rem solid $secondary-color-cloud;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1.5rem;
 
   // Container
   &__container {
@@ -58,30 +58,30 @@
 
   // Title
   &__title {
-    padding-left: 16px;
+    padding-left: 1rem;
   }
 
   // Edit Link
   &__edit-link {
     background-color: $primary-color-instock-indigo;
     border-radius: 50%;
-    width: 35px;
-    height: 35px;
+    width: 2.1875rem;
+    height: 2.1875rem;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
 
     @include tablet {
-      width: 80px;
-      border-radius: 32px;
+      width: 5rem;
+      border-radius: 2rem;
     }
   }
 
   // Edit Icon
   &__edit-icon {
     filter: brightness(0) invert(1);
-    width: 18px;
+    width: 1.125rem;
   }
 
   // Edit Text
@@ -99,7 +99,7 @@
 .inventory-details-content {
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: 1rem;
 
   @include tablet {
     flex-direction: row;
@@ -110,7 +110,7 @@
 
     @include tablet {
       width: 50%;
-      padding-right: 32px;
+      padding-right: 2rem;
     }
   }
 
@@ -120,8 +120,8 @@
 
     @include tablet {
       width: 50%;
-      border-left: 1px solid $secondary-color-cloud;
-      padding-left: 32px;
+      border-left: 0.0625rem solid $secondary-color-cloud;
+      padding-left: 2rem;
     }
   }
 
@@ -139,12 +139,12 @@
   &__content-container {
   }
   &__content-container + &__content-container {
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 
     @include tablet {
-      padding-top: 24px;
-      padding-bottom: 24px;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
     }
   }
 
