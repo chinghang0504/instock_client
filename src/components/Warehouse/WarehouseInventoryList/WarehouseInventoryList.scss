@@ -23,16 +23,10 @@
       @include tablet {
         width: 23.25%;
       }
-      @include desktop {
-        width: 23.25%;
-      }
     }
 
     &--category {
       @include tablet {
-        width: 19%;
-      }
-      @include desktop {
         width: 19%;
       }
     }
@@ -41,16 +35,10 @@
       @include tablet {
         width: 28%;
       }
-      @include desktop {
-        width: 28%;
-      }
     }
 
     &--qty {
       @include tablet {
-        width: 23.25%;
-      }
-      @include desktop {
         width: 23.25%;
       }
     }
@@ -58,9 +46,6 @@
     &--actions {
       text-align: right;
       @include tablet {
-        width: 6.5%;
-      }
-      @include desktop {
         width: 6.5%;
       }
     }
@@ -102,9 +87,6 @@
     @include tablet {
       width: 93.5%;
     }
-    @include desktop {
-      width: 93.5%;
-    }
   }
 
   // Left Container and Right Container
@@ -128,16 +110,10 @@
     @include tablet {
       width: 45%;
     }
-    @include desktop {
-      width: 45%;
-    }
   }
   // Right Container
   &__right-container {
     @include tablet {
-      width: 55%;
-    }
-    @include desktop {
       width: 55%;
     }
   }
@@ -157,16 +133,10 @@
       @include tablet {
         width: 55.03%;
       }
-      @include desktop {
-        width: 55.03%;
-      }
     }
 
     &--category {
       @include tablet {
-        width: 44.97%;
-      }
-      @include desktop {
         width: 44.97%;
       }
     }
@@ -175,16 +145,10 @@
       @include tablet {
         width: 54.63%;
       }
-      @include desktop {
-        width: 54.63%;
-      }
     }
 
     &--qty {
       @include tablet {
-        width: 45.37%;
-      }
-      @include desktop {
         width: 45.37%;
       }
     }
@@ -238,9 +202,6 @@
       padding-right: 0;
       width: 6.5%;
       justify-content: flex-end;
-    }
-    @include desktop {
-      width: 6.5%;
     }
   }
 
