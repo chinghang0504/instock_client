@@ -22,10 +22,10 @@ function InventoryEdit() {
     warehouse_id: "",
   });
 
-  const [warehouses, setWarehouses] = useState([]); 
+  const [warehouses, setWarehouses] = useState([]);
   const [errors, setErrors] = useState({});
   const [submitError, setSubmitError] = useState("");
-  const categories = ["Electronics", "Furniture", "Clothing", "Food", "Health"];
+  const categories = ["Accessories", "Apparel", "Clothing", "Electronics", "Food", "Furniture", "Gear", "Health"];
 
   useEffect(() => {
     const fetchInventoryData = async () => {
@@ -41,7 +41,7 @@ function InventoryEdit() {
       try {
         const warehouseList = await getWarehouseList();
         setWarehouses(warehouseList);
-      }catch(error){
+      } catch (error) {
         console.error("Failed to fetch Warehouse List");
       }
     };
@@ -73,22 +73,17 @@ function InventoryEdit() {
     if (!validateForm()) return;
 
     try {
-        const quantity = parseInt(itemData.quantity);
+      const quantity = parseInt(itemData.quantity);
 
-        if(itemData.status === "Out of Stock"){
-          itemData.quantity = 0;
-        }else if(itemData.quantity === 0){
-          itemData.status = "Out of Stock";
-        }
-
-      if (quantity === 0) {
+      if (itemData.status === "Out of Stock") {
+        itemData.quantity = 0;
+      } else if (quantity === 0) {
         itemData.status = "Out of Stock";
       }
 
       const updatedItemData = {
         ...itemData,
         id: id,
-        quantity: quantity,
       };
 
 
@@ -196,9 +191,8 @@ function InventoryEdit() {
                 </label>
                 <div className="inventory-edit__radio-section">
                   <label
-                    className={`inventory-edit__radio-list ${
-                      itemData.status === "In Stock" ? "checked" : ""
-                    }`}
+                    className={`inventory-edit__radio-list ${itemData.status === "In Stock" ? "checked" : ""
+                      }`}
                   >
                     <input
                       className="inventory-edit__radio-item"
@@ -211,9 +205,8 @@ function InventoryEdit() {
                     In Stock
                   </label>
                   <label
-                    className={`inventory-edit__radio-list ${
-                      itemData.status === "Out of Stock" ? "checked" : ""
-                    }`}
+                    className={`inventory-edit__radio-list ${itemData.status === "Out of Stock" ? "checked" : ""
+                      }`}
                   >
                     <input
                       className="inventory-edit__radio-item"
