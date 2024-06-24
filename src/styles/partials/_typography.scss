@@ -63,10 +63,16 @@ ul {
 input, textarea, select {
   &:focus {
     outline: none;
-    border: 1px solid $primary-color-instock-indigo;
+    border: 0.0625rem solid $primary-color-instock-indigo;
   }
 }
 
 button {
   cursor: pointer;
+}
+
+input, textarea {
+  &::placeholder {
+    font-family: "Titillium Web", 'Times New Roman', Times, serif;
+  }
 }
