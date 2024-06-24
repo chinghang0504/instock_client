@@ -25,7 +25,7 @@ function WarehouseAdd() {
     // 2. console.log(newWarehouse) to make sure it is working -- DONE
     async function addWarehouse() {
       try {
-        const response = await axios.post(
+        await axios.post(
           "http://localhost:8080/warehouse/",
           newWarehouse
         );

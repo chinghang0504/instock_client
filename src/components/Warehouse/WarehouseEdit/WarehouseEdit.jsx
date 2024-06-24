@@ -4,16 +4,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-function WarehouseEdit(props) {
+function WarehouseEdit() {
   const [warehouse, setWarehouse] = useState({});
-  const [updatedWarehouse, setUpdatedWarehouse] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
-
-  async function editWarehouse() {
-    const response = await axios.put(`http://localhost:8080/warehouse/${id}`);
-  }
-  // navigate();
 
   useEffect(() => {
     async function getWarehouse() {
@@ -47,7 +41,7 @@ function WarehouseEdit(props) {
 
       console.log(editWarehouse);
 
-      const response = await axios.put(
+      await axios.put(
         `http://localhost:8080/warehouse/${id}`,
         editWarehouse
       );
