@@ -69,8 +69,15 @@ function InventoryAdd() {
     if (!validateForm()) return;
 
     try {
-      const quantity =
-        formData.status === "In Stock" ? parseInt(formData.quantity) : 0;
+      let {status, quantity} = formData;
+      quantity = parseInt(quantity);
+
+      if(status === "Out of Stock") {
+        quantity = 0;
+      }else if(quantity === 0) {
+        status = "Out of Stock";
+      }
+
 
       await createInventory({
         warehouse_id: formData.warehouseId,
