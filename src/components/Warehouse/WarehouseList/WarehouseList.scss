@@ -208,6 +208,12 @@
       padding-left: 1.5rem;
       padding-right: 1.5rem;
     }
+
+    @include desktop {
+      &:hover {
+        background-color: rgba($color: $primary-color-instock-indigo, $alpha: 0.2);
+      }
+    }
   }
 
   // Container
@@ -318,6 +324,13 @@
   // Warehouse Link
   &__warehouse-link {
     text-decoration: none;
+
+    @include tablet {
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: $primary-color-instock-indigo;
+      }
+    }
   }
 
   // Warehouse Link Arrow

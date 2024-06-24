@@ -7,11 +7,7 @@
 
     display: flex;
     background-color: $background-color-light-grey;
-    padding: 1rem 1rem 1rem 1rem;
-
-    @include tablet{
-        padding: 3rem 1rem 3rem 1rem;
-    }
+    padding: 0 1rem 3rem 1rem;
     
     &__heading{
         width: 100%;
