@@ -4,14 +4,47 @@
 @use "../../../styles/partials/variables" as *;
 
 .warehouse-add {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: $background-color-light-grey;
+
+  &__container{
+    background-color: $primary-color-white;
+    box-shadow: 3px 3px 3px rgba(212, 203, 203, 0.3), -3px 3px 3px rgba(212, 203, 203, 0.3);
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border-radius: 0.25rem;
+    position: relative;
+    top: -50px;
+    @include tablet{
+      margin: 0 2rem;
+    }
+
+    @include desktop{
+      margin: 0 3.9rem;
+  }
+  }
+
+  &__heading-container{
+    display: flex;
+    align-items: center;
+    padding: 2rem 1rem 1rem 0.5rem;
+    border-bottom: 2px solid $secondary-color-cloud;
+  
+    @include tablet{
+      padding: 2rem 1rem;
+    }
+  }
+
+  &__heading{
+    margin-right: 1rem;
+  }
+  &__heading-image{
+    margin-right: 1rem;
+  }
 
   &__inputs {
     display: flex;
     flex-direction: column;
+    padding: 1.5rem 0;
     @include tablet {
       flex-direction: row;
     }
@@ -20,51 +53,53 @@
   &__warehouse-details {
     @include tablet {
       width: 50%;
+      border-right: 1px solid $secondary-color-cloud;
     }
   }
 
   &__contact-details {
     @include tablet {
       width: 50%;
-      border-left: 1px solid $secondary-color-cloud;
+      // border-left: 1px solid $secondary-color-cloud;
     }
   }
 
   &__button {
     display: flex;
-    justify-content: space-evenly;
+    background-color: $background-color-light-grey;
     align-items: center;
-
-    background-color: rgb(247, 248, 249, 0.3);
-    box-shadow: 0.1px 0px 0.1px 0px;
-    height: 100px;
-    border-radius: 0px 0px 10px 10px;
-    white-space: nowrap;
+    padding: 1rem 1rem;
+      @include tablet{
+        justify-content: right;
+        gap: 1rem ;
+        padding:0 3rem;
+    }
   }
 
   &__add {
-    background-color: $primary-color-instock-indigo;
+    width: 100%;
+    border: 1px solid $secondary-color-cloud;
+    margin: 0rem 1rem;
+    height: 2.25rem;
+    border-radius: 1.25rem;
     color: $primary-color-white;
-    border-radius: 50px;
-    border: none;
-    padding: 0.7rem;
-    padding-left: 1rem;
-    padding-right: 3rem;
-    align-items: center;
-    width: 42%;
-    cursor: pointer;
+    background-color: $primary-color-instock-indigo;
+    @include tablet{
+      margin: 3rem 0;
+      width: 138px;
+    }
   }
   &__cancel {
-    background-color: $primary-color-white;
-    color: $secondary-color-slate;
-    border-radius: 50px;
+    width: 100%;
     border: 1px solid $secondary-color-cloud;
-    padding: 0.7rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    align-items: center;
-    width: 42%;
-    cursor: pointer;
+    margin: 0rem 1rem;
+    height: 2.25rem;
+    border-radius: 1.25rem;
+    background-color: $primary-color-white;
+    @include tablet{
+      margin: 3rem 0;
+      width: 72px;
+    }
   }
 }
 
@@ -87,38 +122,6 @@ input::placeholder {
 }
 
 .warehouse-header {
-  border-top: 1px solid $secondary-color-cloud;
   padding: 10px;
 }
-.heading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: $primary-color-white;
-  padding-top: 32px;
-  border-radius: 20px;
-  padding-bottom: 1.5rem;
 
-  &__image {
-    margin-right: 2%;
-    cursor: pointer;
-  }
-}
-.warehouse-container {
-  position: relative;
-  top: -50px;
-  margin-bottom: 0;
-  padding-bottom: 0;
-  background-color: $primary-color-white;
-  width: 90%;
-
-  box-shadow: 3px 3px 3px rgba(212, 203, 203, 0.3),
-    -3px 3px 3px rgba(212, 203, 203, 0.3);
-  margin-left: 1rem;
-  margin-right: 1rem;
-  border-radius: 0.25rem;
-
-  @include desktop {
-    width: 80%;
-  }
-}

@@ -181,7 +181,7 @@ function InventoryAdd() {
                   Status
                 </label>
                 <div className="inventory-add__radio-section">
-                  <div
+                  <label
                     className={`inventory-add__radio-list ${
                       formData.status === "In Stock" ? "checked" : ""
                     }`}
@@ -196,12 +196,12 @@ function InventoryAdd() {
                       onChange={handleChange}
                     />
                     In Stock
-                  </div>
-                  <div
+                  </label>
+                  <label
                     className={`inventory-add__radio-list ${
                       formData.status === "Out of Stock" ? "checked" : ""
                     }`}
-                  >
+                   >
                     <input
                       className="inventory-add__radio-item"
                       id="status-out-of-stock"
@@ -212,7 +212,7 @@ function InventoryAdd() {
                       onChange={handleChange}
                     />
                     Out of Stock
-                  </div>
+                  </label>
                 </div>
               </div>
 

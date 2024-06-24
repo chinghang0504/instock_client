@@ -42,103 +42,118 @@ function WarehouseAdd() {
   }
 
   function backToWarehouse() {
-    navigate('/warehouse');
+    navigate("/warehouse");
   }
 
   return (
     <div>
       <div className="warehouse-add">
-        <form onSubmit={handleSubmit} className="warehouse-container">
-          <h1 className="heading">
-            <img className="heading__image" src={icon} alt="Back to warehouse list" onClick={backToWarehouse} />
-            Add New Warehouse
-          </h1>
-          <div className="warehouse-add__inputs">
-            <div className="warehouse-add__warehouse-details">
-              <h2 className="warehouse-header">Warehouse Details</h2>
-              <div className="warehousename">
-                <p className="warehouse__title">Warehouse Name</p>
-                <input
-                  name="warehouse_name"
-                  className="city"
-                  type="text"
-                  placeholder="Warehouse Name"
-                />
+        <div className="warehouse-add__container">
+          <div className="warehouse-add__heading-container">
+            
+              <img
+                className="warehouse-add__heading-image"
+                src={icon}
+                alt="Back to warehouse list"
+                onClick={backToWarehouse}
+              />
+              <h1 className="warehouse-add__heading">
+              Add New Warehouse
+            </h1>
+          </div>
+          <form onSubmit={handleSubmit} className="warehouse-container">
+            <div className="warehouse-add__inputs">
+              <div className="warehouse-add__warehouse-details">
+                <h2 className="warehouse-header">Warehouse Details</h2>
+                <div className="warehousename">
+                  <p className="warehouse__title">Warehouse Name</p>
+                  <input
+                    name="warehouse_name"
+                    className="city"
+                    type="text"
+                    placeholder="Warehouse Name"
+                  />
+                </div>
+                <div className="warehousename">
+                  <p className="warehouse__title">Street Address</p>
+                  <input
+                    name="address"
+                    className="city"
+                    type="text"
+                    placeholder="Street Address"
+                  />
+                </div>
+                <div className="warehousename">
+                  <p className="warehouse__title">City</p>
+                  <input
+                    name="city"
+                    className="city"
+                    type="text"
+                    placeholder="City"
+                  />
+                </div>
+                <div className="warehousename">
+                  <p className="warehouse__title">Country</p>
+                  <input
+                    name="country"
+                    className="city"
+                    type="text"
+                    placeholder="Country"
+                  />
+                </div>
               </div>
-              <div className="warehousename">
-                <p className="warehouse__title">Street Address</p>
-                <input
-                  name="address"
-                  className="city"
-                  type="text"
-                  placeholder="Street Address"
-                />
-              </div>
-              <div className="warehousename">
-                <p className="warehouse__title">City</p>
-                <input
-                  name="city"
-                  className="city"
-                  type="text"
-                  placeholder="City"
-                />
-              </div>
-              <div className="warehousename">
-                <p className="warehouse__title">Country</p>
-                <input
-                  name="country"
-                  className="city"
-                  type="text"
-                  placeholder="Country"
-                />
-              </div>
-            </div>
-            <div className="warehouse-add__contact-details">
-              <h2 className="warehouse-header">Contact Details</h2>
+              <div className="warehouse-add__contact-details">
+                <h2 className="warehouse-header">Contact Details</h2>
 
-              <div className="warehousename">
-                <p className="warehouse__title">Contact Name</p>
-                <input
-                  name="contact_name"
-                  className="city"
-                  type="text"
-                  placeholder="Contact Name"
-                />
-              </div>
-              <div className="warehousename">
-                <p className="warehouse__title">Position</p>
-                <input
-                  name="contact_position"
-                  className="city"
-                  type="text"
-                  placeholder="Position"
-                />
-              </div>
-              <div className="warehousename">
-                <p className="warehouse__title">Phone Number</p>
-                <input
-                  name="contact_phone"
-                  className="city"
-                  type="text"
-                  placeholder="Phone Number"
-                />
-              </div>
-              <div className="warehousename">
-                <p className="warehouse__title">Email</p>
-                <input
-                  name="contact_email"
-                  className="city"
-                  type="text"
-                  placeholder="Email"
-                />
+                <div className="warehousename">
+                  <p className="warehouse__title">Contact Name</p>
+                  <input
+                    name="contact_name"
+                    className="city"
+                    type="text"
+                    placeholder="Contact Name"
+                  />
+                </div>
+                <div className="warehousename">
+                  <p className="warehouse__title">Position</p>
+                  <input
+                    name="contact_position"
+                    className="city"
+                    type="text"
+                    placeholder="Position"
+                  />
+                </div>
+                <div className="warehousename">
+                  <p className="warehouse__title">Phone Number</p>
+                  <input
+                    name="contact_phone"
+                    className="city"
+                    type="text"
+                    placeholder="Phone Number"
+                  />
+                </div>
+                <div className="warehousename">
+                  <p className="warehouse__title">Email</p>
+                  <input
+                    name="contact_email"
+                    className="city"
+                    type="text"
+                    placeholder="Email"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div className="warehouse-add__button">
-            <button className="warehouse-add__cancel" onClick={backToWarehouse}>Cancel</button>
-            <button className="warehouse-add__add">+ Add Warehouse</button>
-          </div>
-        </form>
+            <div className="warehouse-add__button">
+              <button
+                className="warehouse-add__cancel"
+                onClick={backToWarehouse}
+              >
+                Cancel
+              </button>
+              <button className="warehouse-add__add">+ Add Warehouse</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -7,13 +7,10 @@
 
     display: flex;
     background-color: $background-color-light-grey;
-    padding: 3rem 1rem 3rem 1rem;
+    padding: 1rem 1rem 1rem 1rem;
 
     @include tablet{
-        padding: 4rem 2rem  4rem 2rem;
-    }
-    @include desktop{
-        padding: 5rem 3.9rem 5rem 3.9rem;
+        padding: 3rem 1rem 3rem 1rem;
     }
     
     &__heading{
