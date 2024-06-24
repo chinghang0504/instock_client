@@ -22,10 +22,10 @@ function InventoryEdit() {
     warehouse_id: "",
   });
 
-  const [warehouses, setWarehouses] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [warehouses, setWarehouses] = useState([]); 
   const [errors, setErrors] = useState({});
   const [submitError, setSubmitError] = useState("");
+  const categories = ["Electronics", "Furniture", "Clothing", "Food", "Health"];
 
   useEffect(() => {
     const fetchInventoryData = async () => {
@@ -41,16 +41,8 @@ function InventoryEdit() {
       try {
         const warehouseList = await getWarehouseList();
         setWarehouses(warehouseList);
-
-        const categoryList = await getInventoryList();
-        const uniqueCategories = Array.from(
-          new Set(categoryList.map((category) => category.category))
-        ).map((category) => {
-          return categoryList.find((c) => c.category === category);
-        });
-        setCategories(uniqueCategories);
-      } catch (error) {
-        console.log("Error fetching warehouses and categories:", error);
+      }catch(error){
+        console.error("Failed to fetch Warehouse List");
       }
     };
 
@@ -181,9 +173,9 @@ function InventoryEdit() {
                   required
                 >
                   <option value="">Please select</option>
-                  {categories.map((category) => (
-                    <option key={category.id} value={category.category}>
-                      {category.category}
+                  {categories.map((category, index) => (
+                    <option key={index} value={category}>
+                      {category}
                     </option>
                   ))}
                 </select>

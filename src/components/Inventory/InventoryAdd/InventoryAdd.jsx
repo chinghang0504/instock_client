@@ -1,5 +1,3 @@
-// // Needs drop down for category & status
-// // Logic for API needs work
 
 import { useState, useEffect } from "react";
 import "./InventoryAdd.scss";
@@ -23,29 +21,21 @@ function InventoryAdd() {
   });
   const [warehouses, setWarehouses] = useState([]);
   const [errors, setErrors] = useState({});
-  const [categories, setCategories] = useState([]);
+  const categories = ["Electronics", "Furniture", "Clothing", "Food", "Health"];
   const [submitError, setSubmitError] = useState("");
 
+
   useEffect(() => {
-    const fetchWarehouses = async () => {
+    const fetchWarehouse = async () => {
       try {
         const warehouseList = await getWarehouseList();
         setWarehouses(warehouseList);
-
-        const categoryList = await getInventoryList();
-        const uniqueCategories = Array.from(
-          new Set(categoryList.map((category) => category.category))
-        ).map((category) => {
-          return categoryList.find((c) => c.category === category);
-        });
-        setCategories(uniqueCategories);
-      } catch (error) {
-        console.error("Failed to fetch warehouses:", error);
+      }catch(error){
+        console.error("Failed to fetch Warehouse List:", error);
       }
     };
-
-    fetchWarehouses();
-  }, []);
+    fetchWarehouse();
+  },[]);
 
   const validateForm = () => {
     const newErrors = {};
@@ -167,9 +157,9 @@ function InventoryAdd() {
                   required
                 >
                   <option value="">Please select </option>
-                  {categories.map((category) => (
-                    <option key={category.id} value={category.category}>
-                      {category.category}
+                  {categories.map((category, index) => (
+                    <option key={index} value={category}>
+                      {category}
                     </option>
                   ))}
                 </select>
