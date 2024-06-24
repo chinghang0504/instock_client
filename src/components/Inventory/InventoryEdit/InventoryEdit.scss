@@ -8,12 +8,12 @@
 
     &__container{
         background-color: $primary-color-white;
-        box-shadow: 3px 3px 3px rgba(212, 203, 203, 0.3), -3px 3px 3px rgba(212, 203, 203, 0.3);
+        box-shadow: 0.1875rem 0.1875rem 0.1875rem rgba(212, 203, 203, 0.3), -0.1875rem 0.1875rem 0.1875rem rgba(212, 203, 203, 0.3);
         margin-left: 1rem;
         margin-right: 1rem;
         border-radius: 0.25rem;
         position: relative;
-        top: -50px;
+        top: -3.125rem;
 
         @include tablet{
             margin: 0 2rem;
@@ -27,7 +27,7 @@
     &__heading-section{
         display: flex;
         padding: 2rem 1rem 1rem 1rem;
-        border-bottom: 2px solid $secondary-color-cloud;
+        border-bottom: 0.125rem solid $secondary-color-cloud;
 
         @include tablet{
             padding: 2rem 2rem;
@@ -51,7 +51,7 @@
     }
 
     &__detail-container{
-        border-bottom: 1px solid $secondary-color-cloud;
+        border-bottom: 0.0625rem solid $secondary-color-cloud;
         padding: 1rem 0;
         
         @include tablet{
@@ -59,7 +59,7 @@
             width: 50%;
             padding:1rem 2rem 1rem 2rem;
             border-bottom: none;
-            border-right: 1px solid $secondary-color-cloud;
+            border-right: 0.0625rem solid $secondary-color-cloud;
         }
     }
 
@@ -95,7 +95,7 @@
     margin: 0.3rem 1rem 1rem 1rem;
     padding: 0.8rem;
     border-radius: 1.5rem;
-    border: 1px solid $secondary-color-cloud;
+    border: 0.0625rem solid $secondary-color-cloud;
     font-size: 0.938rem;
     line-height: 1.625rem;
     font-size: 0.8rem;
@@ -120,7 +120,7 @@
     margin: 0.3rem 1rem 1rem 1rem;
     padding: 0.8rem;
     border-radius: 1.5rem;
-    border: 1px solid $secondary-color-cloud;
+    border: 0.0625rem solid $secondary-color-cloud;
     height: 7.5rem;
     font-size: 0.8rem;
     line-height: 1rem;
@@ -173,8 +173,8 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    font-size: 13px;
-    line-height: 20px;
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
     color: $secondary-color-slate;
 
     &.checked {
@@ -218,14 +218,14 @@
    }
    &--button{
     width: 100%;
-    border: 1px solid $secondary-color-cloud;
+    border: 0.0625rem solid $secondary-color-cloud;
     margin: 0rem 1rem;
     height: 2.25rem;
     border-radius: 1.25rem;
 
     @include tablet{
         margin: 3rem 0;
-        width: 72px;
+        width: 4.5rem;
     }
    }
    &__button-cancel{
