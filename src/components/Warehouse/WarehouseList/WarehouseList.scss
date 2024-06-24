@@ -208,6 +208,12 @@
       padding-left: 1.5rem;
       padding-right: 1.5rem;
     }
+
+    @include desktop {
+      &:hover {
+        background-color: rgba($color: $primary-color-instock-indigo, $alpha: 0.2);
+      }
+    }
   }
 
   // Container
