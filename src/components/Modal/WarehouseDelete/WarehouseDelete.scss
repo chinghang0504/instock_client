@@ -27,7 +27,7 @@
 
 .text {
   flex: 1; 
-  padding: 20px;
+  padding: 1.25rem;
   @include tablet{
     flex: 0;
     padding: 0;
