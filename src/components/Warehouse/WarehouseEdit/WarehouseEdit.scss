@@ -9,30 +9,32 @@
 
 .edit-container{
   background-color: $primary-color-white;
-  box-shadow: 0.1875rem 0.1875rem 0.1875rem rgba(212, 203, 203, 0.3), -0.1875rem 0.1875rem 0.1875rem rgba(212, 203, 203, 0.3);
-  margin-left: 1rem;
-  margin-right: 1rem;
-  border-radius: 0.25rem;
-  position: relative;
-  top: -3.125rem;
-  @include tablet{
-    margin: 0 2rem;
-}
+    padding-top: 1.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.3125rem 1rem $secondary-color-cloud;
+    position: relative;
+    top: -3.125rem;
 
-@include desktop{
-    margin: 0 3.9rem;
-}
+    @include tablet {
+      top: -6.25rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+
+    @include desktop {
+      margin-left: 4rem;
+      margin-right: 4rem;
+    }
 }
 
 .heading-container{
   display: flex;
   align-items: center;
-  padding: 2rem 1rem 1rem 1rem;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
   border-bottom: 0.125rem solid $secondary-color-cloud;
-
-  @include tablet{
-    padding: 2rem 2rem;
-  }
 }
 
 .heading__image{
