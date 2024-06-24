@@ -1,19 +1,22 @@
 import './WarehouseInventoryList.scss';
 import sortIcon from '../../../assets/icons/sort-24px.svg';
 import { useEffect, useState } from 'react';
-import { getWarehouseInventoryList } from '../../../services/api';
+import { getWarehouseInventoryList, deleteInventory } from '../../../services/api';
 import chevronRightIcon from '../../../assets/icons/chevron_right-24px.svg';
 import InStockTag from '../../Tag/InStockTag/InStockTag.jsx';
 import OutOfStockTag from '../../Tag/OutOfStockTag/OutOfStockTag.jsx';
 import deleteIcon from '../../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../../assets/icons/edit-24px.svg';
 import { Link, useNavigate } from 'react-router-dom';
+import InventoryDelete from '../../Modal/InventoryDelete/InventoryDelete.jsx';
 
 function WarehouseInventoryList(props) {
   const id = props.id;
   const [warehouseInventoryList, setWarehouseInventoryList] = useState([]);
   const navigate = useNavigate();
   const [sortBy, setSortBy] = useState("");
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [currentItemId, setCurrentItemId] = useState(null);
 
   // Click the edit icon
   function clickEditIcon(id) {
@@ -22,15 +25,32 @@ function WarehouseInventoryList(props) {
   // Click the delete icon
   // The delete modal will show on the screen
   function clickDeleteIcon(id) {
-    // setCurrentItemId(id);
-    // toggleModal();
+    setCurrentItemId(id);
+    toggleModal();
+  }
+
+  function toggleModal() {
+    setModalIsOpen(!modalIsOpen);
+  }
+
+  const handleConfirmDelete = async () => {
+    try {
+      if (currentItemId) {
+        await deleteInventory(currentItemId);
+        await loadData();
+        toggleModal();
+      }
+    } catch (error) {
+      console.error('Failed to delete inventory:', error);
+    }
+  };
+
+  async function loadData() {
+    const data = await getWarehouseInventoryList(id);
+    setWarehouseInventoryList(data);
   }
 
   useEffect(() => {
-    async function loadData() {
-      const data = await getWarehouseInventoryList(id);
-      setWarehouseInventoryList(data);
-    }
     loadData();
   }, []);
 
@@ -90,6 +110,12 @@ function WarehouseInventoryList(props) {
           );
         })}
       </ul>
+      <InventoryDelete
+        isOpen={modalIsOpen}
+        onRequestClose={toggleModal}
+        onConfirm={() => handleConfirmDelete(currentItemId)}
+        inventoryName={warehouseInventoryList.find(inventory => inventory.id === currentItemId)?.item_name}
+      />
     </div>
   )
 }

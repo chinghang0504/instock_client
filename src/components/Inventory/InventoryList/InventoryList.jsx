@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import searchIcon from '../../../assets/icons/search-24px.svg';
 import deleteIcon from '../../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../../assets/icons/edit-24px.svg';
-import { getInventoryList,deleteInventory,getInventorySearch} from '../../../services/api.js';
+import { getInventoryList, deleteInventory, getInventorySearch } from '../../../services/api.js';
 import InventoryDelete from '../../Modal/InventoryDelete/InventoryDelete.jsx';
 import sortIcon from '../../../assets/icons/sort-24px.svg';
 import chevronRightIcon from '../../../assets/icons/chevron_right-24px.svg';
@@ -24,10 +24,12 @@ function InventoryList() {
   function clickSearchIcon() {
     searchInputRef.current.focus();
   }
-// Click the edit icon
-function clickEditIcon(id) {
-  navigate(`/inventory/edit/${id}`);
-}
+
+  // Click the edit icon
+  function clickEditIcon(id) {
+    navigate(`/inventory/edit/${id}`);
+  }
+
   // Click the delete icon
   // The delete modal will show on the screen
   function clickDeleteIcon(id) {
@@ -63,6 +65,7 @@ function clickEditIcon(id) {
       console.error('Failed to delete inventory:', error);
     }
   };
+  
   //  Load Inventory List && Load Search Results
   const loadData = async (searchTerm = '') => {
     try {
@@ -77,7 +80,7 @@ function clickEditIcon(id) {
       console.error('Error loading data:', error);
     }
   };
-  
+
   // Use useEffect to load data when the component mounts
   useEffect(() => {
     loadData();
@@ -149,11 +152,11 @@ function clickEditIcon(id) {
         </ul>
       </div>
       <InventoryDelete
-           isOpen={modalIsOpen}
-            onRequestClose={toggleModal}
-            onConfirm={() => handleConfirmDelete(currentItemId)}
-            inventoryName={inventoryList.find(inventory => inventory.id === currentItemId)?.item_name}
-        />
+        isOpen={modalIsOpen}
+        onRequestClose={toggleModal}
+        onConfirm={() => handleConfirmDelete(currentItemId)}
+        inventoryName={inventoryList.find(inventory => inventory.id === currentItemId)?.item_name}
+      />
     </div>
   )
 }
