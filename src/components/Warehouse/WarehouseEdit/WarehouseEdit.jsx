@@ -1,9 +1,10 @@
 import "./WarehouseEdit.scss";
 import icon from "../../../assets/icons/arrow_back-24px.svg";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { editWarehouse as editWarehouseApi, getWarehouseData } from "../../../services/api";
+
 function WarehouseEdit() {
   const [warehouse, setWarehouse] = useState({});
   const { id } = useParams();
@@ -12,10 +13,8 @@ function WarehouseEdit() {
   useEffect(() => {
     async function getWarehouse() {
       try {
-        const response = await axios.get(
-          `http://localhost:8080/warehouse/${id}`
-        );
-        setWarehouse(response.data);
+        const warehouseData = await getWarehouseData(id);
+        setWarehouse(warehouseData);
       } catch (error) {
         console.log("add warehouse error: ", error.message);
       }
@@ -41,10 +40,7 @@ function WarehouseEdit() {
 
       console.log(editWarehouse);
 
-      await axios.put(
-        `http://localhost:8080/warehouse/${id}`,
-        editWarehouse
-      );
+      await editWarehouseApi(id, editWarehouse);
       navigate("/warehouse");
     } catch (error) {
       console.log("add warehouse error: ", error.message);

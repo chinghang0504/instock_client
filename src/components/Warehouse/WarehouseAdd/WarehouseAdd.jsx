@@ -1,7 +1,7 @@
 import "./WarehouseAdd.scss";
 import icon from "../../../assets/icons/arrow_back-24px.svg";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { createWarehouse } from "../../../services/api";
 
 function WarehouseAdd() {
   const navigate = useNavigate();
@@ -25,10 +25,7 @@ function WarehouseAdd() {
     // 2. console.log(newWarehouse) to make sure it is working -- DONE
     async function addWarehouse() {
       try {
-        await axios.post(
-          "http://localhost:8080/warehouse/",
-          newWarehouse
-        );
+        await createWarehouse(newWarehouse);
         navigate("/warehouse");
       } catch (error) {
         console.log("add warehouse error: ", error.message);
