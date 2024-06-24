@@ -17,7 +17,7 @@ function InventoryDelete({ isOpen, onRequestClose, onConfirm, inventoryName }) {
       <div className='text'>
       <img className='text__icon'src={CloseIcon} alt="Close icon " onClick={onRequestClose}/>
       <h2 className='text__header'>Delete {inventoryName} inventory item?</h2>
-      <p className='text__para'>Please confirm that you'de like to delete the {inventoryName} from the inventory list. You won't be able to undo this action.</p>
+      <p className='text__para'>Please confirm that you&apos;de like to delete the {inventoryName} from the inventory list. You won&apos;t be able to undo this action.</p>
       </div>
       <div className="modal__buttons-container">
         <button className="modal__buttons modal__buttons--cancel" onClick={onRequestClose}>Cancel</button>
