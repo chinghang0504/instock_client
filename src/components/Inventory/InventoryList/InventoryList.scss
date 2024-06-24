@@ -149,16 +149,10 @@
       @include tablet {
         width: 23%;
       }
-      @include desktop {
-        width: 23%;
-      }
     }
 
     &--category {
       @include tablet {
-        width: 19%;
-      }
-      @include desktop {
         width: 19%;
       }
     }
@@ -167,16 +161,10 @@
       @include tablet {
         width: 19%;
       }
-      @include desktop {
-        width: 19%;
-      }
     }
 
     &--qty {
       @include tablet {
-        width: 10%;
-      }
-      @include desktop {
         width: 10%;
       }
     }
@@ -185,17 +173,11 @@
       @include tablet {
         width: 19%;
       }
-      @include desktop {
-        width: 19%;
-      }
     }
 
     &--actions {
       text-align: right;
       @include tablet {
-        width: 10%;
-      }
-      @include desktop {
         width: 10%;
       }
     }
@@ -237,9 +219,6 @@
     @include tablet {
       width: 90%;
     }
-    @include desktop {
-      width: 90%;
-    }
   }
 
   // Left Container and Right Container
@@ -263,16 +242,10 @@
     @include tablet {
       width: 46.67%;
     }
-    @include desktop {
-      width: 46.67%;
-    }
   }
   // Right Container
   &__right-container {
     @include tablet {
-      width: 53.33%;
-    }
-    @include desktop {
       width: 53.33%;
     }
   }
@@ -292,16 +265,10 @@
       @include tablet {
         width: 54.76%;
       }
-      @include desktop {
-        width: 54.76%;
-      }
     }
 
     &--category {
       @include tablet {
-        width: 45.24%;
-      }
-      @include desktop {
         width: 45.24%;
       }
     }
@@ -310,25 +277,16 @@
       @include tablet {
         width: 39.58%;
       }
-      @include desktop {
-        width: 39.58%;
-      }
     }
 
     &--qty {
       @include tablet {
         width: 20.84%;
       }
-      @include desktop {
-        width: 20.84%;
-      }
     }
 
     &--warehouse {
       @include tablet {
-        width: 39.58%;
-      }
-      @include desktop {
         width: 39.58%;
       }
     }
@@ -382,9 +340,6 @@
       padding-right: 0;
       width: 10%;
       justify-content: flex-end;
-    }
-    @include desktop {
-      width: 10%;
     }
   }
 
