@@ -194,7 +194,7 @@ function InventoryEdit() {
                   Status
                 </label>
                 <div className="inventory-edit__radio-section">
-                  <div
+                  <label
                     className={`inventory-edit__radio-list ${
                       itemData.status === "In Stock" ? "checked" : ""
                     }`}
@@ -208,8 +208,8 @@ function InventoryEdit() {
                       onChange={handleChange}
                     />
                     In Stock
-                  </div>
-                  <div
+                  </label>
+                  <label
                     className={`inventory-edit__radio-list ${
                       itemData.status === "Out of Stock" ? "checked" : ""
                     }`}
@@ -223,7 +223,7 @@ function InventoryEdit() {
                       onChange={handleChange}
                     />
                     Out of Stock
-                  </div>
+                  </label>
                 </div>
               </div>
 
