@@ -84,6 +84,10 @@ function InventoryEdit() {
       const quantity =
         itemData.status === "In Stock" ? parseInt(itemData.quantity) : 0;
 
+      if (quantity === 0) {
+        itemData.status = "Out of Stock";
+      }
+
       const updatedItemData = {
         ...itemData,
         id: id,
