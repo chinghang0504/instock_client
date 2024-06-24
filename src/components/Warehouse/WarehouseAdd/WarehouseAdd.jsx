@@ -25,6 +25,7 @@ function WarehouseAdd() {
     // 2. console.log(newWarehouse) to make sure it is working -- DONE
     async function addWarehouse() {
       try {
+        console.log(newWarehouse);
         await createWarehouse(newWarehouse);
         navigate("/warehouse");
       } catch (error) {
@@ -69,6 +70,7 @@ function WarehouseAdd() {
                     className="city"
                     type="text"
                     placeholder="Warehouse Name"
+                    required
                   />
                 </div>
                 <div className="warehousename">
@@ -78,6 +80,7 @@ function WarehouseAdd() {
                     className="city"
                     type="text"
                     placeholder="Street Address"
+                    required
                   />
                 </div>
                 <div className="warehousename">
@@ -87,6 +90,7 @@ function WarehouseAdd() {
                     className="city"
                     type="text"
                     placeholder="City"
+                    required
                   />
                 </div>
                 <div className="warehousename">
@@ -96,6 +100,7 @@ function WarehouseAdd() {
                     className="city"
                     type="text"
                     placeholder="Country"
+                    required
                   />
                 </div>
               </div>
@@ -109,6 +114,7 @@ function WarehouseAdd() {
                     className="city"
                     type="text"
                     placeholder="Contact Name"
+                    required
                   />
                 </div>
                 <div className="warehousename">
@@ -118,6 +124,7 @@ function WarehouseAdd() {
                     className="city"
                     type="text"
                     placeholder="Position"
+                    required
                   />
                 </div>
                 <div className="warehousename">
@@ -125,8 +132,9 @@ function WarehouseAdd() {
                   <input
                     name="contact_phone"
                     className="city"
-                    type="text"
+                    type="tel"
                     placeholder="Phone Number"
+                    required
                   />
                 </div>
                 <div className="warehousename">
@@ -134,8 +142,9 @@ function WarehouseAdd() {
                   <input
                     name="contact_email"
                     className="city"
-                    type="text"
+                    type="email"
                     placeholder="Email"
+                    required
                   />
                 </div>
               </div>

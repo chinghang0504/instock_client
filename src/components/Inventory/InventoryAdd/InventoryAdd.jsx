@@ -21,7 +21,7 @@ function InventoryAdd() {
   });
   const [warehouses, setWarehouses] = useState([]);
   const [errors, setErrors] = useState({});
-  const categories = ["Electronics", "Furniture", "Clothing", "Food", "Health"];
+  const categories = ["Accessories", "Apparel", "Clothing", "Electronics", "Food", "Furniture", "Gear", "Health"];
   const [submitError, setSubmitError] = useState("");
 
 
